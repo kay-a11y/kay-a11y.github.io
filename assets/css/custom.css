@@ -1,0 +1,273 @@
+/* assets/css/custom.css */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;700&display=swap');
+
+/* --- global background & background forced overlay --- */
+:root {
+  /* 1. global background */
+  --main-bg: rgb(11, 15, 19) !important;
+  --body-bg: rgb(11, 15, 19) !important;
+  --sidebar-bg: rgb(29, 36, 43) !important; 
+  --topbar-bg: rgba(11, 15, 19, 0.7) !important; 
+
+  --footer-bg: rgb(11, 15, 19) !important;
+  --card-bg: rgb(18, 22, 26) !important; 
+
+  /* 3. main body font color */
+  --text-color: #cec5b4 !important;
+  --body-color: #cec5b4 !important;
+  --headings-color: #ebe4d9 !important; 
+  --text-muted-color: rgba(206, 197, 180, 0.6) !important; 
+  --blockquote-text-color: #b8ae9c !important; 
+
+  /* 4. link font style */
+  #sidebar > nav > ul  a span {
+    color:rgba(187, 202, 219, 0.97);
+  }
+
+  /* --- code block --- */
+  /* 2. code block back-ground and base text (VS Code Dark+ style) */
+  --highlight-bg-color: rgb(30, 30, 30) !important;  
+  --inline-code-bg: rgba(206, 197, 180, 0.1) !important; 
+  --code-color: #D4D4D4 !important;      
+  --highlighter-rouge-color: #D4D4D4 !important;  
+  --highlight-lineno-color: #858585 !important; 
+  --main-border-color: rgba(206, 197, 180, 0.1) !important; 
+  --blockquote-border-color: rgba(206, 197, 180, 0.3) !important; 
+}
+
+/* --- base element style --- */
+body {
+  background-color: var(--main-bg) !important;
+  color: var(--text-color) !important;
+  font-family: 'Source Code Pro', 'JetBrains Mono', monospace; /* favorite font */
+}
+
+/* main area font color */
+.content, .post-content, .post-body, #main p, #main li, #main dd, #main dt, .license-wrapper {
+  color: var(--text-color) !important;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: var(--headings-color) !important;
+}
+
+/* sidebar and topbar background-color */
+#sidebar, #topbar-wrapper {
+    background-color: var(--main-bg) !important;
+}
+/* footer background-color */
+#tail-wrapper, footer { 
+    background-color: var(--main-bg) !important;
+}
+
+
+/* 链接颜色应用 */
+a, a:visited {
+  color: var(--link-color) !important;
+  text-decoration: none; 
+}
+a:hover, a:focus {
+  color: var(--link-hover-color) !important;
+  text-decoration: underline; 
+}
+
+/* blockquote style */
+blockquote {
+  background-color: rgba(206, 197, 180, 0.05) !important; 
+  border-left: 3px solid var(--blockquote-border-color) !important;
+  color: var(--blockquote-text-color) !important;
+  padding: 0.5em 1em;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* --- === 2. code highlighting style (intimation VS Code Dark+) === --- */
+/* code block overall background and base font */
+.highlight, pre {
+  background-color: var(--highlight-bg-color) !important;
+  color: var(--code-color) !important;
+  border-radius: 4px; 
+  border: 1px solid rgba(212, 212, 212, 0.1); 
+  padding: 0.5em 1em; 
+  overflow: auto; 
+}
+/* Inline code style */
+code:not(pre code) { /* select <code> not in <pre> */
+  background-color: var(--inline-code-bg) !important;
+  color: var(--code-color) !important; /* 行内代码也用亮灰色 */
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+/* --- specific highlight color --- */
+.highlight .c, .highlight .c1, .highlight .cs, .highlight .cm { color: #6A9955; } /* comment - green */
+.highlight .k, .highlight .kc, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv { color: #3f8ccc; } /* keyword - blue */
+.highlight .cp, .highlight .cpf { color: #608B4E; } /* preprocessing directive */
+.highlight .nt { color: #3f8ccc; } /* HTML/XML tag name */
+.highlight .na { color: #9CDCFE; } /* HTML/XML attr name */
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .s1, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .sr, .highlight .si, .highlight .se { color: #CE9178; } /* string & regex etc */
+.highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .mo, .highlight .il, .highlight .l { color: #B5CEA8; } /* number & literal */
+.highlight .nb { color: #4ec99a; } /* built-in name (Python 'self') */
+.highlight .nc { color: #4ec99a; } /* class name - 青色 */
+.highlight .no { color: #9CDCFE; } /* const/decorator */
+.highlight .nd { color: #C586C0; } /* decorator (another) */
+.highlight .ni { color: #D4D4D4; } /* instance name (HTML &nbsp;) */
+.highlight .ne, .highlight .nf, .highlight .fm { color: #DCDCAA; } /* function & exception name */
+.highlight .nl { color: #DCDCAA; } /* tag (like goto) */
+.highlight .nn { color: #D4D4D4; } /* namespace/module name */
+.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm { color: #9CDCFE; } /* variable */
+.highlight .ow { color: #C586C0; } /* Operator word ('in', 'is') */
+.highlight .o, .highlight .p, .highlight .pi { color: #D4D4D4; } /* Operator & punctuation */
+.highlight .w { color: #D4D4D4; } /* whitespace characters */
+
+/* --- 5. List sequence number/marker color --- */
+::marker {
+  color: rgba(206, 197, 180, 0.7) !important; 
+}
+
+/* --- Fixed excess white space around the code block line number --- */
+.highlight .gutter, 
+.highlight .lineno { 
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  padding-left: 1em !important; 
+  padding-right: 1em !important; 
+}
+
+.highlight .gutter pre.lineno {
+   margin: 0 !important;
+   padding-top: 0 !important;
+   padding-bottom: 0 !important;
+   line-height: inherit; 
+}
+
+.highlight table td {
+    vertical-align: baseline; /* or top */
+}
+
+/* --- === Change the link color of a specific area to off-white === --- */
+
+/* 1. sidebar link (includes Recently Updated) */
+#sidebar .panel-body a, 
+.trending-tags a {
+  color: #cec5b4 !important; 
+  display: inline-block; 
+  padding: 0.1em 0.4em;
+  margin: 0.1em;
+  border-radius: 3px;
+  border: 1px solid transparent; 
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+.trending-tags a:hover {
+  color: inherit !important; 
+  background-color: rgba(67, 50, 214, 0.1) !important; 
+  border-color: rgba(67, 50, 214, 0.4) !important; 
+  text-decoration: none;
+}
+
+/* sidebar hover */
+#sidebar .post-link:hover,
+#sidebar .panel-body a:hover,
+#sidebar .nav-link:hover,
+#sidebar ul a:hover {
+  color: #ffffff !important; 
+  text-decoration: underline;
+}
+
+/* 2. post tag link */
+a.post-tag {
+  color: #cec5b4 !important; 
+  border-color: rgba(206, 197, 180, 0.3) !important;
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+a.post-tag:hover {
+  color: #ffffff !important; 
+  background-color: rgba(67, 50, 214, 0.1) !important; 
+  border-color: rgba(67, 50, 214, 0.4) !important; 
+}
+
+/* 3. footer link */
+#tail-wrapper footer a, #main-wrapper main header a {
+  color: #cec5b4 !important;
+  text-decoration: none; 
+}
+/* footer link hover */
+#tail-wrapper a:hover,
+footer a:hover {
+  color: #ffffff !important; 
+  text-decoration: underline; 
+}
+
+/* --- License Wrapper link --- */
+.license-wrapper a {
+  color: var(--text-color) !important; 
+  text-decoration: none;
+}
+
+/* (optional) License Wrapper link hover */
+.license-wrapper a:hover {
+  color: #ffffff !important; 
+  text-decoration: underline; 
+}
+
+/* ------------------------------------------------------ */
+
+/* --- === Kay's Void - cyberpunk === --- */
+.site-title.d-block {
+  position: relative; 
+  color: var(--headings-color); 
+  text-decoration: none;
+  transition: color 0.2s ease; 
+}
+
+.site-title.d-block::before,
+.site-title.d-block::after {
+  content: "Kay's Void";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  color: var(--headings-color); 
+  opacity: 0; 
+  transition: opacity 0.3s ease-out;
+}
+
+.site-title.d-block::before {
+  left: 2px;
+  text-shadow: -1px 0 #00f0ff; /* 青色阴影 */
+  animation: glitch-anim-1 2s infinite linear alternate-reverse;
+}
+
+.site-title.d-block::after {
+  left: -2px;
+  text-shadow: -1px 0 #ff004f; /* 洋红色阴影 */
+  animation: glitch-anim-2 3s infinite linear alternate-reverse;
+}
+
+.site-title.d-block:hover::before,
+.site-title.d-block:hover::after {
+  opacity: 1;
+}
+
+/* glitch animation Keyframes */
+@keyframes glitch-anim-1 {
+  0% { clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%); transform: translate(-1px, 2px); }
+  2% { clip-path: polygon(0 75%, 100% 75%, 100% 78%, 0 78%); transform: translate(1px, -1px); }
+  /* ... (More frames can be added to create more complex flickers) ... */
+  5% { clip-path: polygon(0 50%, 100% 50%, 100% 55%, 0 55%); transform: translate(-1px, 1px); }
+  10% { clip-path: polygon(0 20%, 100% 20%, 100% 23%, 0 23%); transform: translate(1px, -2px); }
+  100% { clip-path: polygon(0 90%, 100% 90%, 100% 93%, 0 93%); transform: translate(-1px, 0px); }
+}
+
+@keyframes glitch-anim-2 {
+  0% { clip-path: polygon(0 55%, 100% 55%, 100% 60%, 0 60%); transform: translate(1px, -1px); }
+  3% { clip-path: polygon(0 10%, 100% 10%, 100% 15%, 0 15%); transform: translate(-1px, 2px); }
+  /* ... (More frames can be added to create more complex flickers) ... */
+  7% { clip-path: polygon(0 80%, 100% 80%, 100% 83%, 0 83%); transform: translate(1px, -1px); }
+  12% { clip-path: polygon(0 35%, 100% 35%, 100% 40%, 0 40%); transform: translate(-1px, 1px); }
+  100% { clip-path: polygon(0 5%, 100% 5%, 100% 8%, 0 8%); transform: translate(1px, 0px); }
+}
