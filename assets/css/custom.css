@@ -62,7 +62,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-/* 链接颜色应用 */
+/* link color */
 a, a:visited {
   color: var(--link-color) !important;
   text-decoration: none; 
@@ -83,67 +83,170 @@ blockquote {
 }
 
 /* --- === 2. code highlighting style (intimation VS Code Dark+) === --- */
-/* code block overall background and base font */
-.highlight, pre {
+/* Apply styles PRIMARILY to the outer container */
+/* --- === 2. 代码高亮样式 (针对 Rouge 表格布局优化) === --- */
+
+/* 外层容器样式 */
+.highlight {
   background-color: var(--highlight-bg-color) !important;
   color: var(--code-color) !important;
-  border-radius: 4px; 
-  border: 1px solid rgba(212, 212, 212, 0.1); 
-  padding: 0.5em 1em; 
-  overflow: auto; 
-}
-/* Inline code style */
-code:not(pre code) { /* select <code> not in <pre> */
-  background-color: var(--inline-code-bg) !important;
-  color: var(--code-color) !important; /* 行内代码也用亮灰色 */
-  border-radius: 3px;
-  font-size: 0.9em;
+  border-radius: 4px;
+  border: 1px solid rgba(212, 212, 212, 0.1);
+  position: relative; /* Needed for potential future elements */
+  /* DO NOT add padding here if using table layout */
+  margin-bottom: 1em; /* Add some space below code blocks */
 }
 
-/* --- specific highlight color --- */
-.highlight .c, .highlight .c1, .highlight .cs, .highlight .cm { color: #6A9955; } /* comment - green */
-.highlight .k, .highlight .kc, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv { color: #3f8ccc; } /* keyword - blue */
-.highlight .cp, .highlight .cpf { color: #608B4E; } /* preprocessing directive */
-.highlight .nt { color: #3f8ccc; } /* HTML/XML tag name */
-.highlight .na { color: #9CDCFE; } /* HTML/XML attr name */
-.highlight .s, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .s1, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .sr, .highlight .si, .highlight .se { color: #CE9178; } /* string & regex etc */
-.highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .mo, .highlight .il, .highlight .l { color: #B5CEA8; } /* number & literal */
-.highlight .nb { color: #4ec99a; } /* built-in name (Python 'self') */
-.highlight .nc { color: #4ec99a; } /* class name - 青色 */
-.highlight .no { color: #9CDCFE; } /* const/decorator */
-.highlight .nd { color: #C586C0; } /* decorator (another) */
-.highlight .ni { color: #D4D4D4; } /* instance name (HTML &nbsp;) */
-.highlight .ne, .highlight .nf, .highlight .fm { color: #DCDCAA; } /* function & exception name */
-.highlight .nl { color: #DCDCAA; } /* tag (like goto) */
-.highlight .nn { color: #D4D4D4; } /* namespace/module name */
-.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm { color: #9CDCFE; } /* variable */
-.highlight .ow { color: #C586C0; } /* Operator word ('in', 'is') */
-.highlight .o, .highlight .p, .highlight .pi { color: #D4D4D4; } /* Operator & punctuation */
-.highlight .w { color: #D4D4D4; } /* whitespace characters */
+/* Rouge 表格重置与布局 */
+.highlight table.rouge-table {
+  border-collapse: collapse !important;
+  margin: 0 !important;
+  width: 100% !important;
+  border: none !important;
+  background: none !important; /* Ensure table itself is transparent */
+}
+.highlight table.rouge-table tbody,
+.highlight table.rouge-table tr {
+  border: none !important;
+  background: none !important;
+  vertical-align: top !important; /* Align cells to the top */
+}
+.highlight table.rouge-table td {
+  padding: 0 !important; /* Reset ALL cell padding */
+  border: none !important;
+  vertical-align: top !important;
+  line-height: 1.5; /* Adjust line height for code */
+}
+
+/* 行号单元格 (.rouge-gutter or .gl) 样式 */
+.highlight table.rouge-table td.rouge-gutter,
+.highlight table.rouge-table td.gl {
+  padding-right: 1em !important; /* Space between number and code */
+  text-align: right !important;
+  -webkit-user-select: none; /* Don't allow selecting line numbers */
+  background-color: var(--highlight-bg-color) !important; /* Ensure same bg */
+  border-right: 1px solid rgba(212, 212, 212, 0.1); /* Optional separator line */
+}
+.highlight table.rouge-table td.rouge-gutter pre,
+.highlight table.rouge-table td.gl pre {
+  margin: 0 !important;
+  padding: 0.5em 0 !important; /* Add vertical padding INSIDE the pre */
+  color: var(--highlight-lineno-color) !important;
+  background: none !important;
+  border: none !important;
+  white-space: pre !important; /* Preserve line breaks */
+  /* font-size: 13px !important; */
+}
+
+/* 代码单元格 (.rouge-code or .gd) 样式 */
+.highlight table.rouge-table td.rouge-code,
+.highlight table.rouge-table td.gd {
+  width: 100%; /* Make code cell take remaining width */
+  background-color: var(--highlight-bg-color) !important;
+}
+.highlight table.rouge-table td.rouge-code pre,
+.highlight table.rouge-table td.gd pre {
+  margin: 0 !important;
+  padding: 0.5em 1em !important; /* Apply padding INSIDE the code pre */
+  color: var(--code-color) !important;
+  background: none !important;
+  border: none !important;
+  overflow-x: auto !important; /* Allow horizontal scroll ONLY for code */
+  white-space: pre !important; /* Preserve whitespace and line breaks */
+  /* font-size: 13px !important; */
+}
+
+/* Inline code style - KEEP AS IS */
+code:not(pre code) {
+  background-color: var(--inline-code-bg) !important;
+  color: var(--code-color) !important;
+  padding: 0em 0em;
+  border-radius: 3px;
+  font-size: 0.9em;
+  white-space: nowrap; /* Prevent inline code from breaking */
+}
+
+/* --- Specific Highlight Colors (Keep your existing rules below this point) --- */
+/* Base text ... */
+/* Comments ... */
+/* ... (Your existing .highlight .c, .k, .s etc. rules go here) ... */
+.highlight .c, .highlight .c1, .highlight .cs, .highlight .cm, .highlight .cpf { color: #6A9955; } /* comment - green */
+.highlight .k, .highlight .kc, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv { color: #569CD6; } /* keyword - blue */
+.highlight .cp { color: #608B4E; } /* preprocessing directive */
+.highlight .nt { color: #569CD6; } /* HTML/XML tag name - blue */
+.highlight .na { color: #9CDCFE; } /* HTML/XML attr name - light blue */
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .s1, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .sr, .highlight .si, .highlight .se { color: #CE9178; } /* string & regex etc - orange brown */
+.highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .mo, .highlight .il, .highlight .l { color: #B5CEA8; } /* number & literal - light green */
+.highlight .nb { color: #569CD6; } /* built-in name (Python 'self', shell commands) - blue */
+.highlight .nc, .highlight .no { color: #4EC9B0; } /* class name, constants - teal */
+.highlight .nd { color: #C586C0; } /* decorator - purple */
+.highlight .ne, .highlight .nf, .highlight .fm { color: #DCDCAA; } /* function & exception name - yellow */
+.highlight .nl { color: #DCDCAA; } /* tag (like goto) - yellow */
+.highlight .nn { color: #D4D4D4; } /* namespace/module name - default grey */
+.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm { color: #9CDCFE; } /* variable - light blue */
+.highlight .ow { color: #C586C0; } /* Operator word ('in', 'is') - purple */
+.highlight .o, .highlight .p, .highlight .pi { color: #D4D4D4; } /* Operator & punctuation - default grey */
+.highlight .w { color: #D4D4D4; } /* whitespace characters - default grey */
+/* YAML Specific additions (ensure these are covered) */
+.highlight .na, .highlight .nv { color: #9CDCFE !important; } /* YAML keys - Use light blue */
+.highlight .s, .highlight .s1, .highlight .s2 { color: #CE9178 !important; } /* YAML strings - Use orange-brown */
+.highlight .mi, .highlight .mf { color: #B5CEA8 !important; } /* YAML numbers - Use light green */
+
+/* --- End of Code Highlighting Styles --- */
+
+/* --- NEW: Style for Highlight Blocks WITHOUT Rouge Table (e.g., txt, plaintext) --- */
+
+/* Ensure the base .highlight class provides background and border */
+.highlight {
+  background-color: var(--highlight-bg-color) !important;
+  color: var(--code-color) !important; /* Base color */
+  border-radius: 4px;
+  border: 1px solid rgba(212, 212, 212, 0.1);
+  position: relative;
+  margin-bottom: 1em; /* Consistent spacing */
+  /* Add padding ONLY if NO table exists inside */
+  padding: 0; /* Reset padding, apply conditionally below */
+}
+
+/* Override default pre styles that might interfere */
+pre {
+    margin-bottom: 0; /* Prevent double margin */
+}
+
 
 /* --- 5. List sequence number/marker color --- */
 ::marker {
-  color: rgba(206, 197, 180, 0.7) !important; 
+  color: rgba(206, 197, 180, 0.7) !important;
 }
 
 /* --- Fixed excess white space around the code block line number --- */
-.highlight .gutter, 
-.highlight .lineno { 
+.highlight .gutter,
+.highlight .lineno {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
-  padding-left: 1em !important; 
-  padding-right: 1em !important; 
+  padding-left: 1em !important; /* Adjust if line numbers still too far left */
+  padding-right: 1em !important; /* Adjust if code is too far right */
+  /* user-select: none; Prevent selecting line numbers */
+  /* background-color: rgba(255,0,0,0.1); */ /* Uncomment temporarily to see the gutter area */
 }
 
 .highlight .gutter pre.lineno {
    margin: 0 !important;
-   padding-top: 0 !important;
-   padding-bottom: 0 !important;
-   line-height: inherit; 
+   padding: 0 !important;
+   line-height: inherit;
+   background-color: transparent !important; /* Ensure transparent */
+   border: none !important; /* Ensure no border */
 }
 
+/* Ensure table cells are aligned and have no extra padding */
 .highlight table td {
-    vertical-align: baseline; /* or top */
+    vertical-align: baseline;
+    padding: 0 !important; /* Reset TD padding */
+    border: none !important; /* Ensure no border on TD */
+}
+/* Re-apply padding ONLY to the <pre> inside the CODE cell */
+.highlight table td:last-child pre {
+    padding: 0.5em 1em !important; /* Match overall padding */
 }
 
 /* --- === Change the link color of a specific area to off-white === --- */
