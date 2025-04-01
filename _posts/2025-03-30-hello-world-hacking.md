@@ -18,7 +18,7 @@ comments: true # optional
 
 <br><br>
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=65&section=body"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=65&section=body" alt=""/>
 </p>
 
 ## Welcome to My Digital Playground! <img src="https://media.giphy.com/media/W5eoZHPpUx9sapR0eu/giphy.gif" width="30px" alt="Git"/>&nbsp;
@@ -138,5 +138,5 @@ Here, I plan to document my adventures (and misadventures) in the world of code,
 
 <br>
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=65&section=footer"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=65&section=footer" alt=""/>
 </p>

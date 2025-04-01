@@ -12,7 +12,8 @@ comments: true
 <br>
 <p> 
   <img 
-    src="/assets/img/posts/hexchat-logo.svg" 
+    src="/assets/img/posts/hexchat-logo.svg"
+    alt="hexchat logo"
     style="
       display: block;
       margin-left: auto;
