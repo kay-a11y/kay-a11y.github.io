@@ -28,110 +28,122 @@ This is my first post on my new GitHub Pages blog, powered by Jekyll.
 Here, I plan to document my adventures (and misadventures) in the world of code, security, privacy, and maybe some V for Vendetta style musings.
 
 <!-- Terminal Container -->
-<div class="terminal-container">
-  <div class="terminal-header">
-    <span></span> <!-- Red -->
-    <span></span> <!-- Yellow -->
-    <span></span> <!-- Green -->
+<div class="hacker-terminal">
+  <div class="hacker-terminal-header">
+    <span class="dot red"></span>
+    <span class="dot yellow"></span>
+    <span class="dot green"></span>
   </div>
-  <div class="terminal-body">
-    <span class="prompt">user@chaos:~$</span> <span id="typed-output"></span><span class="cursor">▋</span>
+  <div class="hacker-terminal-body">
+    <span class="prompt">root@chaos:~#</span>
+    <span id="new-typewriter-output"></span><span class="cursor blink">▋</span>
   </div>
 </div>
 
+
 <!-- Basic Styling -->
 <style>
-.terminal-container {
-  background-color: #282c34; /* Dark background */
-  color: #abb2bf; /* Light grey text */
-  font-family: 'Consolas', 'Monaco', monospace; /* Monospace font */
-  border-radius: 6px;
-  padding: 15px;
-  margin: 20px 0; /* Add some space around it */
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  overflow: hidden; /* Hide anything that might overflow */
+.hacker-terminal {
+  background-color: #1e1e1e; 
+  color: #d4d4d4; 
+  font-family: 'Consolas', 'Courier New', monospace; 
+  border-radius: 5px;
+  padding: 15px 20px;
+  margin: 25px 0;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  position: relative; 
+  overflow: hidden;
 }
 
-.terminal-header {
-  padding-bottom: 10px;
-  border-bottom: 1px solid #444;
-  margin-bottom: 10px;
+.hacker-terminal-header {
+  padding-bottom: 8px;
+  margin-bottom: 12px;
 }
 
-.terminal-header span {
+.hacker-terminal-header .dot {
   display: inline-block;
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  margin-right: 6px;
+  margin-right: 5px;
 }
-.terminal-header span:nth-child(1) { background-color: #ff5f56; } /* Red */
-.terminal-header span:nth-child(2) { background-color: #ffbd2e; } /* Yellow */
-.terminal-header span:nth-child(3) { background-color: #27c93f; } /* Green */
+.hacker-terminal-header .red { background-color: #ff5f57; }
+.hacker-terminal-header .yellow { background-color: #ffbd2e; }
+.hacker-terminal-header .green { background-color: #27c93f; }
 
-.terminal-body {
-  /* Ensure text wrapping behaves correctly */
-  white-space: pre-wrap;
+.hacker-terminal-body {
+  white-space: pre-wrap; 
   word-wrap: break-word;
 }
 
-.prompt {
-  color: #61afef; /* Blue prompt color */
+.hacker-terminal .prompt {
+  color: #569cd6; 
   font-weight: bold;
-  margin-right: 5px;
+  margin-right: 8px;
 }
 
-/* Blinking cursor effect */
-.cursor {
-  display: inline-block; /* Needed for animation */
-  background-color: #abb2bf; /* Cursor color same as text */
-  width: 8px; /* Width of the cursor */
-  margin-left: 2px; /* Space before cursor */
-  animation: blink 1s step-end infinite;
+.hacker-terminal .cursor {
+  display: inline-block;
+  background-color: #d4d4d4;
+  width: 8px; 
+  margin-left: 1px;
+  opacity: 1; 
+  transition: opacity 0.1s; 
 }
 
-.cursor.stopped {
-  animation: none; /* Remove the animation */
-  /* Optional: Ensure the cursor remains visible as a solid block */
-  background-color: #abb2bf;
+.hacker-terminal .cursor.blink {
+  animation: blink-animation 1s step-end infinite;
 }
 
-@keyframes blink {
-  from, to { background-color: transparent }
-  50% { background-color: #abb2bf; } /* Visible state */
+@keyframes blink-animation {
+  0%, 100% { opacity: 1; } 
+  50% { opacity: 0; } 
+}
+
+.hacker-terminal .cursor.typing-done {
+  animation: none; 
+  opacity: 1; 
 }
 </style>
 
 <!-- JavaScript for Typing Effect -->
 <script>
-  const textToType = 'print("Chaos is the new black.")';
-  const outputElement = document.getElementById('typed-output');
-  const typingSpeed = 100; // Milliseconds per character (adjust speed here)
-  let i = 0;
+(function() { 
 
-  function typeWriter() {
-    if (i < textToType.length) {
-      outputElement.textContent += textToType.charAt(i);
-      i++;
-      setTimeout(typeWriter, typingSpeed);
-    } else {
-      // Typing finished: Add 'stopped' class to the cursor
-      const cursorElement = document.querySelector('.terminal-body .cursor');
-      if (cursorElement) {
-        cursorElement.classList.add('stopped');
+  document.addEventListener('DOMContentLoaded', () => {
+    const outputElement = document.getElementById('new-typewriter-output');
+    const cursorElement = document.querySelector('.hacker-terminal .cursor'); 
+    const textToType = 'echo "Chaos is the new black."'; 
+    const typingSpeed = 110; 
+    const initialDelay = 600; 
+    let charIndex = 0;
+
+    if (!outputElement || !cursorElement) {
+      console.error("Error: Typewriter target or cursor element not found!");
+      return; 
+    }
+
+    function type() {
+      if (charIndex < textToType.length) {
+        outputElement.textContent += textToType.charAt(charIndex);
+        charIndex++;
+        setTimeout(type, typingSpeed);
+      } else {
+
+        cursorElement.classList.remove('blink');
+        cursorElement.classList.add('typing-done'); 
+        console.log("Typing effect complete.");
       }
     }
-  }
 
-  // Ensure the script runs after the element exists
-  // If you put this script at the end of your body, DOMContentLoaded might not be necessary
-  // But it's safer practice
-  document.addEventListener('DOMContentLoaded', (event) => {
-    // Clear any previous text (if needed)
     outputElement.textContent = '';
-    // Start typing
-    setTimeout(typeWriter, 500); // Add a small delay before starting
+    cursorElement.classList.add('blink'); 
+    cursorElement.classList.remove('typing-done'); 
+
+    setTimeout(type, initialDelay);
   });
+
+})(); 
 </script>
 
 *Stay tuned...* or don't. The choice, like the vulnerability, is yours to discover.
