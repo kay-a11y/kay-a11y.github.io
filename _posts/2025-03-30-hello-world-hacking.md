@@ -2,8 +2,8 @@
 layout: post
 title: "Hello World, Hello Chaos!"
 date: 2025-03-30 00:42:42 +0800
-categories: [tech, intro]
-tags: [jekyll, setup, beginner]
+categories: [🤖 tech, 👋🏻 intro]
+tags: [🖼️ jekyll, ⚙️ setup, 👶🏻 beginner]
 
 # img_path: /assets/img/posts/ # optional
 
@@ -21,7 +21,7 @@ comments: true # optional
   <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=65&section=body" alt=""/>
 </p>
 
-## Welcome to My Digital Playground! <img src="https://media.giphy.com/media/W5eoZHPpUx9sapR0eu/giphy.gif" width="30px" alt="Git"/>&nbsp;
+## 👋🏻 Welcome to My Digital Playground! <img src="https://media.giphy.com/media/W5eoZHPpUx9sapR0eu/giphy.gif" width="30px" alt="Git"/>&nbsp;
 
 This is my first post on my new GitHub Pages blog, powered by Jekyll.
 

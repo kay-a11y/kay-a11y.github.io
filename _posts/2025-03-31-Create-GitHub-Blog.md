@@ -2,8 +2,8 @@
 layout: post
 title: "How to Create a GitHub Pages Blog with Jekyll on Windows (Setup & Local Preview)"
 date: 2025-03-31 08:15:00 +0800
-categories: [tech, setup]
-tags: [jekyll, setup, beginner, GitHub, Ruby, blog]
+categories: [🤖 tech, ⚙️ setup]
+tags: [🖼️ jekyll, ⚙️ setup, 👶🏻 beginner, 🛜 GitHub, 💗 Ruby, ✒️ blog]
 img_path: /assets/img/posts/ 
 toc: true 
 comments: true 

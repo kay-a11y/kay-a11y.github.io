@@ -218,11 +218,25 @@ exclude:
   - "package*.json"
   - assets/feed.xml
 
+# jekyll-archives:
+#   enabled: [categories, tags]
+#   layouts:
+#     category: category
+#     tag: tag
+#   permalinks:
+#     tag: /tags/:name/
+#     category: /categories/:name/
+
+plugins:
+  - jekyll-archives
+
 jekyll-archives:
-  enabled: [categories, tags]
+  enabled: []
+    # - tags
+    # - categories
   layouts:
-    category: category
     tag: tag
+    category: category
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
