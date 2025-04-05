@@ -1,8 +1,8 @@
 ---
 title: "[HexChat][Windows] A Feasible Way to Achieve a Full Dark Theme (Including GTK UI)" 
 date: 2025-03-30 10:48:00 +0800 
-categories: [tech, setup] 
-tags: [environment, setup, IRC, Windows, HexChat, dark mode] 
+categories: [🤖 tech, ⚙️ setup] 
+tags: [🌴 environment, ⚙️ setup, 🗣️ IRC, 🪟 Windows, 🗣️ HexChat, 🌚 dark mode] 
 toc: true 
 comments: true 
 ---
