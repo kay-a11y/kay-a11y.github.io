@@ -231,9 +231,9 @@ plugins:
   - jekyll-archives
 
 jekyll-archives:
-  enabled: []
-    # - tags
-    # - categories
+  enabled: 
+    - tags
+    - categories
   layouts:
     tag: tag
     category: category
