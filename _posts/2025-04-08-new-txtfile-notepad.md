@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[Windows11] Add `New > text file ` to context menu"
+title: "[Windows11] Add `New > text file ` to Context Menu"
 date: 2025-04-08 17:39:00 +0800
 categories: [🤖 tech, ⚙️ setup]
 tags: [⚙️ setup, 🌌 environment, 🪟 Windows, 🟩 registry editor]
@@ -13,9 +13,9 @@ comments: true
 
 ## 😤 The Nightmare Begins: No New > Text File Option
 
-It all started when I 🔪 uninstalled Notepad and replaced it with Notepad++ 💪. Everything was fine until I realized I couldn't create a simple .txt file from the right-click context menu anymore. Like, seriously?! 😑
+It all started when I 🔪 uninstalled Notepad and replaced it with Notepad++ 💪. Everything was fine until I realized I couldn't create a simple `.txt` file from the right-click context menu anymore. Like, **seriously**?! 😑
 
-Turns out, the entire registry structure for .txt files got broken or messed up 💦. And of course, I just had to fix it. Because, why not? 😈
+Turns out, the entire registry structure for `.txt` files got broken or messed up 💦. And of course, I just had to fix it. Because, why not? 😈
 
 ## 😮‍💨 Solution: Fixing The Mess
 
@@ -35,7 +35,9 @@ The "Restore_New_Text_Document_context_menu_item.reg" file worked fine for *Win1
 
 4. When prompted, click/tap on Run, ✅ Yes (UAC), ✅ Yes, and ✅ OK to approve the merge.
 
-5. 🚮 You can now delete the downloaded `.reg` file if you like.
+5. Hit `Ctrl + Shift + Esc` > Restart `explorer.exe`
+
+6. 🚮 You can now delete the downloaded `.reg` file if you like.
 
 ## 📋 Registry Code Backup
 
