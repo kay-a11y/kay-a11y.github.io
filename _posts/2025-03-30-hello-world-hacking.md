@@ -152,3 +152,4 @@ Here, I plan to document my adventures (and misadventures) in the world of code,
 <p align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=65&section=footer" alt=""/>
 </p>
+
