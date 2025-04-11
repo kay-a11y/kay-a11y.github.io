@@ -105,4 +105,3 @@ gtk-cursor-blink-time = 0
 
 This 'either/or' limitation was a deal-breaker for me. I need my dark theme and no damn blinking cursor! That's why I switched and am now configuring AdiIRC.
 
-{% include donation-box.html %}
