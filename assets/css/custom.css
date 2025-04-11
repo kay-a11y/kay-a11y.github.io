@@ -374,3 +374,39 @@ footer a:hover {
   12% { clip-path: polygon(0 35%, 100% 35%, 100% 40%, 0 40%); transform: translate(-1px, 1px); }
   100% { clip-path: polygon(0 5%, 100% 5%, 100% 8%, 0 8%); transform: translate(1px, 0px); }
 }
+
+.donation-box {
+  text-align: center;
+  background: #1e1e1e;
+  padding: 2rem;
+  border-radius: 12px;
+  margin-top: 3rem;
+  color: #cec5b4;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+  font-size: 16px;
+}
+
+.donation-box p {
+  margin: 0.5rem 0;
+}
+
+.donation-text {
+  font-weight: bold;
+  font-size: 18px;
+  color: #f5deb3;
+}
+
+.donation-note {
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 1rem;
+}
+
+.donation-img {
+  display: inline-block;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+.donation-img:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
