@@ -111,3 +111,24 @@ If you want, you can **create a shortcut for this batch file** and place it on y
 
 **Why This Works:**  
 The batch file **temporarily sets the `LANG` environment variable** just for launching Okular. No impact on your other apps, no messing with global variables. Just pure, focused execution.
+
+<div class="donation-box" style="position: relative;">
+  <p class="donation-text">💖 Support me with crypto or PayPal! 💘</p>
+  <p><strong>Bitcoin (BTC):</strong><br>bc1qtzjwfyfpleyzmpqu97sdatqes98ms3zxc7u790</p>
+  <p><strong>Ethereum (ETH) & USDT (ERC-20):</strong><br>0xFE05f74DeF594f8F904D915cB93361C99cB36500</p>
+  <p>Or support me on Ko-fi:</p>
+  
+  <div class="img-container" style="position: relative; display: inline-block;">
+    <!-- 图片 -->
+    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+         alt="Support me on Ko-fi"
+         width="150"
+         loading="lazy">    
+    <!-- 遮罩层按钮 -->
+    <div onclick="window.open('https://ko-fi.com/kikisec', '_blank')" 
+         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: transparent; cursor: pointer;">
+    </div>
+  </div>
+
+  <p class="donation-note">Any amount helps me continue creating content 💬💻</p>
+</div>
