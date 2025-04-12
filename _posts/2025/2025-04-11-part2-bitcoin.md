@@ -7,6 +7,7 @@ tags: [🪙 Bitcoin, ⚔️ Cypherpunk, 🔒 Privacy, 📚 Blockchain,  🧩 Cry
 img_path: /assets/img/posts/ 
 toc: true 
 comments: true 
+image: /assets/img/posts/bitcoin.png
 ---
 
 ![bitcoin](/assets/img/posts/bitcoin.png)

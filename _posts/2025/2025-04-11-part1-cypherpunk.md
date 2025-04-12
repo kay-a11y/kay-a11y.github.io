@@ -1,12 +1,14 @@
 ---
 layout: post
 title: "Part 1: The Cypherpunk Dream - Before Bitcoin Was Born"
+description:
 date: 2025-04-11 19:58:00 +0800
 categories: [🤖 tech, 📚 Blockchain, ✒️ History]
 tags: [🪙 Bitcoin, ⚔️ Cypherpunk, 🔒 Privacy, 📚 Blockchain,  🧩 CryptoHistory, 👤 Satoshi, 📖 CryptoTales, 📝 Series]
 img_path: /assets/img/posts/ 
 toc: true 
 comments: true 
+image: /assets/img/posts/cypherpunk.png
 ---
 
 ![cypherpunk](/assets/img/posts/cypherpunk.png)
