@@ -25,3 +25,6 @@ package-lock.json
 # Misc
 _sass/vendors
 assets/js/dist
+
+_posts/ghost_in_the_wires/
+assets/img/ghost/ghost_in_the_wires/
