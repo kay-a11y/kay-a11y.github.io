@@ -2,15 +2,13 @@
 layout: post
 title: "Part 4: Bitcoin Breakdowns & Ethereum's Electric Genesis"
 date: 2025-04-11 19:58:00 +0800
-categories: [🤖 tech, 📚 Blockchain, ✒️ History]
-tags: [🪙 Bitcoin, ⚔️ Cypherpunk, 🔒 Privacy, 📚 Blockchain,  🧩 CryptoHistory, 📖 CryptoTales, 🟩 Ethereum]
+categories: [📚 crypto story]
+tags: [🪙 Bitcoin, ⚔️ Cypherpunk, 🔒 Privacy, 📚 Blockchain,  🧩 CryptoHistory, 🟩 Ethereum]
 img_path: /assets/img/posts/ 
 toc: true 
 comments: true 
 image: /assets/img/posts/ethvsbtc.jpg
 ---
-
-![ETH VS BTC](/assets/img/posts/ethvsbtc.jpg)
 
 Get ready, because this one's gonna be a wild ride. We're talking **hacks**, **lost fortunes**, and the **birth of Bitcoin's genius younger sibling**: **Ethereum**.
 
