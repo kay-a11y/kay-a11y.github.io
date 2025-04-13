@@ -129,9 +129,10 @@ First thing first, `MemoryError`! Generally, if we let Marker the whole PDF once
 So here's the *plan*, **based on the file input & output path**:
 
 We’ll write a `marker_batch_run.bat` file that automates the following steps:
-    1. Automatically slice PDF into 10-page chunks and save each one to a folder locally
-    2. Loop through and run `marker_single` on each chunk(pdf)
-    3. Move all generated folders to output path
+
+  1. Automatically slice PDF into 10-page chunks and save each one to a folder locally
+  2. Loop through and run `marker_single` on each chunk(pdf)
+  3. Move all generated folders to output path
 
 Here's the script:
 
