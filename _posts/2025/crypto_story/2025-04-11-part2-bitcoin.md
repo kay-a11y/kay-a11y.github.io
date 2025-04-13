@@ -2,15 +2,13 @@
 layout: post
 title: "Part 2: The Genesis Block - Bitcoin Is Born"
 date: 2025-04-11 19:58:00 +0800
-categories: [🤖 tech, 📚 Blockchain, ✒️ History]
-tags: [🪙 Bitcoin, ⚔️ Cypherpunk, 🔒 Privacy, 📚 Blockchain,  🧩 CryptoHistory, 👤 Satoshi, 📖 CryptoTales, 📝 Series, 🔨 ProofOfWork]
+categories: [📚 crypto story]
+tags: [🪙 Bitcoin, ⚔️ Cypherpunk, 🔒 Privacy, 📚 Blockchain,  🧩 CryptoHistory, 👤 Satoshi, 📝 Series, 🔨 ProofOfWork]
 img_path: /assets/img/posts/ 
 toc: true 
 comments: true 
 image: /assets/img/posts/bitcoin.png
 ---
-
-![bitcoin](/assets/img/posts/bitcoin.png)
 
 It was **January 3rd, 2009.**  
 The world was drowning in economic panic. Banks had collapsed. Bailouts were flowing. People were angry, broke, and questioning the system itself.
