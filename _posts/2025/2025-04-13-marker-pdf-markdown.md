@@ -128,50 +128,84 @@ First thing first, `MemoryError`! Generally, if we let Marker the whole PDF once
 
 So here's the *plan*, **based on the file input & output path**:
 
-We’ll write a `marker_batch_run.bat` file that automates the following steps:
+1. A script **automatically slice PDF into 10-page chunks and save each one to a folder locally** `slice_pdf.py`:
 
-  1. Automatically slice PDF into 10-page chunks and save each one to a folder locally
-  2. Loop through and run `marker_single` on each chunk(pdf)
-  3. Move all generated folders to output path
+    ```py
+    from PyPDF2 import PdfReader, PdfWriter
+    import os
 
-Here's the script:
+    # 💾 Path to your big PDF file
+    input_pdf = r"E:\mydocs\my.pdf"
 
-```bat
-@echo off
-setlocal enabledelayedexpansion
+    # 📁 Folder to save sliced PDFs
+    output_folder = r"E:\mydocs\my.pdf\sliced"
+    os.makedirs(output_folder, exist_ok=True)
 
-REM 🔧 Customize these paths
-set "pdf_dir=E:\mydocs\my\sliced"
-set "out_dir=E:\mydocs\my\markdown_output"
-set "marker_out_dir=E:\marker-env\.venv\Lib\site-packages\conversion_results"
+    # 🔍 Load the original file
+    reader = PdfReader(input_pdf)
 
-REM 🧙‍♂️ Activate virtual environment
-call E:\marker-env\.venv\Scripts\activate.bat
+    # 🔪 Split every 10 pages
+    slice_size = 10
+    for start in range(0, len(reader.pages), slice_size):
+        writer = PdfWriter()
+        end = min(start + slice_size, len(reader.pages))
+        
+        for i in range(start, end):
+            writer.add_page(reader.pages[i])
+        
+        out_path = os.path.join(
+            output_folder,
+            f"my_{start+1:03d}-{end:03d}.pdf"
+        )
+        
+        with open(out_path, "wb") as f:
+            writer.write(f)
 
-REM 📁 Make output folder if missing
-if not exist "!out_dir!" mkdir "!out_dir!"
+    print("✅ Done slicing!")
+    ```
 
-echo 🔁 Starting batch conversion...
+2. Then we'll write a `marker_batch_run.bat` file that automates the following steps:
+    * Loop through and run `marker_single` on each chunk(pdf)
+    * Move all generated folders to output path
 
-for %%F in ("%pdf_dir%\*.pdf") do (
-    echo 🧾 Converting: %%~nxF
-    marker_single "%%F"
+    Here's the script `marker_batch_run.bat`:
 
-    set "filename=%%~nF"
-    set "source_folder=!marker_out_dir!\!filename!"
-    set "target_folder=!out_dir!\!filename!"
+    ```bat
+    @echo off
+    setlocal enabledelayedexpansion
 
-    if exist "!source_folder!" (
-        echo 🚚 Moving output folder: !source_folder! → !target_folder!
-        move /Y "!source_folder!" "!target_folder!" >nul
-    ) else (
-        echo ⚠️  Output not found for %%~nxF — check Marker logs.
+    REM 🔧 Customize these paths
+    set "pdf_dir=E:\mydocs\my\sliced"
+    set "out_dir=E:\mydocs\my\markdown_output"
+    set "marker_out_dir=E:\marker-env\.venv\Lib\site-packages\conversion_results"
+
+    REM 🧙‍♂️ Activate virtual environment
+    call E:\marker-env\.venv\Scripts\activate.bat
+
+    REM 📁 Make output folder if missing
+    if not exist "!out_dir!" mkdir "!out_dir!"
+
+    echo 🔁 Starting batch conversion...
+
+    for %%F in ("%pdf_dir%\*.pdf") do (
+        echo 🧾 Converting: %%~nxF
+        marker_single "%%F"
+
+        set "filename=%%~nF"
+        set "source_folder=!marker_out_dir!\!filename!"
+        set "target_folder=!out_dir!\!filename!"
+
+        if exist "!source_folder!" (
+            echo 🚚 Moving output folder: !source_folder! → !target_folder!
+            move /Y "!source_folder!" "!target_folder!" >nul
+        ) else (
+            echo ⚠️  Output not found for %%~nxF — check Marker logs.
+        )
     )
-)
 
-echo ✅ All conversions complete!
-pause
-```
+    echo ✅ All conversions complete!
+    pause
+    ```
 
 ### Merge PDFs
 
@@ -189,9 +223,11 @@ It's time to *merge* them up, and *extract* all the images for a better embed wi
 
 5. Copy & rename *.jpeg files like `my_001.jpeg`, `my_002.jpeg`...
 
+6. Use `pprint` to print all the image paths
+
 🧐 **Attention**: The image stuff may spend an extra time to check manually. It would be a boring job if you gotta a ton of them to process. 💦
 
-#### Script For Merge & Extract
+#### Script For Merge & Extract `extract_merge.py`
 
 ```py
 import os
@@ -242,6 +278,12 @@ print(f"✅ Total images extracted: {image_counter - 1}")
 
 It's ALL DONE NOW! 🎊
 
+#### Script Order Summary
+
+1. `slice_pdf.py`
+2. `marker_batch_run.bat`
+3. `extract_merge.py`
+
 ## Pandoc - Converting documents between formats like PDF, EPUB, Markdown, and more
 
 Let's get started with **Pandoc**, a tool for converting documents between formats like PDF, EPUB, Markdown, and more. Here's a step-by-step guide to help you master it:
@@ -252,17 +294,18 @@ Let's get started with **Pandoc**, a tool for converting documents between forma
 
 #### 🪟 Windows
 
-1. **Download Installer** Visit the [Pandoc Downloads page](https://pandoc.org/installing.html) and download the Windows installe.
+1. **Download Installer** Visit the [Pandoc Downloads page](https://pandoc.org/installing.html) and download the Windows installer.
 2. **Run Installer** Double-click the downloaded `.msi` file and follow the installation prompt.
 
 #### 🍎 macOS
 
-1. **Download Package*: Go to the [Pandoc Downloads page](https://pandoc.org/installing.html) and download the macOS packae.
-2. **Install*: Open the downloaded `.pkg` file and follow the installation instructios.
+1. **Download Package*: Go to the [Pandoc Downloads page](https://pandoc.org/installing.html) and download the macOS package.
+2. **Install*: Open the downloaded `.pkg` file and follow the installation instructions.
 
 #### 🐧 Linux (Debian/Ubunu)
 
-Open your terminal and un:
+Open your terminal and run:
+
 ```bsh
 sudo apt update
 sudo apt install pado
@@ -312,20 +355,21 @@ pandoc input.md -o output.epub
 pandoc input.docx -o output.md
 ```
 
-#### 📄 Convert PDF t Markdown
+#### 📄 Convert PDF to Markdown
 
-Pandoc doesn't support PDF as an input format directly. For converting PDFs to Markdown, consider using tools like [Marker](https://github.com/VikParuchuri/marker) or other PDF to Markdown onverters.
+Pandoc doesn't support PDF as an input format directly. For converting PDFs to Markdown, consider using tools like [Marker](https://github.com/VikParuchuri/marker) or other PDF to Markdown converters.
 
 ---
 
 ### ⚙️ Step 4: Useful Options
 
 - `-s` or `--standalone`: Produce a standalone document (with header ad footer).
-- `-f` or`--from`: Specify input format (e.g., `markdown, `html`).
-- `-t` r `--to`: Specify output format (e.g., `pdf, `epub`).
+- `-f` or`--from`: Specify input format (e.g., `markdown`, `html`).
+- `-t` r `--to`: Specify output format (e.g., `pdf`, `epub`).
 - `-o`: Specify output file name.
 
 **Example*:
+
 ```bash
 pandoc -s -f markdown -t html -o output.htl input.md
 ```
