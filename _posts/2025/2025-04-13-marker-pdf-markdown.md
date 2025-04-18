@@ -386,8 +386,8 @@ pandoc -s -f markdown -t html -o output.htl input.md
 
 <div class="donation-box" style="position: relative;">
   <p class="donation-text">💖 Support me with crypto or PayPal! 💘</p>
-  <p><strong>Bitcoin (BTC):</strong><br>bc1qtzjwfyfpleyzmpqu97sdatqes98ms3zxc7u790</p>
-  <p><strong>Ethereum (ETH) & USDT (ERC-20):</strong><br>0xFE05f74DeF594f8F904D915cB93361C99cB36500</p>
+  <p><strong>💵 USDT (TRC20):</strong><br>TJCANuMYSdgLKRKnpCtscXrS5NgDbBAvF9</p>
+  <p><strong>🟠 Bitcoin (BTC):</strong><br>bc1qrc9vhrrhnc9v9s9q9rjn24aj608j44p5hzsxft</p>
   <p>Or support me on Ko-fi:</p>
   
   <div class="img-container" style="position: relative; display: inline-block;">
