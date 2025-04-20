@@ -186,3 +186,24 @@ inside your Ubuntu shell -
 this time, it should work like a charm! 💫
 
 🐧 You're now officially a WSL2 baddie.
+
+<div class="donation-box" style="position: relative;">
+  <p class="donation-text">💖 Support me with crypto or PayPal! 💘</p>
+  <p><strong>💵 USDT (TRC20):</strong><br>TJCANuMYSdgLKRKnpCtscXrS5NgDbBAvF9</p>
+  <p><strong>🟠 Bitcoin (BTC):</strong><br>bc1qrc9vhrrhnc9v9s9q9rjn24aj608j44p5hzsxft</p>
+  <p>Or support me on Ko-fi:</p>
+  
+  <div class="img-container" style="position: relative; display: inline-block;">
+    <!-- 图片 -->
+    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+         alt="Support me on Ko-fi"
+         width="150"
+         loading="lazy">    
+    <!-- 遮罩层按钮 -->
+    <div onclick="window.open('https://ko-fi.com/kikisec', '_blank')" 
+         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: transparent; cursor: pointer;">
+    </div>
+  </div>
+
+  <p class="donation-note">Any amount helps me continue creating content 💬💻</p>
+</div>
