@@ -4,5 +4,40 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-> Add Markdown syntax content to file `_tabs/about.md`{: .filepath } and it will show up on this page.
-{: .prompt-tip }
+<!-- ========= INTRODUCTION & STATS ========= -->
+<div align="center">
+  <p align="center">
+    <em>Digital Ghost navigating the wires | Pythonista & Aspiring Pentester</em><br>
+    Exploring the chaos | Code. Freedom. Chaos. V.
+  </p>
+
+<div align="center">
+  <h3 style="padding-bottom: 5px; display: inline-block;"><img src="https://private-user-images.githubusercontent.com/74038190/238200839-9c351cb9-c9a2-4b20-8420-e96b8331a53b.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDQ0Njk3ODQsIm5iZiI6MTc0NDQ2OTQ4NCwicGF0aCI6Ii83NDAzODE5MC8yMzgyMDA4MzktOWMzNTFjYjktYzlhMi00YjIwLTg0MjAtZTk2YjgzMzFhNTNiLmdpZj9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA0MTIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNDEyVDE0NTEyNFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTEzZjAzNTA3MjI2ZjhkODllMDkwMTkwZTcwMDc0MGJhZDJhZDEyYzg2NjQxMGNlZWU5NjhiMjhmN2E1NTZhYzMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.qGPeyJO040zEXvhYpyqtUw9qgV4j6T14Fmb5_hrAzxc" width="45" height="45" data-target="animated-image.originalImage"></h3>
+  <br><br>
+   <img src="https://img.shields.io/badge/-Code-000000?style=flat-square&logo=visual-studio-code&logoColor=007ACC" alt="Code"/>
+   &nbsp;
+   <img src="https://img.shields.io/badge/-Hacking-000000?style=flat-square&logo=hackthebox&logoColor=9FEF00" alt="Hacking"/>
+   &nbsp;
+   <img src="https://img.shields.io/badge/-V_for_Vendetta-000000?style=flat-square&logo=v&logoColor=E10600" alt="V for Vendetta"/> 
+   &nbsp;
+   <img src="https://img.shields.io/badge/-Cyberpunk-000000?style=flat-square&logo=cyberdefenders&logoColor=FDF20C" alt="Cyberpunk"/>
+   &nbsp;
+   <img src="https://img.shields.io/badge/-Gaming-000000?style=flat-square&logo=steam&logoColor=FFFFFF" alt="Gaming"/>
+   &nbsp;
+   <img src="https://img.shields.io/badge/-Reading-000000?style=flat-square&logo=bookstack&logoColor=FFA500" alt="Reading"/>
+   &nbsp;
+   <img src="https://img.shields.io/badge/-Chaos-000000?style=flat-square&logo=matrix&logoColor=00FF00" alt="Chaos"/> 
+</div>
+
+<br>
+
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="700">
+</div>
+
+<!-- ========= FOOTER / KEVIN MITNICK TRIBUTE ========= -->
+<br>
+<div align="center">
+  <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/1fe90fb8-0d2a-437e-8fa4-77ad47cf46f3/dc5b4ge-ba5dec4f-880b-446c-833d-2e6c36c673ae.png/v1/fill/w_1024,h_576,q_80,strp/kevin_mitnick_ghost_in_the_wires_by_cactusjaq_dc5b4ge-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTc2IiwicGF0aCI6IlwvZlwvMWZlOTBmYjgtMGQyYS00MzdlLThmYTQtNzdhZDQ3Y2Y0NmYzXC9kYzViNGdlLWJhNWRlYzRmLTg4MGItNDQ2Yy04MzNkLTJlNmMzNmM2NzNhZS5wbmciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.HqoT8yfY_bwgMqCe-CZ1ypHhodceFgGE-YR0e4Nfda0" alt="Kevin Mitnick - Ghost in the Wires" width="500"> 
+  <br>
+  <img src="https://img.shields.io/badge/Ghost-in%20the%20Wires-black?style=for-the-badge&logo=ghostery" alt="Ghost in the Wires Badge"> 
+</div>
