@@ -3,7 +3,7 @@ layout: post
 title: "🧭 Crypto Story Navigation"
 date: 2025-04-11 19:58:00 +0800
 categories: [📚 crypto story]
-tags: [🪙 Bitcoin, ⚔️ Cypherpunk, 🔒 Privacy, 📚 Blockchain,  🧩 CryptoHistory, 👤 Satoshi, 📝 Series]
+tags: [🪙 Bitcoin, ⚔️ Cypherpunk, 🔒 Privacy, 📚 Blockchain,  🧩 CryptoHistory, 👤 Satoshi, 📝 Series, 🧭 Navigation]
 img_path: /assets/img/posts/ 
 pin: true
 toc: true 
