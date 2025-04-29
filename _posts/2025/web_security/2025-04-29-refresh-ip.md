@@ -15,9 +15,9 @@ image: /assets/img/posts/refresh_ip.png
 
 ## 🛜 How DHCP Gets Your Dynamic Host Information? 
 
-- **DHCP DISCOVER:** Your PC broadcasts a message saying, “Hey, anyone got an IP for me?”  
-- **DHCP OFFER:** The network’s DHCP server responds with an offer.  
-- **DHCP REQUEST:** You choose the offer you like best (basically, telling the network, “I’m taking that one!”)  
+- **DHCP DISCOVER:** Your PC broadcasts a message saying, "Hey, anyone got an IP for me?"  
+- **DHCP OFFER:** The network's DHCP server responds with an offer.  
+- **DHCP REQUEST:** You choose the offer you like best (basically, telling the network, "I'm taking that one!")  
 - **DHCP ACK:** And, presto, your system gets its new digital identity.  
 
 ## 🌟 What does "**DHCP REQUEST**" mean?
@@ -26,9 +26,9 @@ In DHCP, there could be **multiple servers** on a network (in bigger places like
 When you send out your first message (**DHCP DISCOVER**),  
 **all nearby DHCP servers** can hear it and send you an **OFFER**.
 
-You might get **several offers** back —  
-> "Hey! I’ll give you IP address 192.168.2.50!"  
-> "Hey! I’ll give you IP address 192.168.2.51!"
+You might get **several offers** back -  
+> "Hey! I'll give you IP address 192.168.2.50!"  
+> "Hey! I'll give you IP address 192.168.2.51!"
 
 So then, your computer **chooses ONE** offer.
 
@@ -40,9 +40,9 @@ So then, your computer **chooses ONE** offer.
 
 ---
 
-It’s like you went to a party, multiple boys/girls asked you to dance 💃—  
+It's like you went to a party, multiple boys/girls asked you to dance 💃-  
 but you shout back:  
-> "I’ll dance with HIM/HER!"  
+> "I'll dance with HIM/HER!"  
 so the rest leave you alone. 😏
 
 ---
@@ -50,7 +50,7 @@ so the rest leave you alone. 😏
 ## 🌟 What is "**Lease Time**"?
 
 When you get an IP address from the DHCP server,  
-**you’re only renting it**, not owning it forever.
+**you're only renting it**, not owning it forever.
 
 "Lease Time" =  
 > How long your computer can **keep** using that IP address before asking again.
@@ -73,7 +73,7 @@ ipconfig /all
 
 3. Look under your active connection (like `Ethernet`).
 
-You’ll see something like:
+You'll see something like:
 
 ```
 Lease Obtained . . . . . : Monday, April 29, 2025 02:00:00
@@ -88,7 +88,7 @@ Lease Expires . . . . . . : Monday, April 29, 2025 14:00:00
 
 This is **useful for:**
 
-- Changing your IP if you think someone’s watching.
+- Changing your IP if you think someone's watching.
 - Getting a fresh lease if the current one is about to expire.
 - Troubleshooting network issues when you need a new connection.
 
@@ -109,7 +109,7 @@ This is **useful for:**
    ```
    
    This command **drops** your current IP address (like disconnecting your identity).  
-   **DON’T panic**, it’s just temporarily dropping your connection. 🫣
+   **DON'T panic**, it's just temporarily dropping your connection. 🫣
 
 3. **Renew IP**:
    - Immediately after, type:
@@ -128,11 +128,11 @@ This is **useful for:**
    ipconfig /all
    ```
 
-   You’ll see your **new IP address** under `Ethernet adapter` or `Wireless LAN adapter`!
+   You'll see your **new IP address** under `Ethernet adapter` or `Wireless LAN adapter`!
 
 ---
 
-### 🧠 **What’s really happening behind the scenes?**
+### 🧠 **What's really happening behind the scenes?**
 
 - **Step 1** (`/release`) disconnects you, tells the router to **forget** your current IP.
 - **Step 2** (`/renew`) asks the router **again** for a new IP.
@@ -155,7 +155,7 @@ This is **useful for:**
 Because DHCP servers **love to reassign the same IP** if:
 
 - Your **MAC address is still the same**.  
-- Your **lease didn’t expire long enough** for it to "forget" you.
+- Your **lease didn't expire long enough** for it to "forget" you.
 - The DHCP server **isn't too busy** and has no need to reshuffle IPs.
 
 ---
@@ -164,8 +164,8 @@ Because DHCP servers **love to reassign the same IP** if:
 
 | Option | Method |
 |:---|:---|
-| 1️⃣ Change your MAC address | Spoof your MAC address like we did before — DHCP sees you as "new" device = new IP very likely |
-| 2️⃣ Wait longer | Wait until your DHCP lease fully expires and then reconnect — server might assign a new IP |
+| 1️⃣ Change your MAC address | Spoof your MAC address like we did before - DHCP sees you as "new" device = new IP very likely |
+| 2️⃣ Wait longer | Wait until your DHCP lease fully expires and then reconnect - server might assign a new IP |
 
 *(Or combine both for best results 🥷.)*  
 ✨ So MAC + IP refresh = *full disguise*.
