@@ -148,7 +148,7 @@ Since the Microsoft bootloader (`bootmgfw.efi`) was **copied** (not symlinked) i
 ```bash
 sudo mkdir -p /mnt/windows-esp
 sudo mount /dev/nvme0n1p1 /mnt/windows-esp
-````
+```
 
 3️⃣ Re-copy the updated bootloader:
 
