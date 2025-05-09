@@ -8,7 +8,7 @@ tags: [🐧 Linux, 🎮 Steam, 🔫 PowerWash]
 img_path: /assets/img/posts/
 toc: true 
 comments: true 
-image: /assets/img/posts/PowerWash.png
+image: /assets/img/posts/power_wash.png
 ---
 
 ## 👾 use `xdotool` to simulate `TAB`
