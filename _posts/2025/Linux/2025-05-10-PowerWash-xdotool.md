@@ -1,10 +1,10 @@
 ---
 layout: post
 title: "How ADHD Gamer Play PowerWash"
-description: Relieve your finger by Using xdotool in Linux.
-date: 2025-05-08 03:41:00 +0800
+description: free up a finger by Using xdotool in Linux.
+date: 2025-05-10 02:58:00 +0800
 categories: [🤖 tech, 🐧 Linux]
-tags: [🐧 Linux, 🎮 Steam, 🔫 PowerWash]
+tags: [🐧 Linux, 🎮 Steam, 🔫 PowerWash, 🦾 xdotool]
 img_path: /assets/img/posts/
 toc: true 
 comments: true 
@@ -149,3 +149,22 @@ kill %1
 Here `%1` refers to the job number (in this case, `1`). You can also use `kill %n`, where `n` is the job number.
 
 Once the script is killed, it will stop pressing `TAB` for you. 🛑
+
+<div class="donation-box" style="position: relative;">
+  <p class="donation-text">💖 Support me with crypto or PayPal! 💘</p>
+  <p><strong>💵 USDT (TRC20):</strong><br>TJCANuMYSdgLKRKnpCtscXrS5NgDbBAvF9</p>
+  <p><strong>🟠 Bitcoin (BTC):</strong><br>bc1qrc9vhrrhnc9v9s9q9rjn24aj608j44p5hzsxft</p>
+  <p>Or support me on Ko-fi:</p>
+  
+  <div class="img-container" style="position: relative; display: inline-block;">
+    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+         alt="Support me on Ko-fi"
+         width="150"
+         loading="lazy">    
+    <div onclick="window.open('https://ko-fi.com/kikisec', '_blank')" 
+         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: transparent; cursor: pointer;">
+    </div>
+  </div>
+
+  <p class="donation-note">Any amount helps me continue creating content 💬💻</p>
+</div>
