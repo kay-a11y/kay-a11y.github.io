@@ -8,7 +8,8 @@ order: 4
 <div align="center">
   <p align="center">
     <em>Digital Ghost navigating the wires | Pythonista & Aspiring Pentester</em><br>
-    Exploring the chaos | Code. Freedom. Chaos. V.
+    Exploring the chaos | Code. Freedom. Chaos. V. <br><br>
+    Blood. Sweat. Tears.
   </p>
 
 <div align="center">
