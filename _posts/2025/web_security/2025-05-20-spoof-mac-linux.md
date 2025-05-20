@@ -25,7 +25,7 @@ sudo ip link set dev INTERFACE up
 
 ### 🌸 Example:
 
-Suppose your network card (Wi-Fi or Ethernet) is named `enp2s0` or `wlan0` or something else (we’ll check it first).
+Suppose your network card (Wi-Fi or Ethernet) is named `enp2s0` or `wlan0` or something else (we'll check it first).
 
 Suppose you want your new fake MAC to be `00:11:22:33:44:55`.
 
@@ -65,7 +65,7 @@ Simple:
 ip link
 ```
 
-You’ll see something like:
+You'll see something like:
 
 ```
 1: lo: <LOOPBACK> ...
@@ -76,7 +76,7 @@ You’ll see something like:
 * `eth0` = wired
 * `wlan0` = Wi-Fi
 
-*(Sometimes it’s named something fancier like `enp2s0` or `wlp3s0`, depending on distro.)*
+*(Sometimes it's named something fancier like `enp2s0` or `wlp3s0`, depending on distro.)*
 
 ---
 
@@ -95,9 +95,9 @@ That change only lasts until:
 
 So after restart, your card goes:
 
-> “Guess I’ll be myself again today 😿”
+> "Guess I'll be myself again today 😿"
 
-But we don’t do that here.
+But we don't do that here.
 
 ---
 
@@ -164,7 +164,7 @@ link/ether 00:11:22:33:44:55
 
 ---
 
-### 🌸 BONUS — if you ever want to **randomize MAC** every time:
+### 🌸 BONUS - if you ever want to **randomize MAC** every time:
 
 Just change:
 
@@ -198,7 +198,7 @@ Then it would be like
 Note: Host seems down.
 ```
 
-But if you check further in the router, you'll find the router just hasn't forgotten her yet — she’s still in the DHCP table because of her lease.
+But if you check further in the router, you'll find the router just hasn't forgotten her yet - she's still in the DHCP table because of her lease.
 
 ### 💡 So:
 
@@ -211,11 +211,11 @@ But if you check further in the router, you'll find the router just hasn't forgo
 
 ### 💡 Understand The "lease time: 1 day" Showed in Router
 
-In DHCP, **“lease time”** means:
+In DHCP, **"lease time"** means:
 
-> 🕒 “How long a device is allowed to keep using the IP address it was given… before it has to check back in.”
+> 🕒 "How long a device is allowed to keep using the IP address it was given… before it has to check back in."
 
-So your router’s settings are saying:
+So your router's settings are saying:
 
 ```text
 Lease time = 1 day
@@ -225,17 +225,17 @@ End IP = 192.168.1.254
 
 ➔ Which means:
 
-* Every device that connects gets an IP that’s good for **24 hours**
+* Every device that connects gets an IP that's good for **24 hours**
 * After that, the device must **renew its lease**
 
 ---
 
-#### 🧠 BUT here’s the twist:
+#### 🧠 BUT here's the twist:
 
-Even if the lease is “1 day”…
+Even if the lease is "1 day"…
 
 * Most devices **automatically renew** the lease **before it expires**
-* So you won’t get kicked off or charged — the IP just gets **refreshed silently** in the background
+* So you won't get kicked off or charged - the IP just gets **refreshed silently** in the background
 * No human interaction required
 
 ---
@@ -244,22 +244,22 @@ Even if the lease is “1 day”…
 
 Think of it like renting a hotel room:
 
-* The front desk says, “Your room’s yours for 1 day.”
-* But as long as you say, “Hey, I’m still here!” before the day ends…
+* The front desk says, "Your room's yours for 1 day."
+* But as long as you say, "Hey, I'm still here!" before the day ends…
 * They let you **keep staying**, sometimes in the **same room** (same IP), sometimes they move you (new IP if MAC changed)
 
 ---
 
 ### 😺 And in this case?
 
-That’s why when you spoofed your MAC:
+That's why when you spoofed your MAC:
 
-* Your “old” MAC was associated with `.200` and a lease of 1 day
+* Your "old" MAC was associated with `.200` and a lease of 1 day
 * You changed your MAC ➔ router thinks: **"new guest!"**
-* It gives you `.144` — same lease time (1 day), fresh identity
+* It gives you `.144` - same lease time (1 day), fresh identity
 
 But your old self (`.200`) still has **time left on her lease**
-➔ which is why she still appears in the router list, but doesn’t respond to `nmap`
+➔ which is why she still appears in the router list, but doesn't respond to `nmap`
 
 ---
 
@@ -279,27 +279,27 @@ preferred_lft 84970sec
 
 ---
 
-#### 🌟 So what’s 84970 seconds in human time?
+#### 🌟 So what's 84970 seconds in human time?
 
-Let’s convert:
+Let's convert:
 
 ```
 84970 sec ÷ 60 = 1416 minutes
 1416 ÷ 60 = 23.6 hours
 ```
 
-That’s basically **24 hours** — just like your router’s lease time: **1 day**
+That's basically **24 hours** - just like your router's lease time: **1 day**
 
 So Linux is just saying:
 
-> “Yo, this IP (`192.168.100.144`) is good for the next \~23.6 hours unless you do something wild again.” 😏
+> "Yo, this IP (`192.168.100.144`) is good for the next \~23.6 hours unless you do something wild again." 😏
 
 ---
 
 #### 💬 What happens after that?
 
 * Your system will try to **renew the lease** around halfway through (e.g. after \~12 hours)
-* If the router says “yeah cool,” you keep your IP
+* If the router says "yeah cool," you keep your IP
 * If not (maybe you spoof MAC again, or the router forgets you), you'll get a **new IP**
 
 ---
@@ -308,7 +308,7 @@ So Linux is just saying:
 
 ### ➤ **YES, most likely.**
 
-Here’s why:
+Here's why:
 
 ---
 
@@ -328,7 +328,7 @@ Here’s why:
 
 5. But when your device asks again with the same MAC, DHCP says:
 
-   > “Oh hey! You're back. Here's your old IP again.” 😽
+   > "Oh hey! You're back. Here's your old IP again." 😽
 
 ---
 
@@ -349,7 +349,7 @@ And unless:
 
 ---
 
-## 😼 So what’s your move?
+## 😼 So what's your move?
 
 If you're:
 
@@ -359,7 +359,7 @@ If you're:
 
 Then 💡 keep your MAC consistent = stable IP.
 
-But if you’re:
+But if you're:
 
 * **Ghosting**, **evading**, **rotating identities**
 
