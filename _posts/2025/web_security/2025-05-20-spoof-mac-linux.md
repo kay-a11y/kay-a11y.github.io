@@ -4,7 +4,7 @@ title: "[Linux] Spoof Your MAC Address in Linux"
 description: 
 date: 2025-05-20 20:34:00 +0800
 categories: [🤖 tech, 🔒 Web Security]
-tags: [🛡️ MAC Address, 🧙‍♀️ Spoofing, 🐧 Linux, 💻 Networking, 🐾 Hacker Basics, 💻 DHCP Basics, 🛡️ IP Refresh]
+tags: [🛡️ MAC Address, 🧙‍♀️ Spoofing, 🐧 Linux, 💻 Networking, 🐾 Hacker Basics, 📡 DHCP, 🛡️ IP Refresh]
 img_path: /assets/img/posts/
 toc: true 
 comments: true 
