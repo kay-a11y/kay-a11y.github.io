@@ -4,7 +4,7 @@ title: "[Windows Guide] How to Refresh Your IP and Change Your Digital Identity 
 description: "Master how to refresh your IPv4 address on Windows and hide your device identity with MAC spoofing. Learn DHCP basics, lease time tricks, and how to fully ghost your network presence."
 date: 2025-04-29 09:01:00 +0800
 categories: [🤖 tech, 🔒 Web Security]
-tags: [🛡️ IP Refresh, 🛡️ MAC Address, 🧙‍♀️ Spoofing, 🪟 Windows, 💻 Networking, 💻 DHCP Basics, 🐾 Hacker Basics]
+tags: [🛡️ IP Refresh, 🛡️ MAC Address, 🧙‍♀️ Spoofing, 🪟 Windows, 💻 Networking, 📡 DHCP, 🐾 Hacker Basics]
 img_path: /assets/img/posts/
 toc: true 
 comments: true 
