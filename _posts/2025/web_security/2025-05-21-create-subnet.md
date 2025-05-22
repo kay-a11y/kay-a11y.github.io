@@ -562,7 +562,7 @@ nmcli connection up <connection-name>
 | Mode              | Access Point                |
 | WPA2 password set | via Wi-Fi Security          |
 
-1. Edit the vendetta-hotspot profile:
+1. Edit the hotspot profile:
 
    * IPv4 Method: **Manual**
    * Assign your laptop's static IP, e.g.
@@ -571,7 +571,7 @@ nmcli connection up <connection-name>
      | --------------- | ----------------- | --------------- |
      | `192.168.66.66` | `255.255.255.248` | *(leave blank)* |
 
-2. Save the profile. If it complains like in your screenshot:
+2. Save the profile. If it complains like:
 
 > `method 'manual' requires at least an address or a route`
 
