@@ -147,10 +147,8 @@ This will launch a guided terminal installer that will ask you:
 4. **Blocklists**  
    ✔️ Use the default ones - you can add more later.
 
-
 5. **Web admin interface?**  
    ✔️ YES, you want this
-
 
 6. **Web server (lighttpd)?**  
    ✔️ YES - unless you already plan to use Nginx
@@ -159,7 +157,7 @@ This will launch a guided terminal installer that will ask you:
    ✔️ YES - it's fun seeing what gets blocked
 
 8. **Select a privacy mode for FTL**  
-    0️⃣ Stick with `0 – Show everything` - Logs ALL domain requests + which client made them
+    0️⃣ Stick with `0 - Show everything` - Logs ALL domain requests + which client made them
 
 ---
 
@@ -231,20 +229,20 @@ Go to your phone's **Wi-Fi > Network details > IP settings** → switch to **Sta
 
 1. Log in to your router (usually `192.168.0.1` or `192.168.1.1`) and change:
 
-* **Primary DNS**: `<PI_IP>` (your Pi-hole)
-* **Secondary DNS**: also `<PI_IP>` *(don't give it a backup escape route)*
+   * **Primary DNS**: `<PI_IP>` (your Pi-hole)
+   * **Secondary DNS**: also `<PI_IP>` *(don't give it a backup escape route)*
 
 2. (Optional) set nameserver in `/etc/resolv.conf`
 
-```bash
-sudo nano /etc/resolv.conf
-```
+   ```bash
+   sudo nano /etc/resolv.conf
+   ```
 
-to
+   to
 
-```scss
-nameserver <PI_IP>
-```
+   ```scss
+   nameserver <PI_IP>
+   ```
 
 others like `nameserver fe80::1%wlan0` stay the same.
 
@@ -434,25 +432,25 @@ clash
 
 1. **List groups**:
 
-```bash
-curl -s -H "Authorization: Bearer <your_password>" http://127.0.0.1:9090/proxies | jq '.proxies | keys'
-```
+   ```bash
+   curl -s -H "Authorization: Bearer <your_password>" http://127.0.0.1:9090/proxies | jq '.proxies | keys'
+   ```
 
 2. **Check what's inside `<Node Provider>`**:
 
-```bash
-curl -s -H "Authorization: Bearer <your_password>" http://127.0.0.1:9090/proxies/<node_provider> | jq '.all'
-```
+   ```bash
+   curl -s -H "Authorization: Bearer <your_password>" http://127.0.0.1:9090/proxies/<node_provider> | jq '.all'
+   ```
 
 3. **Switch to whatever node you want**, like:
 
-```bash
-curl -X PUT -H "Authorization: Bearer <your_password>" -H "Content-Type: application/json" \
-  -d '{"name": "<node_name>"}' \
-  http://127.0.0.1:9090/proxies/<node_provider>
-```
+   ```bash
+   curl -X PUT -H "Authorization: Bearer <your_password>" -H "Content-Type: application/json" \
+    -d '{"name": "<node_name>"}' \
+    http://127.0.0.1:9090/proxies/<node_provider>
+   ```
 
-> Feel free to change `<your_password>`, `<node_provider>` and `<node_name>` to your own values.
+   > Feel free to change `<your_password>`, `<node_provider>` and `<node_name>` to your own values.
 
 ---
 
@@ -472,60 +470,60 @@ Let's make Mihomo auto-start on boot like a real daemon
 
 1. Create a systemd service:
 
-```bash
-sudo nano /etc/systemd/system/mihomo.service
-```
+   ```bash
+   sudo nano /etc/systemd/system/mihomo.service
+   ```
 
-Paste:
+   Paste:
 
-```ini
-[Unit]
-Description=Mihomo Service
-After=network.target
+   ```ini
+   [Unit]
+   Description=Mihomo Service
+   After=network.target
 
-[Service]
-ExecStart=/usr/local/bin/clash -f /root/.config/mihomo/config.yaml
-Restart=on-failure
-User=root
+   [Service]
+   ExecStart=/usr/local/bin/clash -f /root/.config/mihomo/config.yaml
+   Restart=on-failure
+   User=root
 
-[Install]
-WantedBy=multi-user.target
-```
+   [Install]
+   WantedBy=multi-user.target
+   ```
 
 2. Enable & start it:
 
-```bash
-sudo systemctl daemon-reexec
-sudo systemctl enable mihomo
-sudo systemctl start mihomo
-```
+   ```bash
+   sudo systemctl daemon-reexec
+   sudo systemctl enable mihomo
+   sudo systemctl start mihomo
+   ```
 
 3. Check status:
 
-```bash
-sudo systemctl status mihomo
-```
+   ```bash
+   sudo systemctl status mihomo
+   ```
 
 ### 🔥 IP forwarding & iptables Setup
 
 #### Step 1: Enable IP forwarding on your Pi
 
-```bash
-echo 1 | sudo tee /proc/sys/net/ipv4/ip_forward
-sudo sysctl -w net.ipv4.ip_forward=1
-```
+  ```bash
+  echo 1 | sudo tee /proc/sys/net/ipv4/ip_forward
+  sudo sysctl -w net.ipv4.ip_forward=1
+  ```
 
-Make it permanent by editing:
+  Make it permanent by editing:
 
-```bash
-sudo nano /etc/sysctl.conf
-```
+  ```bash
+  sudo nano /etc/sysctl.conf
+  ```
 
-Uncomment or add:
+  Uncomment or add:
 
-```
-net.ipv4.ip_forward = 1
-```
+  ```
+  net.ipv4.ip_forward = 1
+  ```
 
 ---
 
@@ -557,11 +555,11 @@ On your phone's Wi-Fi settings:
 2. Edit **IP Settings** → set to **Static**
 3. Then set:
 
-| Field      | Value                                                   |
-| ---------- | ------------------------------------------------------- |
-| IP Address | Same as your phone already has (e.g. `192.168.1.200`) |
-| Gateway    | `<PI_IP>` ← your Pi                             |
-| DNS        | `<PI_IP>` ← your Pi-hole                        |
+   | Field      | Value                                                   |
+   | ---------- | ------------------------------------------------------- |
+   | IP Address | Same as your phone already has (e.g. `192.168.1.200`) |
+   | Gateway    | `<PI_IP>` ← your Pi                             |
+   | DNS        | `<PI_IP>` ← your Pi-hole                        |
 
 4. Save and reconnect
 
