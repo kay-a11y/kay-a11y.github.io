@@ -4,7 +4,7 @@ title: "Bend the LAN to Your Will - Building Your Own Subnet from Scratch"
 description: "From `255.255.255.0` to full-blown subnet royalty - this blog walks you through setting up your own `/29` subnet, manually assigning IPs, running a hotspot router from your laptop, and hosting a stealthy local network."
 date: 2025-05-21 00:44:00 +0800
 categories: [🤖 tech, 🔒 Web Security]
-tags: [🐧 Linux, 💻 Networking, 🐾 Hacker Basics, 📡 DHCP, 🛡️ IP Refresh, 🔄 NAT Routing, 🧠 Subnet, 🔥 IP Masquerading, 🛰️ Local Server, 👾 nmap]
+tags: [🐧 Linux, 💻 Networking, 🐾 Hacker Basics, 📡 DHCP, 🛡️ IP Refresh, 🔄 NAT Routing, 🧠 Subnet, 🔥 IP Masquerading, 🛰️ Local Server, 👾 nmap, 🧠 OSI, 🌐 LAN]
 img_path: /assets/img/posts/
 toc: true 
 comments: true 
