@@ -8,7 +8,7 @@ tags: [🐧 Linux, 💻 Networking, 🍓 Raspberry Pi, 🚫 Ads Blocking, 🔄 N
 img_path: /assets/img/posts/
 toc: true 
 comments: true 
-image:  /assets/img/posts/pi_hole.png
+image: /assets/img/posts/pi_hole.png
 ---
 
 So here's the deal.  
@@ -225,27 +225,6 @@ Go to your phone's **Wi-Fi > Network details > IP settings** → switch to **Sta
 
 🧠 Pro Tip: Don't forget to **forget the network first**, then reconnect with new DNS.
 
-### ✅ Change DNS for **the whole network (router)**
-
-1. Log in to your router (usually `192.168.0.1` or `192.168.1.1`) and change:
-
-   * **Primary DNS**: `<PI_IP>` (your Pi-hole)
-   * **Secondary DNS**: also `<PI_IP>` *(don't give it a backup escape route)*
-
-2. (Optional) set nameserver in `/etc/resolv.conf`
-
-   ```bash
-   sudo nano /etc/resolv.conf
-   ```
-
-   to
-
-   ```scss
-   nameserver <PI_IP>
-   ```
-
-others like `nameserver fe80::1%wlan0` stay the same.
-
 ---
 
 ## 💡 run a VPN on your Pi while still using Pi-hole as DNS
@@ -320,8 +299,10 @@ What you really want is this:
 
 Go to `https://github.com/MetaCubeX/mihomo/releases` download a latest release
 
+e.g. :
+
 ```bash
-# Download the binary
+# Download the binary, and don't forget to check out the latest release yourself!
 wget https://github.com/MetaCubeX/mihomo/releases/download/Prerelease-Alpha/mihomo-linux-arm64-alpha-34de62d.gz
 
 # Unpack it
@@ -816,6 +797,7 @@ Now they'll load on **every reboot**, even if you're sleepy and forget 😪
 > * Check `/etc/resolv.conf`
 > * Clear device DNS cache
 > * Or just... turn it off and back on
+> * Maybe you'd like to check this [Troubleshooting](https://kay-a11y.github.io/posts/troubleshoot-clash-port/) out? 😿
 
 <div class="donation-box" style="position: relative;">
   <p class="donation-text">💖 Support me with crypto or PayPal! 💘</p>
