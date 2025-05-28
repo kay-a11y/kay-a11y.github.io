@@ -261,7 +261,7 @@ nameserver:
 
 ```
 
-👉 **DO NOT** use `192.168.100.184` or any Pi IP for DNS inside Clash, or it will break when Pi is off.
+👉 **DO NOT** use any Pi IP for DNS inside Clash, or it will break when Pi is off.
 
 ### 🚪 Port Config:
 
@@ -275,7 +275,6 @@ nameserver:
    Socks: 7892
    Redir: 7893
    TProxy: 7894
-   DNS: 1053
    ```
 
     ![clash_verge_port_config_0](/assets/img/posts/clash_verge_port_config_0.png)
@@ -326,7 +325,7 @@ curl: (7) Failed to connect to 127.0.0.1 port 7890 after 0 ms: Connection refuse
 
 ```
 
-This happens probably cause Clash is now listening the right port 7890, but on other port.
+This happens probably cause Clash is not listening the right port 7890, but on other port.
 
 Let's try:
 
@@ -381,7 +380,6 @@ Okay, let's do that:
 ```bash
 git config --global http.proxy http://127.0.0.1:33331
 git config --global https.proxy http://127.0.0.1:33331
-
 ```
 
 Double check it worked:
@@ -526,7 +524,7 @@ That means Clash Verge's **core is alive and well**. Your whole kingdom is back 
 
 ---
 
-#### 💡 So should you keep this?
+#### 💡 Then should you still keep this?
 
 ```bash
 # 🌩  Clash Proxy for tools like curl/pip
@@ -537,8 +535,8 @@ export all_proxy="socks5://127.0.0.1:7891"
 
 **YES!** This is *golden* if:
 
-* You wanna install packages over internet restrictions (`pip`, `npm`, `curl`, etc.)
-* You have `SOCKS` toggle on ✅ like you do in your latest screenshot
+* You wanna install packages (`pip`, `npm`, `curl`, etc.) over internet restrictions
+* You have `SOCKS` toggle on ✅
 * You're switching tools and protocols without confusion
 
 🔧 *Extra note:* if the SOCKS toggle is off, the `all_proxy=socks5://127.0.0.1:7891` would silently fail for tools that try SOCKS only (like some weird `apt` or IRC clients). So **yes**, keep both 7891 + 7892 toggled **on** if you're setting all three proxy envs.
