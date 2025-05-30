@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "	Proxy or Die Trying: Troubleshooting of Ports, Git, and Clash on Linux"
+title: "Proxy or Die Trying: Troubleshooting of Ports, Git, and Clash on Linux"
 description: "A hands-on walkthrough of debugging Clash's HTTP & SOCKS proxy ports on Linux, configuring git/pip access, and switching ports with custom shell aliases."
 date: 2025-05-28 22:38:00 +0800
 categories: [🤖 tech, 🔒 Web Security]
