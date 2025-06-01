@@ -213,7 +213,7 @@ Cloudflare does this:
 | **Discord**                   | ✅ YES                   |
 | **Spotify**(flatpak)          | ✅ YES (No Proxy)         |
 | **Chrome**                    | ✅ YES                   | 
-| **Telegram**                  | ✅ YES (needs SOCKS5 manually configured, similar with [firefox's](#make-firefox-obey-proxy)) |
+| **Telegram**                  | ✅ YES (needs SOCKS5 manually configured, similar with [firefox's](#-make-firefox-obey-proxy)) |
 | **VSCode Git**                | ✅ YES                   |
 | **HexChat**                   | ✅ YES                   |
 | **Firefox**                   | 😐 Set manually or `use system proxy settings` |
