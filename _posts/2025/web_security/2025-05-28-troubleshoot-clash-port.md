@@ -265,7 +265,7 @@ nameserver:
 
 ---
 
-#### Disable IPv6
+#### 🪦 Disable IPv6 (important)
 
 IPv6 can potentially leak your DNS.
 
