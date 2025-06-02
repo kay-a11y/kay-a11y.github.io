@@ -4,11 +4,17 @@ title: "Building a Pi-Hole DNS Firewall with Clash VPN Routing - Wireless, Leak-
 description: 
 date: 2025-05-27 18:40:00 +0800
 categories: [🤖 tech, 🔒 Web Security]
-tags: [🐧 Linux, 💻 Networking, 🍓 Raspberry Pi, 🚫 Ads Blocking, 🔄 NAT Routing, 📡 DHCP, 🛡️ DNS, 😼 Clash, 🌍 LAN Proxy, 🌀 VPN, 🧠 OSI, 🌐 LAN]
+tags: [🐧 Linux, 💻 Networking, 🍓 Raspberry Pi, 🚫 Ads Blocking, 🔄 NAT Routing, 📡 DHCP, 🛡️ DNS, 😼 Clash, 🌍 LAN Proxy, 🌀 VPN, 🧠 OSI, 🌐 LAN, 😨 IPv6]
 img_path: /assets/img/posts/
 toc: true 
 comments: true 
 image: /assets/img/posts/pi_hole.png
+---
+
+> **⚠️ WARNING:** If you're using a non-jailbroken iPhone, you need to use `Shadowrocket` to fit this Pi + Clash setup.  
+> 📱 **Make sure your phone or router allows IPv6 to be disabled** *before* you commit to this setup.  
+> **🪛 <a href="https://kay-a11y.github.io/posts/troubleshoot-clash-port/" target="_blank" rel="noopener noreferrer">check this post</a> for more troubleshooting.**
+
 ---
 
 So here's the deal.  
@@ -66,6 +72,7 @@ sudo apt install openssh-server
 ```bash
 ip a
 ```
+
 You'll get like `<PI_IP>`.
 
 But to double-check:
@@ -130,7 +137,7 @@ This will launch a guided terminal installer that will ask you:
 
 ---
 
-### 💡 What you'll be asked (and what to pick):
+### 💡 What you'll be asked (and what to pick)
 
 1. **Static IP**  
    ✔️ click `<Continue>`
@@ -141,7 +148,7 @@ This will launch a guided terminal installer that will ask you:
 
 3. **DNS provider**  
    🕘 Start with Quad9 (filtered, DNSSEC) since we don't have a VPN set up yet.
-   
+
    ☁️ Once the VPN's ready, switch to Cloudflare (DoH or DoT) for better privacy.
 
 4. **Blocklists**  
@@ -161,7 +168,7 @@ This will launch a guided terminal installer that will ask you:
 
 ---
 
-### ✅ When it finishes:
+### ✅ When it finishes
 
 It'll give you a cute little message like:
 
@@ -178,7 +185,7 @@ to change it.
 
 ---
 
-### 🔥 Now access it!
+### 🔥 Now access it
 
 Open a browser and go to:
 
@@ -229,7 +236,7 @@ Go to your phone's **Wi-Fi > Network details > IP settings** → switch to **Sta
 
 ## 💡 run a VPN on your Pi while still using Pi-hole as DNS
 
-### 💬 TL;DR first:
+### 💬 TL;DR first
 
 > You can run a **VPN (like Clash / V2RayN)** on your Pi while still using **Pi-hole as DNS** for all your devices, so:
 
@@ -277,7 +284,7 @@ What you really want is this:
 
 ---
 
-#### 🍓 Dream Setup Diagram:
+#### 🍓 Dream Setup Diagram
 
 ```
 [All Devices]
@@ -293,7 +300,7 @@ What you really want is this:
 
 ---
 
-#### 🛠 How to Set It Up:
+#### 🛠 How to Set It Up
 
 #### ✅ Install Clash on the Pi
 
@@ -393,9 +400,8 @@ dns:
       - "<your_region_blocklist_or_category>"
 ```
 
-> - Applying `<PI_IP>` in `proxy-server-nameserver` and `fallback` only work IF Pi-hole resolves external domains reliably.  
-> - Use these ONLY if your Pi-hole's upstream DNS isn't trapped behind a firewall or failing requests.
-
+> * Applying `<PI_IP>` in `proxy-server-nameserver` and `fallback` only work IF Pi-hole resolves external domains reliably.  
+> * Use these ONLY if your Pi-hole's upstream DNS isn't trapped behind a firewall or failing requests.
 
 > Feel free to change `<your_password>`.
 
@@ -546,7 +552,7 @@ On your phone's Wi-Fi settings:
 
 ---
 
-#### 🔁 Now test:
+#### 🔁 Now test
 
 ```bash
 curl https://api.myip.com
@@ -645,7 +651,7 @@ This **leaks your browsing activity**, even if you're on a VPN or using a filter
 
 ---
 
-### 🛠️ So What You've Done Is:
+### 🛠️ So What You've Done Is
 
 | Layer | Action                                                             |
 | ----- | ------------------------------------------------------------------ |
@@ -656,19 +662,7 @@ This **leaks your browsing activity**, even if you're on a VPN or using a filter
 
 ## Troubleshoot
 
-If you wanna stop clash/mihomo, use
-
-```bash
-sudo systemctl stop mihomo
-```
-
-instead of
-
-```bash
-sudo pkill clash
-```
-
-if you've ever used `sudo pkill clash`, then you probably got booted from SSH like *a phreakin' hot potato*. 🥔 (Don't worry, we've all been that potato. )
+If you've ever used `sudo pkill clash` `sudo systemctl stop mihomo`, then you probably got booted from SSH like *a phreakin' hot potato*. 🥔 (Don't worry, we've all been that potato. )
 
 like:
 
@@ -679,7 +673,11 @@ ssh: connect to host <PI_IP> port 22: Connection refused
 
 ---
 
-### 🛠️ How to fix it:
+### 🛠️ How to fix `Connection refused`
+
+#### Option 1: Unplug and replug Pi, if you already set Mihomo to auto-start as shown above.
+
+#### Option 2: HDMI Cable
 
 ✅ Step 1: **Physically access the Pi**
 
@@ -809,8 +807,8 @@ Now they'll load on **every reboot**, even if you're sleepy and forget 😪
     <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
          alt="Support me on Ko-fi"
          width="150"
-         loading="lazy">    
-    <div onclick="window.open('https://ko-fi.com/kikisec', '_blank')" 
+         loading="lazy">
+    <div onclick="window.open('https://ko-fi.com/kikisec', '_blank')"
          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: transparent; cursor: pointer;">
     </div>
   </div>
