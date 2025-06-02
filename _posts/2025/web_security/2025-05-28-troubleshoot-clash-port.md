@@ -263,6 +263,29 @@ nameserver:
 
 👉 **DO NOT** use any Pi IP for DNS inside Clash, or it will break when Pi is off.
 
+---
+
+#### Disable IPv6
+
+IPv6 can potentially leak your DNS.
+
+Disable IPv6 globally — make your OS and router forget it ever existed:
+
+```bash
+# For Linux (temporary)
+sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
+
+# To make it permanent:
+echo "net.ipv6.conf.all.disable_ipv6 = 1" | sudo tee -a /etc/sysctl.conf
+sudo sysctl -p
+```
+
+Make sure to check under `Settings` ➡️ `Network` and see if `IPv6` is deactivated.
+
+> Don’t forget to disable/remove IPv6 on your **phone** as well — and make sure you're only using your safe DNS servers.
+
+---
+
 ### 🚪 Port Config:
 
 1. Go to `Port Config` section.
