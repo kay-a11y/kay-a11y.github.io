@@ -4,11 +4,16 @@ title: "Proxy or Die Trying: Troubleshooting of Ports, Git, and Clash on Linux"
 description: "A hands-on walkthrough of debugging Clash's HTTP & SOCKS proxy ports on Linux, configuring git/pip access, and switching ports with custom shell aliases."
 date: 2025-05-28 22:38:00 +0800
 categories: [🤖 tech, 🔒 Web Security]
-tags: [🐧 Linux, 💻 Networking, 🍓 Raspberry Pi, 🛡️ DNS, 😼 Clash, 🌀 VPN, 🚪 Port, 🧙 Git, 🔁 HTTP/HTTPS Proxy, 🕳️ SOCKS5, 🐞 Linux troubleshooting]
+tags: [🐧 Linux, 💻 Networking, 🍓 Raspberry Pi, 🛡️ DNS, 😼 Clash, 🌀 VPN, 🚪 Port, 🧙 Git, 🔁 HTTP/HTTPS Proxy, 🕳️ SOCKS5, 🐞 Linux troubleshooting, 😨 IPv6]
 img_path: /assets/img/posts/
 toc: true 
 comments: true 
 image: /assets/img/posts/clash_troubleshooting.png
+---
+
+> **⚠️ WARNING:** If you're using a non-jailbroken iPhone, you may need to use `Shadowrocket` make this Pi + Clash setup work properly.  
+> 📱 **Make sure your phone or router allows IPv6 to be disabled** *before* you commit to this setup.  
+
 ---
 
 So let's say you've successfully set up Pi-hole for all your devices-your Phone, your PC, everything - maybe using this blog 👉🏻 [Building a Pi-Hole DNS Firewall with Clash VPN Routing - Wireless, Leak-Free, No-Cable Setup](https://kay-a11y.github.io/posts/pi-hole-clash/).  
@@ -267,6 +272,8 @@ nameserver:
 
 #### 🪦 Disable IPv6 (important)
 
+> Do this part both on your PC and Pi!
+
 IPv6 can potentially leak your DNS.
 
 Disable IPv6 globally - make your OS and router forget it ever existed:
@@ -277,12 +284,23 @@ sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
 
 # To make it permanent:
 echo "net.ipv6.conf.all.disable_ipv6 = 1" | sudo tee -a /etc/sysctl.conf
+echo "net.ipv6.conf.eth0.disable_ipv6 = 1" | sudo tee -a /etc/sysctl.conf
+echo "net.ipv6.conf.wlan0.disable_ipv6 = 1" | sudo tee -a /etc/sysctl.conf
 sudo sysctl -p
 ```
 
-Make sure to check under `Settings` ➡️ `Network` and see if `IPv6` is deactivated.
+* Use `ip a` to check if it's `eth0` and `wlan0`.
 
-> Don;t forget to disable/remove IPv6 on your **phone** as well - and make sure you're only using your safe DNS servers.
+* Make sure to check under `Settings` ➡️ `Network` and see if `IPv6` is deactivated.
+
+* Don't forget to disable IPv6 and remove IPv6 DNS on your **phone** as well - and make sure you're only using your safe DNS servers.
+  * When combining Pi with Clash, I haven't found a way to disable IPv6 on a non-jailbroken iPhone.
+  * `Shadowrocket` can effectively block IPv6 traffic on iPhone.
+  * IPv6 can leak **even without a DNS leak** - every device gets a unique, traceable IPv6 address.
+
+> ⚠️ **If you're using a non-jailbroken iPhone, enable `shadowrocket` in `DIRECT` with a proper config file, or this Pi + Clash setup could still result in an IPv6 leak.**
+
+Visit [ip.sb](https://ip.sb/) after you've run the commands above.
 
 ##### 🔍 How to Check If IPv6 Is Fully Disabled (CLI Style)
 
