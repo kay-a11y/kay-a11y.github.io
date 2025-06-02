@@ -269,7 +269,7 @@ nameserver:
 
 IPv6 can potentially leak your DNS.
 
-Disable IPv6 globally — make your OS and router forget it ever existed:
+Disable IPv6 globally - make your OS and router forget it ever existed:
 
 ```bash
 # For Linux (temporary)
@@ -282,7 +282,7 @@ sudo sysctl -p
 
 Make sure to check under `Settings` ➡️ `Network` and see if `IPv6` is deactivated.
 
-> Don’t forget to disable/remove IPv6 on your **phone** as well — and make sure you're only using your safe DNS servers.
+> Don;t forget to disable/remove IPv6 on your **phone** as well - and make sure you're only using your safe DNS servers.
 
 ##### 🔍 How to Check If IPv6 Is Fully Disabled (CLI Style)
 
@@ -293,7 +293,7 @@ ip a | grep inet6
 You *should see*:
 
 * **No global `inet6` lines** for your interfaces(nothing)
-* At most, maybe 1 loopback like `::1` (that’s fine)
+* At most, maybe 1 loopback like `::1` (that's fine)
 
 Or this:
 
@@ -303,6 +303,8 @@ cat /proc/sys/net/ipv6/conf/all/disable_ipv6
 
 * If it returns `1` → IPv6 is disabled ✅
 * If it returns `0` → still active ⚠️
+
+Also check with `[whatismyiplookup.com](https://whatismyiplookup.com/)`.
 
 ---
 
