@@ -284,6 +284,26 @@ Make sure to check under `Settings` ➡️ `Network` and see if `IPv6` is deacti
 
 > Don’t forget to disable/remove IPv6 on your **phone** as well — and make sure you're only using your safe DNS servers.
 
+##### 🔍 How to Check If IPv6 Is Fully Disabled (CLI Style)
+
+```bash
+ip a | grep inet6
+```
+
+You *should see*:
+
+* **No global `inet6` lines** for your interfaces(nothing)
+* At most, maybe 1 loopback like `::1` (that’s fine)
+
+Or this:
+
+```bash
+cat /proc/sys/net/ipv6/conf/all/disable_ipv6
+```
+
+* If it returns `1` → IPv6 is disabled ✅
+* If it returns `0` → still active ⚠️
+
 ---
 
 ### 🚪 Port Config:
