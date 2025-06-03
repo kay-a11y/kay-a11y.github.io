@@ -300,7 +300,7 @@ sudo sysctl -p
 
 > ⚠️ **If you're using a non-jailbroken iPhone, enable `shadowrocket` in `DIRECT` with a proper config file, or this Pi + Clash setup could still result in an IPv6 leak.**
 
-Visit [ip.sb](https://ip.sb/) after you've run the commands above.
+---
 
 ##### 🔍 How to Check If IPv6 Is Fully Disabled (CLI Style)
 
@@ -310,7 +310,7 @@ ip a | grep inet6
 
 You *should see*:
 
-* **No global `inet6` lines** for your interfaces(nothing)
+* **No global `inet6` lines** for your interfaces (nothing)
 * At most, maybe 1 loopback like `::1` (that's fine)
 
 Or this:
@@ -322,7 +322,7 @@ cat /proc/sys/net/ipv6/conf/all/disable_ipv6
 * If it returns `1` → IPv6 is disabled ✅
 * If it returns `0` → still active ⚠️
 
-Also check with `[whatismyiplookup.com](https://whatismyiplookup.com/)`.
+Also check with [ip.sb](https://ip.sb/).
 
 ---
 
