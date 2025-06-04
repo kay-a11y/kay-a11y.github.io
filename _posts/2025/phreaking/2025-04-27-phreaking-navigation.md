@@ -5,7 +5,7 @@ date: 2025-04-27 03:22:00 +0800
 categories: [☎️ phreaking]
 tags: [📝 Series, ☎️ phreaking, 🧭 Navigation]
 img_path: /assets/img/posts/ 
-pin: true
+pin: false
 toc: true 
 comments: true
 ---

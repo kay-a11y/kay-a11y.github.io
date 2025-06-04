@@ -4,7 +4,7 @@ title: "Hashcat Basics: Cracking Passwords with Masks, Modes & Benchmarks"
 description: "Learn how to use Hashcat to crack passwords, test password strength, and benchmark your GPU using real masks, hash modes, and strategies - all in a hands-on, ethical hacking walkthrough."
 date: 2025-06-01 21:23:00 +0800
 categories: [🤖 tech, 🔒 Web Security]
-tags: [🐧 Linux, 💻 Networking, 🐾 Penetration, 🐾 Hacker Basics, 🔒 Web Security, 🔒 Privacy, 🧪 Cryptography, 😼 Hashcat, 🔒 Password Cracking, 🖥️ CLI, 🐾 Brute Force]
+tags: [🐧 Linux, 💻 Networking, 🐾 Penetration, 🐾 Hacker Basics, 🔒 Web Security, 🔒 Privacy, 🧪 Cryptography, 😼 Hashcat, 🧔 JohnTheRipper, 🔒 Password Cracking, 🖥️ CLI, 🐾 Brute Force]
 img_path: /assets/img/posts/
 toc: true 
 comments: true 
@@ -248,7 +248,7 @@ It's **not** trying every possible combo of every character - just what *you* te
 | `?u`   | Uppercase letter (A-Z)         | `D`, `X`              |
 | `?d`   | Digit (0-9)                    | `1`, `8`              |
 | `?s`   | Special char (`!@#$%^&*`, etc) | `@`, `!`              |
-| `?a`   | [All printable ASCII](https://www.ascii-code.com/characters/printable-characters)            | `a`, `9`, `@`         |
+| `?a`   | [All printable ASCII](https://www.ascii-code.com/characters/printable-characters){:target="_blank"}            | `a`, `9`, `@`         |
 | `?b`   | All 8-bit bytes (brutal mode)  | non-printables too    |
 | `?h`   | Lowercase hex (`0-9a-f`)       | `c`, `4`              |
 | `?H`   | Uppercase hex (`0-9A-F`)       | `E`, `A`              |
@@ -412,6 +412,18 @@ That'll have your sexy card grinding non-stop for 33.14 hours straight!
 
 ---
 
+##### 🔥 Real Statistics of 3060 Ti
+
+| Mask Length | Mask               | Speed (MH/s) | Temp | Util | Time     |
+| ----------- | ------------------ | ------------ | ---- | ---- | ------------- |
+| 4 chars     | `?a?a?a?a`         | 2169.1       | 47°C | 5%   | 2 secs        |
+| 5 chars     | `?a?a?a?a?a`       | 2581.6       | 53°C | 98%  | 4 secs        |
+| 6 chars     | `?a?a?a?a?a?a`     | 2092.4       | 57°C | 99%  | 5 min         |
+| 7 chars     | `?a?a?a?a?a?a?a`   | 1930.1       | 54°C | 98%  | 10 hrs 2 mins (Estimated) |
+| 8 chars     | `?a?a?a?a?a?a?a?a` | 3451.6       | 58°C | 99%  | \~22 days (Estimated)  |
+
+---
+
 ##### 🧠 How to Benchmark All Modes Speed?
 
 To see how fast your card cracks different algorithms:
@@ -473,6 +485,10 @@ This helps you compare:
 | Doing CTFs or quick offline checks  | 🧔 John    |
 | Full-blown audit with big hashlists | 🐱 Hashcat |
 
+---
+
+> 🧠 Ready to flex those GPU muscles harder?  
+> 👉🏻 Check out Part 2: [Crack That ZIP - Using John + Hashcat (`No hashes loaded Error` Fix Included)](https://kay-a11y.github.io/posts/hashcat-john-zip/)
 
 <div class="donation-box" style="position: relative;">
   <p class="donation-text">💖 Support me with crypto or PayPal! 💘</p>
