@@ -5,7 +5,7 @@ date: 2025-04-11 19:58:00 +0800
 categories: [📚 crypto story]
 tags: [🪙 Bitcoin, ⚔️ Cypherpunk, 🔒 Privacy, 📚 Blockchain,  🧩 CryptoHistory, 👤 Satoshi, 📝 Series, 🧭 Navigation]
 img_path: /assets/img/posts/ 
-pin: true
+pin: false
 toc: true 
 comments: true 
 image: /assets/img/posts/crypto.jpg

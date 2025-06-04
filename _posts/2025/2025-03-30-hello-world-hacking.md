@@ -7,7 +7,7 @@ tags: [🖼️ jekyll, ⚙️ setup, 👶🏻 beginner]
 
 # img_path: /assets/img/posts/ # optional
 
-pin: true # optional
+pin: false # optional
 
 toc: true # optional
 
