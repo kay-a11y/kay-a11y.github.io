@@ -103,8 +103,6 @@ If the archive contains **multiple files**, but I keep using `17200` (the **sing
 
 Here are the `example_hashes` from [hashcat.net/wiki](https://hashcat.net/wiki/doku.php?id=example_hashes){:target="_blank"}.
 
-The examples below assume the ZIP file is **Compressed** and contains **only one file**, which means you should use **Hash-Mode** `17200`.
-
 ```txt
 Hash-Mode 	Hash-Name 	Example 
 17200 	PKZIP (Compressed) 	$pkzip2$1*1*2*0*e3*1c5*eda7a8de*0*28*8*e3*eda7*5096*a9fc1f4e951c8fb3031a6f903e5f4e3211c8fdc4671547bf77f6f682afbfcc7475d83898985621a7af9bccd1349d1976500a68c48f630b7f22d7a0955524d768e34868880461335417ddd149c65a917c0eb0a4bf7224e24a1e04cf4ace5eef52205f4452e66ded937db9545f843a68b1e84a2e933cc05fb36d3db90e6c5faf1bee2249fdd06a7307849902a8bb24ec7e8a0886a4544ca47979a9dfeefe034bdfc5bd593904cfe9a5309dd199d337d3183f307c2cb39622549a5b9b8b485b7949a4803f63f67ca427a0640ad3793a519b2476c52198488e3e2e04cac202d624fb7d13c2*$/pkzip2$
@@ -114,9 +112,11 @@ Hash-Mode 	Hash-Name 	Example
 17230 	PKZIP (Mixed Multi-File Checksum-Only) 	$pkzip2$8*1*1*0*8*24*a425*8827*3bd479d541019c2f32395046b8fbca7e1dca218b9b5414975be49942c3536298e9cc939e*1*0*8*24*2a74*882a*537af57c30fd9fd4b3eefa9ce55b6bff3bbfada237a7c1dace8ebf3bb0de107426211da3*1*0*8*24*2a74*882a*5f406b4858d3489fd4a6a6788798ac9b924b5d0ca8b8e5a6371739c9edcfd28c82f75316*1*0*8*24*2a74*882a*1843aca546b2ea68bd844d1e99d4f74d86417248eb48dd5e956270e42a331c18ea13f5ed*1*0*8*24*2a74*882a*aca3d16543bbfb2e5d2659f63802e0fa5b33e0a1f8ae47334019b4f0b6045d3d8eda3af1*1*0*8*24*2a74*882a*fbe0efc9e10ae1fc9b169bd060470bf3e39f09f8d83bebecd5216de02b81e35fe7e7b2f2*1*0*8*24*2a74*882a*537886dbabffbb7cac77deb01dc84760894524e6966183b4478a4ef56f0c657375a235a1*1*0*8*24*eda7*5096*40eb30ef1ddd9b77b894ed46abf199b480f1e5614fde510855f92ae7b8026a11f80e4d5f*$/pkzip2$
 ```
 
+The examples below assume the ZIP file is **Compressed** and contains **only one file**, which means you should use **Hash-Mode** `17200`.
+
 ---
 
-### ✅ 1. Extract hash from test zip
+### ✅ 1. Extract hash from Encryted zip
 
 ```bash
 zip2john -s "~/test.zip" > /tmp/test_zip.john
