@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Crack That ZIP - Using John + Hashcat (`No hashes loaded` Error Fix Included)"
-description: 
+description: "Walkthrough for cracking encrypted ZIP files using zip2john + Hashcat. Includes how to solve the dreaded 'No hashes loaded' error when dealing with multi-file archives. Battle-tested and beginner-friendly."
 date: 2025-06-05 07:25:00 +0800
 categories: [🤖 tech, 🔒 Web Security]
 tags: [🐧 Linux, 🐾 Penetration, 🐾 Hacker Basics, 🔒 Web Security, 🔒 Privacy, 😼 Hashcat, 🧔 JohnTheRipper, 🧪 zip2john, 🔒 Password Cracking, 🖥️ CLI, 🐾 Brute Force]
