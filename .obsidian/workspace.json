@@ -1,0 +1,205 @@
+{
+  "main": {
+    "id": "b270e248f3d56a7c",
+    "type": "split",
+    "children": [
+      {
+        "id": "9a8eef3a7c7af6dc",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8bfdc4540466392d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "_posts/2025/web_security/2025-06-13-m3u8-probe.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "2025-06-13-m3u8-probe"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "882f84080a108e9f",
+    "type": "split",
+    "children": [
+      {
+        "id": "69310ab9c240ea8a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ddc7380f1d7319e0",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "e87425d8ad3d9499",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "6aade58b07db271a",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 291.51103591918945
+  },
+  "right": {
+    "id": "4e2b863862afb604",
+    "type": "split",
+    "children": [
+      {
+        "id": "d4195a06c9ef2c20",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5add441ef9b4d890",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "_posts/2025/web_security/2025-06-13-m3u8-probe.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for 2025-06-13-m3u8-probe"
+            }
+          },
+          {
+            "id": "5d9ee4011f38b261",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "_posts/2025/web_security/2025-06-13-m3u8-probe.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from 2025-06-13-m3u8-probe"
+            }
+          },
+          {
+            "id": "4769846f81193343",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "518931d149fdb01c",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "_posts/2025/web_security/2025-06-13-m3u8-probe.md",
+                "followCursor": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of 2025-06-13-m3u8-probe"
+            }
+          },
+          {
+            "id": "b02fa76eed689b3d",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "obsidian-git:Open Git source control": false
+    }
+  },
+  "active": "b02fa76eed689b3d",
+  "lastOpenFiles": [
+    "_posts/2025/web_security/2025-05-28-troubleshoot-clash-port.md",
+    "_posts/2025/phreaking/2025-04-27-phreaking-1.2.md",
+    "_posts/TEMP/Untitled.canvas",
+    "assets/img/posts/terminal_msg.png",
+    "assets/img/posts/the_keys.png",
+    "assets/img/posts/WSL_Ubuntu.jpg",
+    "assets/img/posts/valid_c.png",
+    "assets/img/posts/TUN.png",
+    "assets/img/posts/TerraLuna.png",
+    "assets/img/posts/switch_dark.mp4",
+    "assets/img/posts/switch_dark.gif",
+    "assets/img/posts/subnet.png",
+    "assets/img/posts/scraper_turn180.png",
+    "assets/img/posts/silkRoad.png",
+    "LICENSING.md",
+    "README.md",
+    "2025-06-14.md",
+    "_posts/2025/web_security/2025-06-13-m3u8-probe.md",
+    "_posts/2025/web_security/Untitled.md",
+    "_posts/GFW/2025-04-30-aws-operation-guide.md"
+  ]
+}
