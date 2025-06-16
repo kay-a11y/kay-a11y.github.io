@@ -42,6 +42,7 @@ assets/img/vendetta
 
 _posts/2025/Linux/2025-05-16-pop-os-config.md
 
-# Ignore Obsidian workspace data
+# Ignore Obsidian workspace data & Obsidian templates
 .obsidian/
 _posts/.obsidian
+_templates/
