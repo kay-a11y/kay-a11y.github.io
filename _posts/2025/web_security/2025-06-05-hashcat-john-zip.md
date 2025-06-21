@@ -101,7 +101,26 @@ If the archive contains **multiple files**, but I keep using `17200` (the **sing
 
 ### 🔨 0. Solve the error `No hashes loaded` in Hashcat
 
-Here are the `example_hashes` from [hashcat.net/wiki](https://hashcat.net/wiki/doku.php?id=example_hashes){:target="_blank"}.
+Most of the time, this issue comes from using the **wrong hash mode**.
+
+You've got two options:
+
+1. **Let Hashcat guess it for you**  
+    Run:
+    
+    ```bash
+    hashcat --identify hash.txt
+    ```
+    
+    This will analyze the hash format and suggest the best mode.
+    
+2. **Manually check the official Hashcat wiki**  
+    Browse through the mode list here:  
+    [Hashcat Wiki: Hash Modes](https://hashcat.net/wiki/doku.php?id=example_hashes){:target="_blank"}
+
+---
+
+Here are some `example_hashes` from [Hashcat Wiki: Hash Modes](https://hashcat.net/wiki/doku.php?id=example_hashes){:target="_blank"}.
 
 ```txt
 Hash-Mode 	Hash-Name 	Example 
@@ -125,7 +144,7 @@ zip2john -s "~/test.zip" > /tmp/test_zip.john
 This raw `.john` would be like:
 
 ```txt
-test.zip:$pkzip$8*1*1*0*8*24*d9...ed69b2b*$/pkzip$::test.zip:test/myfile.txt:/home/username/test.zip
+test.zip:$pkzip2$8*1*1*0*8*24*d9...ed69b2b*$/pkzip2$::test.zip:test/myfile.txt:/home/username/test.zip
 ```
 
 ---
@@ -168,7 +187,7 @@ cut -d ':' -f2 /tmp/test_zip.john > zip_hash_clean.txt
 This clean `.txt` would be like:
 
 ```txt
-$pkzip$8*1*1*0*8*24*d9...ed69b2b*$/pkzip$
+$pkzip2$8*1*1*0*8*24*d9...ed69b2b*$/pkzip2$
 ```
 
 #### ✅ 3. Run Hashcat
