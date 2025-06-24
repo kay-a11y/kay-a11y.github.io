@@ -286,7 +286,7 @@ There are **publicly reachable**: These IPs can be used to **host services, serv
 
 ---
 
-### Can I SSH into my PC from another device?
+## Can I SSH into my PC from another device?
 
 It *totally depends* on whether your PC is **reachable**, and that depends on **IPv4 vs IPv6**.
 
@@ -533,7 +533,7 @@ All of them **need to send data to each other** - fast, cheap, reliable.
 
 Instead of:
 
-> "Send your data across oceans, pay a transit fee, and hope it gets there…"
+> "Send your data across oceans, pay a transit fee, and hope it gets there"
 
 They say:
 
