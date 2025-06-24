@@ -19,7 +19,7 @@ It **reverses the connection direction**, so even if you're behind **CGNAT**, **
 
 In **CGNAT**, your home PC can go **outbound**, but can't accept **inbound connections** (like normal SSH). So **direct `ssh` to your home (Public) IP** is blocked.
 
-> Also you can check this post -> [here](https://kay-a11y.github.io/posts/how-internet-works/#ipv4--shared-ips)
+> Also you can check this post -> [here](https://kay-a11y.github.io/posts/how-internet-works/#ipv4--shared-ips){:target="_blank"}
 
 ---
 
