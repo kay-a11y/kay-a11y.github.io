@@ -121,9 +121,9 @@ ssh -i "/your/ec2/key.pem" \
 
 *(Keep this session open!)*
 
-* `-R 19999:localhost:22` means:
+* `-R 29999:localhost:22` means:
 
-  > Listen on port 19999 of the VPS, and forward everything back to port 22 (SSH) of my home PC.
+  > Listen on port 29999 of the VPS, and forward everything back to port 22 (SSH) of my home PC.
 
 After you run that, as long as the SSH session is active, **then from anywhere (or from your other device):**
 
@@ -141,15 +141,10 @@ Type your PC password and then voila!
 
 ---
 
-### Trouble Shooting: Make sure your home PC allows key or password login
+### Trouble Shooting: Make sure your home PC allows password login
 
-* For password login:
-
-  * Check `/etc/ssh/sshd_config` for `PasswordAuthentication yes`
-  * Restart sshd if you change it (`sudo systemctl restart ssh`)
-* For key login:
-
-  * Copy your **public key** (from Pi) to your PC's `~/.ssh/authorized_keys`
+* Check `/etc/ssh/sshd_config` for `PasswordAuthentication yes`
+* Restart sshd if you change it (`sudo systemctl restart ssh`)
 
 ---
 
