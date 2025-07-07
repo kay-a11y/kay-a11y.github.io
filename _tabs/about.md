@@ -7,10 +7,10 @@ order: 4
 <!-- ========= INTRODUCTION & STATS ========= -->
 <div align="center">
   <p align="center">
-    <em>Digital Ghost navigating the wires | Pythonista & Aspiring Pentester</em><br>
-    Exploring the chaos | Code. Freedom. Chaos. V. <br><br>
-    Blood. Sweat. Tears.
+    <em>Blood. Sweat. Tears.</em><br><br>
+    <code>Almost Home.</code>
   </p>
+</div>
 
 <div align="center">
   <br>
