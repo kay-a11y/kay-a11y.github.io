@@ -11,8 +11,6 @@ comments: true
 image: /assets/img/posts/refresh_ip.png
 ---
 
-<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0VTzUEuHYD8s7CgQ15cDPo?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-
 ## 🛜 How DHCP Gets Your Dynamic Host Information? 
 
 - **DHCP DISCOVER:** Your PC broadcasts a message saying, "Hey, anyone got an IP for me?"  
@@ -160,31 +158,25 @@ Because DHCP servers **love to reassign the same IP** if:
 
 ---
 
-## 🌈 If you want to **force a new IPv4 address**, you have two options:
+## 🌈 If you want to **force a new IPv4 address**, two options
 
 | Option | Method |
 |:---|:---|
 | 1️⃣ Change your MAC address | Spoof your MAC address like we did before - DHCP sees you as "new" device = new IP very likely |
 | 2️⃣ Wait longer | Wait until your DHCP lease fully expires and then reconnect - server might assign a new IP |
 
-*(Or combine both for best results 🥷.)*  
-✨ So MAC + IP refresh = *full disguise*.
+*(Or combine both for best results.)*  
+So MAC + IP refresh = *full disguise*.
 
-<div class="donation-box" style="position: relative;">
-  <p class="donation-text">💖 Support me with crypto or PayPal! 💘</p>
-  <p><strong>💵 USDT (TRC20):</strong><br>TJCANuMYSdgLKRKnpCtscXrS5NgDbBAvF9</p>
-  <p><strong>🟠 Bitcoin (BTC):</strong><br>bc1qrc9vhrrhnc9v9s9q9rjn24aj608j44p5hzsxft</p>
-  <p>Or support me on Ko-fi:</p>
-  
-  <div class="img-container" style="position: relative; display: inline-block;">
+<div style="display: flex; justify-content: center; align-items: center; margin: 1em 0;">
+  <div style="position: relative; display: inline-block; width: 150px; height: auto;">
     <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
          alt="Support me on Ko-fi"
          width="150"
-         loading="lazy">    
-    <div onclick="window.open('https://ko-fi.com/kikisec', '_blank')" 
+         loading="lazy"
+         style="display: block; width: 80%; height: auto;">
+    <div onclick="window.open('https://ko-fi.com/kikisec', '_blank')"
          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: transparent; cursor: pointer;">
     </div>
   </div>
-
-  <p class="donation-note">Any amount helps me continue creating content 💬💻</p>
 </div>

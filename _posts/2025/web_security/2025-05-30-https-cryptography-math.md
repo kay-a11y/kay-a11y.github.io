@@ -887,25 +887,15 @@ That's why **Signal, TLS 1.3, OpenSSH** now prefer:
 
 These are faster, smaller, and safer.
 
----
-
-See ya in the next rabbit hole! 🕳️🐇
-
-<div class="donation-box" style="position: relative;">
-  <p class="donation-text">💖 Support me with crypto or PayPal! 💘</p>
-  <p><strong>💵 USDT (TRC20):</strong><br>TJCANuMYSdgLKRKnpCtscXrS5NgDbBAvF9</p>
-  <p><strong>🟠 Bitcoin (BTC):</strong><br>bc1qrc9vhrrhnc9v9s9q9rjn24aj608j44p5hzsxft</p>
-  <p>Or support me on Ko-fi:</p>
-  
-  <div class="img-container" style="position: relative; display: inline-block;">
+<div style="display: flex; justify-content: center; align-items: center; margin: 1em 0;">
+  <div style="position: relative; display: inline-block; width: 150px; height: auto;">
     <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
          alt="Support me on Ko-fi"
          width="150"
-         loading="lazy">    
-    <div onclick="window.open('https://ko-fi.com/kikisec', '_blank')" 
+         loading="lazy"
+         style="display: block; width: 80%; height: auto;">
+    <div onclick="window.open('https://ko-fi.com/kikisec', '_blank')"
          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: transparent; cursor: pointer;">
     </div>
   </div>
-
-  <p class="donation-note">Any amount helps me continue creating content 💬💻</p>
 </div>

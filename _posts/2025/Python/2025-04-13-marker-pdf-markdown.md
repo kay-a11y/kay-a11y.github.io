@@ -11,8 +11,6 @@ comments: true
 # image: /assets/img/posts/cypherpunk.png
 ---
 
-<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/7dweUnOkEBtbYmGVEOiNLY?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-
 ## Marker → [GitHub](https://github.com/VikParuchuri/marker)
 
 Let's get you set up with **Marker**, a powerful open-source tool for converting PDFs to Markdown. Here's a step-by-step guide to help you install and use it:
@@ -383,24 +381,15 @@ pandoc -s -f markdown -t html -o output.htl input.md
   - [Getting Started with Pandoc](https://pandoc.org/getting-started.html)
   - [How to Use Pandoc - An Open Source Tool for Technical Writers](https://www.freecodecamp.org/news/how-to-use-pandoc/)
 
-
-<div class="donation-box" style="position: relative;">
-  <p class="donation-text">💖 Support me with crypto or PayPal! 💘</p>
-  <p><strong>💵 USDT (TRC20):</strong><br>TJCANuMYSdgLKRKnpCtscXrS5NgDbBAvF9</p>
-  <p><strong>🟠 Bitcoin (BTC):</strong><br>bc1qrc9vhrrhnc9v9s9q9rjn24aj608j44p5hzsxft</p>
-  <p>Or support me on Ko-fi:</p>
-  
-  <div class="img-container" style="position: relative; display: inline-block;">
-    <!-- 图片 -->
+<div style="display: flex; justify-content: center; align-items: center; margin: 1em 0;">
+  <div style="position: relative; display: inline-block; width: 150px; height: auto;">
     <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
          alt="Support me on Ko-fi"
          width="150"
-         loading="lazy">    
-    <!-- 遮罩层按钮 -->
-    <div onclick="window.open('https://ko-fi.com/kikisec', '_blank')" 
+         loading="lazy"
+         style="display: block; width: 80%; height: auto;">
+    <div onclick="window.open('https://ko-fi.com/kikisec', '_blank')"
          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: transparent; cursor: pointer;">
     </div>
   </div>
-
-  <p class="donation-note">Any amount helps me continue creating content 💬💻</p>
 </div>

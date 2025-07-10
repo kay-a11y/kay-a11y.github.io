@@ -15,7 +15,7 @@ image: /assets/img/posts/power_wash.png
 
 So looks like someone's got ADHD but have to play PowerWash. 🤷‍♀️
 
-Let’s make sure we can press `TAB` automatically every 8 seconds. Here’s a simple way to do it with a script on Linux.
+Let's make sure we can press `TAB` automatically every 8 seconds. Here's a simple way to do it with a script on Linux.
 
 You can use `xdotool`, a tool that simulates keyboard input. Install it with:
 
@@ -56,7 +56,7 @@ chmod +x press_tab.sh
 ./press_tab.sh
 ```
 
-Now, every 8 seconds, it will press `TAB` for you! 🟢 You can stop the script by pressing `Ctrl+C` when you’re done.
+Now, every 8 seconds, it will press `TAB` for you! 🟢 You can stop the script by pressing `Ctrl+C` when you're done.
 
 ---
 
@@ -64,7 +64,7 @@ Now, every 8 seconds, it will press `TAB` for you! 🟢 You can stop the script 
 
 We can make this run without needing to keep the terminal open and make it less resource-hungry by running it as a background service.
 
-To make it less intrusive and run in the background without occupying much of the terminal, we can use `nohup` (no hangup), which allows the script to run even after you close the terminal. Here’s how you can set it up:
+To make it less intrusive and run in the background without occupying much of the terminal, we can use `nohup` (no hangup), which allows the script to run even after you close the terminal. Here's how you can set it up:
 
 1. **Prepare the script**:
 
@@ -78,7 +78,7 @@ Use `nohup` to run it in the background:
 nohup ./press_tab.sh &
 ```
 
-This will run the script in the background and keep it going even after you close the terminal. The `&` ensures that it runs in the background, and `nohup` makes sure it doesn’t stop when the terminal closes.
+This will run the script in the background and keep it going even after you close the terminal. The `&` ensures that it runs in the background, and `nohup` makes sure it doesn't stop when the terminal closes.
 
 ## 🔪 Check and Stop the script
 
@@ -124,9 +124,9 @@ If you want to forcefully kill it (just in case), you can use:
 kill -9 12345
 ```
 
-### 👩‍⚖️ 2. **If it’s running as a background job with `nohup`**:
+### 👩‍⚖️ 2. **If it's running as a background job with `nohup`**:
 
-If you’re running the script using `nohup` and have it in the background, you can just use `jobs` to find the job ID and then kill it.
+If you're running the script using `nohup` and have it in the background, you can just use `jobs` to find the job ID and then kill it.
 
 1. **List the jobs**:
 
@@ -134,7 +134,7 @@ If you’re running the script using `nohup` and have it in the background, you 
 jobs
 ```
 
-You’ll see something like:
+You'll see something like:
 
 ```
 [1]+  12345  Stopped                 ./press_tab.sh
@@ -150,21 +150,15 @@ Here `%1` refers to the job number (in this case, `1`). You can also use `kill %
 
 Once the script is killed, it will stop pressing `TAB` for you. 🛑
 
-<div class="donation-box" style="position: relative;">
-  <p class="donation-text">💖 Support me with crypto or PayPal! 💘</p>
-  <p><strong>💵 USDT (TRC20):</strong><br>TJCANuMYSdgLKRKnpCtscXrS5NgDbBAvF9</p>
-  <p><strong>🟠 Bitcoin (BTC):</strong><br>bc1qrc9vhrrhnc9v9s9q9rjn24aj608j44p5hzsxft</p>
-  <p>Or support me on Ko-fi:</p>
-  
-  <div class="img-container" style="position: relative; display: inline-block;">
+<div style="display: flex; justify-content: center; align-items: center; margin: 1em 0;">
+  <div style="position: relative; display: inline-block; width: 150px; height: auto;">
     <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
          alt="Support me on Ko-fi"
          width="150"
-         loading="lazy">    
-    <div onclick="window.open('https://ko-fi.com/kikisec', '_blank')" 
+         loading="lazy"
+         style="display: block; width: 80%; height: auto;">
+    <div onclick="window.open('https://ko-fi.com/kikisec', '_blank')"
          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: transparent; cursor: pointer;">
     </div>
   </div>
-
-  <p class="donation-note">Any amount helps me continue creating content 💬💻</p>
 </div>

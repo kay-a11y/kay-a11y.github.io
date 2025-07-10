@@ -708,3 +708,16 @@ Even if they **can't decrypt your HTTPS** or rewrite IPs, they can still:
 * Use **DNS leaks** or SNI (unless encrypted with ESNI/ECH) to guess what you're accessing
 
 So IPs leak *who talks to whom*, even if not *what is said*. That's why tools like **Tor** or **VPNs** try to hide your origin IP too.
+
+<div style="display: flex; justify-content: center; align-items: center; margin: 1em 0;">
+  <div style="position: relative; display: inline-block; width: 150px; height: auto;">
+    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+         alt="Support me on Ko-fi"
+         width="150"
+         loading="lazy"
+         style="display: block; width: 80%; height: auto;">
+    <div onclick="window.open('https://ko-fi.com/kikisec', '_blank')"
+         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: transparent; cursor: pointer;">
+    </div>
+  </div>
+</div>

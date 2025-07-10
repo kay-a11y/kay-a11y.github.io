@@ -14,9 +14,6 @@ toc: true # optional
 comments: true # optional
 ---
 
-<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4mn5HdatHKN7iFGDes9G8i?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-
-<br><br>
 <p align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=65&section=body" alt=""/>
 </p>
@@ -152,4 +149,3 @@ Here, I plan to document my adventures (and misadventures) in the world of code,
 <p align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=65&section=footer" alt=""/>
 </p>
-

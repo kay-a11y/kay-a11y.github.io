@@ -13,7 +13,7 @@ image: /assets/img/posts/popos.png
 
 ## 🖥️ **The Problem**
 
-Even after having both **Pop!\_OS** and **Windows 11** installed, only Pop!\_OS and "Reboot Into Firmware Interface" were showing in the systemd-boot menu. Windows wouldn’t appear as a boot option.
+Even after having both **Pop!\_OS** and **Windows 11** installed, only Pop!\_OS and "Reboot Into Firmware Interface" were showing in the systemd-boot menu. Windows wouldn't appear as a boot option.
 
 ---
 
@@ -37,7 +37,7 @@ ls /mnt/nvmeboot/EFI/Microsoft/Boot/bootmgfw.efi
 sudo cp -r /mnt/nvmeboot/EFI/Microsoft /boot/efi/EFI/
 ```
 
-This puts the Windows bootloader into Pop’s EFI partition so **systemd-boot** can find it.
+This puts the Windows bootloader into Pop's EFI partition so **systemd-boot** can find it.
 
 ---
 
@@ -63,7 +63,7 @@ options rootfstype=ntfs root=UUID=xxxx
 options rootfstype=ntfs root=UUID=xxxx
 ```
 
-Why? → **systemd-boot doesn’t need (and may even break with) the `options` line for Windows.**
+Why? → **systemd-boot doesn't need (and may even break with) the `options` line for Windows.**
 Windows handles its own options internally.
 
 So the final `windows.conf` should look like:
@@ -133,7 +133,7 @@ Reboot Into Firmware Interface
 
 ## ⚠ What if Windows Updates Break the Boot Entry?
 
-Since the Microsoft bootloader (`bootmgfw.efi`) was **copied** (not symlinked) into Pop!_OS's ESP (`/boot/efi/EFI/Microsoft/`), there’s a possibility that:
+Since the Microsoft bootloader (`bootmgfw.efi`) was **copied** (not symlinked) into Pop!_OS's ESP (`/boot/efi/EFI/Microsoft/`), there's a possibility that:
 
 - Major Windows updates (especially feature updates) might **replace or update** the bootloader file **only on the original Windows ESP (nvme0n1p1)**.
 - The copied version in the Pop!_OS ESP would then become outdated or invalid.
@@ -170,23 +170,17 @@ ls /boot/efi/EFI/Microsoft/Boot/bootmgfw.efi
 
 This method is robust for most cases. But if you often get large Windows updates or upgrade to new major releases (like from Windows 11 23H2 to 24H2), remember to repeat the copy step.
 
-If you plan to **remove Windows completely later**, this won’t matter because the copied bootloader will no longer be needed. 🎉
+If you plan to **remove Windows completely later**, this won't matter because the copied bootloader will no longer be needed. 🎉
 
-<div class="donation-box" style="position: relative;">
-  <p class="donation-text">💖 Support me with crypto or PayPal! 💘</p>
-  <p><strong>💵 USDT (TRC20):</strong><br>TJCANuMYSdgLKRKnpCtscXrS5NgDbBAvF9</p>
-  <p><strong>🟠 Bitcoin (BTC):</strong><br>bc1qrc9vhrrhnc9v9s9q9rjn24aj608j44p5hzsxft</p>
-  <p>Or support me on Ko-fi:</p>
-  
-  <div class="img-container" style="position: relative; display: inline-block;">
+<div style="display: flex; justify-content: center; align-items: center; margin: 1em 0;">
+  <div style="position: relative; display: inline-block; width: 150px; height: auto;">
     <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
          alt="Support me on Ko-fi"
          width="150"
-         loading="lazy">    
-    <div onclick="window.open('https://ko-fi.com/kikisec', '_blank')" 
+         loading="lazy"
+         style="display: block; width: 80%; height: auto;">
+    <div onclick="window.open('https://ko-fi.com/kikisec', '_blank')"
          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: transparent; cursor: pointer;">
     </div>
   </div>
-
-  <p class="donation-note">Any amount helps me continue creating content 💬💻</p>
 </div>
