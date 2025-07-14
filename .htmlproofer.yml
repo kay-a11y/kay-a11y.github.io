@@ -1,1 +1,5 @@
 empty_alt_ignore: true
+url_ignore:
+  - "https://github.com/kay-a11y/aftermark/blob/main/lsb_lab/entro_checker.py"
+  - "https://github.com/kay-a11y/aftermark/blob/main/lsb_lab/bit_planes.py"
+  - "https://github.com/kay-a11y/aftermark/blob/main/jpg/jpeg_gonewild.py"
