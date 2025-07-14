@@ -2,7 +2,7 @@
 layout: post
 title: "Hidden watermark"
 description: A practical guide to finding and nuking hidden watermarks in screenshots.
-date: 2025-07-08 07:30:00 +0000
+date: 2025-07-14 12:29:00 +0000
 categories: [🤖 tech, 🔒 Web Security]
 tags: [🐧 Linux, 📷 Steganography, 🐍 Python, 🖥️ CLI, 🧩 DCT, ➕ LSB, 📊 Entropy, 🔒 Privacy, 🔒 Web Security, 🔖 Watermark, 🎭 Forensics, 💥 Nuke, 🎛️ Quantization, 🧬 Bit-Planes, 🎭 OSINT, 🖼️ JPEG, 🖼️ PNG]
 img_path: /assets/img/posts/
