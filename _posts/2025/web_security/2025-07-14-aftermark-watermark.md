@@ -1777,7 +1777,7 @@ Parity can ONLY detect **odd** errors
 * **3 bits flipped**: Detected (again, odd number)
 * **4 bits...**: Not detected, and so on...
 
-**Parity can only tell you if there was an odd number of bit flips in each 9-bit chunk.** If two bits (or any even number) get corrupted, the parity check *passes*, but the data is bad. Parity is **not robust for targeted/strong attacks or heavy distortion**. A true watermark system would use more advanced codes, like [Hamming](#hamming-code) or [Reed-Solomon](#reedsolomon-code), for error correction, not just detection.
+**Parity can only tell you if there was an odd number of bit flips in each 9-bit chunk.** If two bits (or any even number) get corrupted, the parity check *passes*, but the data is bad. Parity is **not robust for targeted/strong attacks or heavy distortion**. A true watermark system would use more advanced codes, like [Hamming](#hamming-code) or [Reed-Solomon](#reed-solomon-code), for error correction, not just detection.
 
 ---
 
