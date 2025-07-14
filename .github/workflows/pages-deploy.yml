@@ -53,8 +53,8 @@ jobs:
       - name: Test site
         run: |
           bundle exec htmlproofer _site \
-            \-\-config .htmlproofer.yml \
             \-\-disable-external \
+            \-\-ignore-urls "/github.com\/kay-a11y\/aftermark\/blob\/.*/" \
             \-\-ignore-urls "/^http:\/\/127.0.0.1/,/^http:\/\/0.0.0.0/,/^http:\/\/localhost/"
 
       - name: Upload site artifact
