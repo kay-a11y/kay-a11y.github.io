@@ -639,7 +639,7 @@ Here's a quick **cheat sheet for entropy reference**:
 
 Like the JSON (e.g. `'{"uid": "123456789"...}'`) mixes curly braces, quotes, numbers, colons = a pretty *rich* charset, would bump up entropy. **Short** readable messages can seem high-entropy if they contain diverse chars. A file of only "a" or only "ÿ" would be nearly zero entropy.
 
-Check this script [here (entro_checker.py)]((https://github.com/kay-a11y/aftermark/blob/main/lsb/entro_checker.py)).
+Check this script [here (entro_checker.py)](https://github.com/kay-a11y/aftermark/blob/main/lsb/entro_checker.py).
 
 If most files have entropy between `0.01-1.2` and decoded message length in the thousands, but never anything readable, never `uid`, then almost certainly these images are **either not using LSB-watermarking at all**, or their method is heavily *obfuscated* (random or constant pattern, or not in the LSB at all).
 Or your screenshots are compressed JPGs, which destroys most LSB stego.
@@ -692,7 +692,7 @@ Here are some ways to visualize:
 * [bit_planes.py](https://github.com/kay-a11y/aftermark/blob/main/lsb/bit_planes.py)
 * [bit_planes.sh](https://github.com/kay-a11y/aftermark/blob/main/lsb/bit_planes.sh)
 
-Let's try [bit_planes.py]((https://github.com/kay-a11y/aftermark/blob/main/lsb/bit_planes.py)):
+Let's try [bit_planes.py](https://github.com/kay-a11y/aftermark/blob/main/lsb/bit_planes.py):
 
 ![bitplanes_grid](/assets/img/posts/aftermark/bitplanes_grid.png)
 
@@ -1217,7 +1217,7 @@ Output (partial):
 * cat_from_jpg.png: [24MB] for the PNG is still thicc! The cat's pixels are living large and uncompressed. Big, lossless, preserves *all* bits as-is, including all JPG artifacts
 * `cat_rejpg.jpg`: [6.2MB] The file size shrinks back down. The image **loses even more detail** - especially in smooth areas or in the LSBs.
 
-If you do this conversion *repeatedly* (JPG → PNG → JPG → PNG), the image quality keeps degrading, and the LSB stego data dies fast. What if `cat.jpg` gone wild - [let's try JPG → PNG → JPG → PNG, over and over again]((https://github.com/kay-a11y/aftermark/blob/main/jpg/jpeg_gonewild.py))...
+If you do this conversion *repeatedly* (JPG → PNG → JPG → PNG), the image quality keeps degrading, and the LSB stego data dies fast. What if `cat.jpg` gone wild - [let's try JPG → PNG → JPG → PNG, over and over again](https://github.com/kay-a11y/aftermark/blob/main/jpg/jpeg_gonewild.py)...
 
 Here I tested for 100 times, just for fun:
 
