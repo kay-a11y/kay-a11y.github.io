@@ -6,6 +6,7 @@ date: 2025-07-14 12:29:00 +0000
 categories: [🤖 tech, 🔒 Web Security]
 tags: [🐧 Linux, 📷 Steganography, 🐍 Python, 🖥️ CLI, 🧩 DCT, ➕ LSB, 📊 Entropy, 🔒 Privacy, 🔒 Web Security, 🔖 Watermark, 🎭 Forensics, 💥 Nuke, 🎛️ Quantization, 🧬 Bit-Planes, 🎭 OSINT, 🖼️ JPEG, 🖼️ PNG]
 img_path: /assets/img/posts/
+math: true
 toc: true 
 comments: true 
 image: 
@@ -26,7 +27,7 @@ image:
 
 ### Back in 2022
 
-Screenshots were embedded with **plaintext watermarks** = easily visible as soon as you applied a simple filter:
+Screenshots were embedded with **plaintext watermarks**, easily visible as soon as you applied a simple filter:
 
 ![20221219_cmp](/assets/img/posts/aftermark/20221219_cmp.png)
 
