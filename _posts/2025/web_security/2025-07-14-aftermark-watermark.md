@@ -40,7 +40,7 @@ fully readable metadata looks like:
 
 (*my eyes hurt*)
 
-This is exactly what was discussed in [this 2022 Zhihu post](https://www.zhihu.com/question/517690908):
+This is exactly what was discussed in [this 2022 Zhihu post](https://www.zhihu.com/question/517690908){:target="_blank"}:
 
 ![zhihu_post](/assets/img/posts/aftermark/zhihu_post.png)
 
@@ -234,7 +234,7 @@ Let's try to hide a **secret message** (like your UID, post ID, time) inside a s
 
     Finally, add `'00000000'` at the end as a **null terminator** = so our decoder knows where to stop.
 
-    Try this [`json2bit.py`](https://github.com/kay-a11y/aftermark/blob/main/lsb/json2bit.py) from my repo. It shows exactly how a JSON payload turns into a clean LSB-ready bitstream:
+    Try this [`json2bit.py`](https://github.com/kay-a11y/aftermark/blob/main/lsb/json2bit.py){:target="_blank"} from my repo. It shows exactly how a JSON payload turns into a clean LSB-ready bitstream:
 
     ```yaml
     Original JSON string: '{"abc": 1}'
@@ -296,19 +296,19 @@ Let's try to hide a **secret message** (like your UID, post ID, time) inside a s
 
     We put the edited red-channel pixels back, and save the image as a new PNG file.
 
-See the complete LSB embed code for R channel [here(lsb_embed_R.py)](https://github.com/kay-a11y/aftermark/blob/main/lsb/lsb_embed_R.py), which uses a tiny 4x4 image as an example.
+See the complete LSB embed code for R channel [here(lsb_embed_R.py)](https://github.com/kay-a11y/aftermark/blob/main/lsb/lsb_embed_R.py){:target="_blank"}, which uses a tiny 4x4 image as an example.
 
 Also see:
 
 * Write/Decode different LSB bits to/from each channel:
 
-    [lsb_embed_diff.py](https://github.com/kay-a11y/aftermark/blob/main/lsb/lsb_embed_diff.py)  
-    [lsb_decode_diff.py](https://github.com/kay-a11y/aftermark/blob/main/lsb/lsb_decode_diff.py)
+    [lsb_embed_diff.py](https://github.com/kay-a11y/aftermark/blob/main/lsb/lsb_embed_diff.py){:target="_blank"}  
+    [lsb_decode_diff.py](https://github.com/kay-a11y/aftermark/blob/main/lsb/lsb_decode_diff.py){:target="_blank"}
 
 * Write/Decode the same bits to/from all channels:
 
-    [lsb_embed.py](https://github.com/kay-a11y/aftermark/blob/main/lsb/lsb_embed.py)  
-    [lsb_decode.py](https://github.com/kay-a11y/aftermark/blob/main/lsb/lsb_decode.py)
+    [lsb_embed.py](https://github.com/kay-a11y/aftermark/blob/main/lsb/lsb_embed.py){:target="_blank"}  
+    [lsb_decode.py](https://github.com/kay-a11y/aftermark/blob/main/lsb/lsb_decode.py){:target="_blank"}
 
 People can't see the difference with eyes = the image looks exactly the same. **But** if you extract the red-channel LSBs in the right order, you get your hidden message back. LSB embed is very old school (kinda like talking about 90s zines, hehe), one of the earliest, simplest forms of digital steganography.
 
@@ -316,7 +316,7 @@ People can't see the difference with eyes = the image looks exactly the same. **
 
 ### Decode LSB Embedding
 
-See [lsb_decode_R.py](https://github.com/kay-a11y/aftermark/blob/main/lsb/lsb_decode_R.py)
+See [lsb_decode_R.py](https://github.com/kay-a11y/aftermark/blob/main/lsb/lsb_decode_R.py){:target="_blank"}
 
 Or just use:
 
@@ -379,7 +379,7 @@ we loop through the bit string **8 bits at a time** (1 ASCII character = 8 bits)
 
 ### Visualize LSB Embedding
 
-Now let's can make the area where the watermark lives **visibly marked** (e.g., filled with red or any color) so a human can *see* exactly where the secret is hidden.
+Now we can make the area where the watermark lives **visibly marked** (e.g., filled with red or any color) so a human can *see* exactly where the secret is hidden.
 
 1. Make "1" bits red, "0" bits blue:
 
@@ -481,7 +481,7 @@ Now let's can make the area where the watermark lives **visibly marked** (e.g., 
 2. `-equalize`
 
     ```bash
-    convert hidden_demo.png -auto-level -contrast-stretch 1%x1% hidden_demo_stretch.png
+    convert hidden_demo.png -equalize hidden_demo_eq.png
     ```
 
     * **`-equalize`**:
@@ -520,13 +520,13 @@ What WON'T be revealed:
 
 ### Verdict
 
-Before they just *drew* those watermark characters (uid/tid/time) as super-low-opacity white or gray text **on top** of the screenshot. So if you raised the *curves* or *levels*, invert, etc, you could suddenly see faint letters pop up = **you could read the UID/TID/TIME** as actual text. Some phones (like Redmi) with special dark mode or boosting contrast would also reveal these.
+Before they just *drew* those watermark characters (uid/tid/time) as super-low-opacity white or gray text **on top** of the screenshot. So if you raised the *curves* or *levels*, invert, etc, you could suddenly see faint letters pop up. **You could read the UID/TID/TIME** as actual text. Some phones (like Redmi) with special dark mode or boosting contrast would also reveal these.
 
 Now, instead, We won't see the actual text with any visual filter, curve, dark mode, Photoshop, etc, unless extract the bits in code and then *decode* them back to characters. What we'll see with extreme filters is *weird blocky snow patterns*, but never the actual number or text. This "noise" just shows the *distribution* of bits (not the data itself), but never readable.
 
 **Douban's snow/lego watermark is truly a pixel-level, visible overlay** - not an invisible LSB/DCT/metadata trick. It's rendered *on top* of the entire post. The watermark is "baked in" before you even get the image file. 
 
-**Taking a screenshot of a screenshot app window** *does NOT break the pattern* - because the pixel arrangement is copied *exactly* **Rephotographing (using a phone/camera to take a *physical* picture of your monitor) DOES break it!** Because the camera lens, sensor noise, color calibration, etc. all introduce analog "noise." The pixel-perfect alignment is *lost*. Equalization can't revive the old pattern, since it's not the exact same pixels anymore.
+**Taking a screenshot of a screenshot app window** *does NOT break the pattern*, because the pixel arrangement is copied *exactly* **Rephotographing (using a phone/camera to take a *physical* picture of your monitor) DOES break it!** Because the camera lens, sensor noise, color calibration, etc, all introduce analog "noise." The pixel-perfect alignment is *lost*. Equalization can't revive the old pattern, since it's not the exact same pixels anymore.
 
 ---
 
@@ -551,7 +551,7 @@ Douban **only embed the watermark when there's a new screenshot session** (like 
 
 **Shannon Entropy** is a way to **measure uncertainty or surprise** in a stream of data.
 
-Say you're reading a sentence, and every character is super predictable = like:
+Say you're reading a sentence, and every character is super predictable, like:
 
 ```
 AAAAAAAAAAAAAAA
@@ -562,10 +562,12 @@ You already know the next letter is "A", which is *low entropy*.
 * **High entropy** = lots of randomness (hard to guess what's next)
 * **Low entropy** = very repetitive (easy to guess)
 
-So in hidden watermark or steganography:
+So in hidden watermark or steganography, if entropy is too low, it's probably repetitive filler. If it's medium, it could be normal readable data. If it's very high, it's likely encrypted or compressed.
 
-* If entropy is **low** → might be readable message (like `"uid": "..."`)
-* If entropy is **high** → might be encrypted or compressed
+* Natural language (like English text) tends to have moderate entropy.
+* Code/JSON/logs might be slightly higher entropy than plain English, but still lower than encrypted or compressed data.
+* Encrypted or compressed blobs aim to be as close to totally random as possible, maximum entropy.
+
 
 We can calculate **how random** the LSB is, using **Shannon entropy**. Then check if the decoded message might contain something readable like `"uid"` to help us guess if it's plaintext vs gibberish.
 
@@ -638,9 +640,9 @@ Here's a quick **cheat sheet for entropy reference**:
   * **Text:** Typically 4.0-5.0
   * **Pure random:** Up to 8.0 (full 8-bit spread)
 
-Like the JSON (e.g. `'{"uid": "123456789"...}'`) mixes curly braces, quotes, numbers, colons = a pretty *rich* charset, would bump up entropy. **Short** readable messages can seem high-entropy if they contain diverse chars. A file of only "a" or only "ÿ" would be nearly zero entropy.
+Like the JSON (e.g. `'{"uid": "123456789"...}'`) mixes curly braces, quotes, numbers, colons, a pretty *rich* charset, would bump up entropy. **Short** readable messages can seem high-entropy if they contain diverse chars. A file of only "a" or only "ÿ" would be nearly zero entropy.
 
-Check this script [here (entro_checker.py)](https://github.com/kay-a11y/aftermark/blob/main/lsb/entro_checker.py).
+Check this script [here (entro_checker.py)](https://github.com/kay-a11y/aftermark/blob/main/lsb/entro_checker.py){:target="_blank"}.
 
 If most files have entropy between `0.01-1.2` and decoded message length in the thousands, but never anything readable, never `uid`, then almost certainly these images are **either not using LSB-watermarking at all**, or their method is heavily *obfuscated* (random or constant pattern, or not in the LSB at all).
 Or your screenshots are compressed JPGs, which destroys most LSB stego.
@@ -657,12 +659,12 @@ Every grayscale (or color channel) image pixel is stored as an 8-bit number. Lik
 Pixel value: 156 → binary: 10011100
 ```
 
-Each of those 8 bits = from the **most significant bit (MSB)** to the **least significant bit (LSB)** = forms a **bit-plane**.
+Each of those 8 bits, from the **most significant bit (MSB)** to the **least significant bit (LSB)**, forms a **bit-plane**.
 
 * **Bit-plane 7 (MSB)** = first bit (highest weight)
 * **Bit-plane 0 (LSB)** = last bit (lowest weight)
 
-For a 512×512 image, we can *split it into 8 "images"* = each one showing what all the pixels look like **at one specific bit position**. That's the **bit-plane view**.
+For a 512×512 image, we can *split it into 8 "images"*, each one showing what all the pixels look like **at one specific bit position**. That's the **bit-plane view**.
 
 Because 1 byte = 8 bits. Most images are stored using 8-bit integers per channel:
 
@@ -689,11 +691,11 @@ Each bit controls **2ⁿ** value range:
 
 Here are some ways to visualize:
 
-* [StegOnline](https://georgeom.net/StegOnline/upload)
-* [bit_planes.py](https://github.com/kay-a11y/aftermark/blob/main/lsb/bit_planes.py)
-* [bit_planes.sh](https://github.com/kay-a11y/aftermark/blob/main/lsb/bit_planes.sh)
+* [StegOnline](https://georgeom.net/StegOnline/upload){:target="_blank"}
+* [bit_planes.py](https://github.com/kay-a11y/aftermark/blob/main/lsb/bit_planes.py){:target="_blank"}
+* [bit_planes.sh](https://github.com/kay-a11y/aftermark/blob/main/lsb/bit_planes.sh){:target="_blank"}
 
-Let's try [bit_planes.py](https://github.com/kay-a11y/aftermark/blob/main/lsb/bit_planes.py):
+Let's try [bit_planes.py](https://github.com/kay-a11y/aftermark/blob/main/lsb/bit_planes.py){:target="_blank"}:
 
 ![bitplanes_grid](/assets/img/posts/aftermark/bitplanes_grid.png)
 
@@ -792,7 +794,7 @@ eaf9cdca6fd91as4b4af74a5c5e64c55978b8e891223d7e898007c1a14fddd60  demo_raw.jpg
 
 DCT is like turning an image into its musical notes.
 
-Say you got a square of pixels = like a tiny 8×8 patch from your screenshot. Now instead of looking at the brightness of each pixel one-by-one, DCT goes: "how much of this square looks like a wave going left to right? What about top to bottom? Or a checkerboard pattern?" It breaks that image patch into a *combo of frequency waves*, like turning it into a chord instead of individual notes.
+Say you got a square of pixels, like a tiny 8×8 patch from your screenshot. Now instead of looking at the brightness of each pixel one-by-one, DCT goes: "how much of this square looks like a wave going left to right? What about top to bottom? Or a checkerboard pattern?" It breaks that image patch into a *combo of frequency waves*, like turning it into a chord instead of individual notes.
 
 LSB hides data *pixel by pixel*, it's weak when we JPEG or resize it. DCT hides data *in frequency land*. Compression can't easily ruin it.
 
@@ -817,10 +819,10 @@ LSB hides data *pixel by pixel*, it's weak when we JPEG or resize it. DCT hides 
     * Top-left corner of DCT block = **DC coefficient** = average brightness
     * The other 63 values = **AC coefficients** = frequencies:
 
-    * Horizontal waves
-    * Vertical waves
-    * Diagonal waves
-    * The higher you go in the matrix, the higher the wave "wiggle" rate.
+        * Horizontal waves
+        * Vertical waves
+        * Diagonal waves
+        * The higher you go in the matrix, the higher the wave "wiggle" rate.
 
     ```txt
     # JPEG DCT Block Layout (8x8)
@@ -839,13 +841,13 @@ LSB hides data *pixel by pixel*, it's weak when we JPEG or resize it. DCT hides 
 
     # frequency map
 
-        Horizontal Frequency →
-    V   +----------------------+
-    e   |  DC ...     High-H   |
-    r   |  .   .        .      |
-    t   |  .   .        .      |
-    .   |Low-V...   Hi-H & Hi-V|
-    ↓   +----------------------+
+    V +----------------------------------+
+    e | DC  ...          Hi-H & Low-V    |
+    r | ...              ...             |
+    t | ...              ...             |
+    . | Low-H & Hi-V     Hi-H & Hi-V     |
+    ↓ +----------------------------------+
+            Horizontal Frequency →
 
     ```
 
@@ -871,7 +873,7 @@ LSB hides data *pixel by pixel*, it's weak when we JPEG or resize it. DCT hides 
     * Very "pixel crunchy"
     * *JPEG hates this*, it nukes the precision here to save space
 
-    **High-quality JPEGs**: keep more of the DCT coefficients, preserve sharpness
+    **High-quality JPEGs**: keep more of the DCT coefficients, preserve sharpness  
     **Low-quality JPEGs**: yeet the high-freq stuff, making the image smaller and softer
 
 
@@ -886,7 +888,7 @@ LSB hides data *pixel by pixel*, it's weak when we JPEG or resize it. DCT hides 
     * `-1.8` might become `0`
     * `DC` value might be kept more accurately (like `103 → 100`)
 
-    That's why JPEG compresses better when the image is smooth = those higher-frequency values just *die out*. **JPEG reduces precision on higher-frequency areas**. Not **turning high-frequency into low-frequency** directly, but **truncating** or **rounding off** the small details.
+    That's why JPEG compresses better when the image is smooth, those higher-frequency values just *die out*. **JPEG reduces precision on higher-frequency areas**. Not **turning high-frequency into low-frequency** directly, but **truncating** or **rounding off** the small details.
 
     Say you have this row of brightness values:
 
@@ -925,7 +927,7 @@ If you hide your watermark in **LSB of raw pixel values**, it gets wrecked when 
 embed into bit 1 or bit 0 of a middle-frequency DCT value
 ```
 
-then this watermark can **survive** JPEG compression, even at decent quality settings.
+then [this watermark can **survive** JPEG compression](#dct-decoding), even at decent quality settings.
 
 ---
 
@@ -974,7 +976,7 @@ So for a 512×256 image, we still have **2048 blocks per channel**, like in gray
 → Total of 6144 DCT blocks
 ```
 
-BUT JPEG doesn't *always* compress RGB directly,  it usually **converts RGB → YCbCr**, then compresses like:
+BUT JPEG doesn't *always* compress RGB directly,  it usually **converts RGB to YCbCr**, then compresses like:
 
 | Channel | Blocks                                      |
 | ------- | ------------------------------------------- |
@@ -1066,7 +1068,7 @@ qtables = im.quantization
 print(qtables)  # Returns dictionary of quant tables
 ```
 
-I [extracted the quantization matrix](https://github.com/kay-a11y/aftermark/blob/main/jpg/show_qtable.py) from my `cat.jpg`,
+I [extracted the quantization matrix](https://github.com/kay-a11y/aftermark/blob/main/jpg/show_qtable.py){:target="_blank"} from my `cat.jpg`,
 
 ![cat](/assets/img/posts/aftermark/cat.jpg)
 
@@ -1086,7 +1088,7 @@ and here's what it looks like:
 In **JPEG**, we usually deal with two separate *quantization tables*:
 
 1. **Luminance Table (Y) →**
-   This one is applied to the brightness part of the image-aka the *Y* channel in YCbCr. It's where the human eye is most sensitive, so we compress it *less aggressively*.
+   This one is applied to the brightness part of the image, aka the *Y* channel in YCbCr. It's where the human eye is most sensitive, so we compress it *less aggressively*.
 
 2. **Chrominance Table (Cb + Cr) →**
    This one handles the color details. Our eyes aren't super sensitive to color changes, so JPEG is more brutal here with compression. Hence, *more aggressive quantization*.
@@ -1099,7 +1101,7 @@ Technically, it's possible to use more than three quantization matrices. But mos
 
 But that's rare and not supported by all decoders.
 
-[Visualize the quantization matrices](https://github.com/kay-a11y/aftermark/blob/main/jpg/pretty_qtable.py):
+[Visualize the quantization matrices](https://github.com/kay-a11y/aftermark/blob/main/jpg/pretty_qtable.py){:target="_blank"}:
 
 ![cat matrices](/assets/img/posts/aftermark/qtables.png)
 
@@ -1114,7 +1116,7 @@ But that's rare and not supported by all decoders.
 
 This JPEG encoder is smart. It compresses where the eye *won't notice* (color), and protects where it *will* (brightness). This saves file size without making the lil kitten look like mashed pixels.
 
-> **BTW:** [A full preview of the theme here](https://github.com/kay-a11y/aftermark/blob/main/jpg/theme.py).
+> **BTW:** [A full preview of the theme here](https://github.com/kay-a11y/aftermark/blob/main/jpg/theme.py){:target="_blank"}.
 
 <details>
 <summary>Click to preview the theme visualization</summary>
@@ -1192,14 +1194,14 @@ Only blur one channel, and merge with others:
 
 JPEG used DCT, so it threw away some frequency data. **JPEG's lossy compression** (especially DCT + quantization) makes it easier to *embed hidden data* in frequency space. **JPEG** is almost always **8-bit/channel**, 0-255 shades of red, green, and blue, which make it lightweight, great for fast display or web use and good enough for human eyes.
 
-**PNG** is better for exact pixel control - which is perfect for *LSB watermarking* or pixel-aligned visual hiding - but harder to *stealth hide* in frequency space, since it doesn't use one. **PNG** can do **8 or 16 bits/channel**, 0-65535 shades. This makes it super fine detail, but big size. Sharper gradients, better for **editing**, like medical or astronomical images.
+**PNG** is better for exact pixel control, which is perfect for *LSB watermarking* or pixel-aligned visual hiding, but harder to *stealth hide* in frequency space, since it doesn't use one. **PNG** can do **8 or 16 bits/channel**, 0-65535 shades. This makes it super fine detail, but big size. Sharper gradients, better for **editing**, like medical or astronomical images.
 
 **For watermarking**, higher bit-depth do give **more room to hide stuff**.
 And for 8-bit JPEG we have to be creative, like with [DCT](#jsteg---dct-embedding).
 
 **cat.jpg = 7.5 MB**, while **cat.png ≈ 34.7 MB** (see [size calculation](#in-rgb-3-channels) for details).
 
-Try converting `cat.jpg` to PNG and watch how it *blows up* in size. And convert it *back* to JPG**:
+Try converting `cat.jpg` to PNG and watch how it *blows up* in size. And convert it *back* to JPG:
 
 ```bash
 convert cat.jpg cat_from_jpg.png
@@ -1215,10 +1217,10 @@ Output (partial):
 6.2M   cat_rejpg.jpg
 ```
 
-* cat_from_jpg.png: [24MB] for the PNG is still thicc! The cat's pixels are living large and uncompressed. Big, lossless, preserves *all* bits as-is, including all JPG artifacts
-* `cat_rejpg.jpg`: [6.2MB] The file size shrinks back down. The image **loses even more detail** - especially in smooth areas or in the LSBs.
+* `cat_from_jpg.png`: [24MB] for the PNG is still thicc! The cat's pixels are living large and uncompressed. Big, lossless, preserves *all* bits as-is, including all JPG artifacts
+* `cat_rejpg.jpg`: [6.2MB] The file size shrinks back down. The image **loses even more detail**, especially in smooth areas or in the LSBs.
 
-If you do this conversion *repeatedly* (JPG → PNG → JPG → PNG), the image quality keeps degrading, and the LSB stego data dies fast. What if `cat.jpg` gone wild - [let's try JPG → PNG → JPG → PNG, over and over again](https://github.com/kay-a11y/aftermark/blob/main/jpg/jpeg_gonewild.py)...
+If you do this conversion *repeatedly* (JPG → PNG → JPG → PNG), the image quality keeps degrading, and the LSB stego data dies fast. What if `cat.jpg` gone wild - [let's try JPG → PNG → JPG → PNG, over and over again](https://github.com/kay-a11y/aftermark/blob/main/jpg/jpeg_gonewild.py){:target="_blank"}...
 
 Here I tested for 100 times, just for fun:
 
@@ -1251,9 +1253,7 @@ When ping-pong between JPG and PNG:
 
 * **JPG** compresses hard, tossing subtle pixel values. After the first few rounds, all the "fine details" are already lost. Then JPEG can't compress what isn't there.
 
-* **PNG** tries to preserve the exact data it gets from that JPG, but, after just a few rounds, **all further loss is minimal** because the image is already "as compressed as JPEG wants." The file size for both formats stabilizes:
-  * PNG size stays basically the same (22.8 MB).
-  * JPG size hovers (4.1 MB).
+* **PNG** tries to preserve the exact data it gets from that JPG, but, after just a few rounds, **all further loss is minimal** because the image is already "as compressed as JPEG wants."
 
 So we'd see:
 
@@ -1277,7 +1277,7 @@ After 100 rounds of recompression and re-encoding, the file stabilizes at ~4.1 M
 ## Applying DCT & Quantization on Y Channel Blocks
 
 We'll **manually apply DCT to the Y channel**, quantize it using **a single matrix**, and then **visualize the DCT blocks** - to explore what frequency components are present across the image.  
-(See [`freq_heatmap.py`](https://github.com/kay-a11y/aftermark/blob/main/jpg/freq_heatmap.py). Tinkering with [`pixel_shifting.py`](https://github.com/kay-a11y/aftermark/blob/main/jpg/pixel_shifting.py) and [`subplot_mx.py`](https://github.com/kay-a11y/aftermark/blob/main/jpg/subplot_mx.py) would help better understand this script.)
+(See [`freq_heatmap.py`](https://github.com/kay-a11y/aftermark/blob/main/jpg/freq_heatmap.py){:target="_blank"}. Tinkering with [`pixel_shifting.py`](https://github.com/kay-a11y/aftermark/blob/main/jpg/pixel_shifting.py){:target="_blank"} and [`subplot_mx.py`](https://github.com/kay-a11y/aftermark/blob/main/jpg/subplot_mx.py){:target="_blank"} would help better understand this script.)
 
 Here we generate a **grid of 64 heatmaps**, each representing a single **8×8 DCT frequency block**.
 
@@ -1360,7 +1360,7 @@ Let's recap and draw more ACSIIs:
     * **Each coloured square** is one 8×8 **frequency matrix** (quantized coefficients).
     * We displayed the *first 64* of them in an 8×8 collage.
 
-We can also [try different quantization matrices](https://github.com/kay-a11y/aftermark/blob/main/jpg/freq_heatmap_diff.py), to see how JPEG quantization matrix affects the frequency details of image blocks:
+We can also [try different quantization matrices](https://github.com/kay-a11y/aftermark/blob/main/jpg/freq_heatmap_diff.py){:target="_blank"}, to see how JPEG quantization matrix affects the frequency details of image blocks:
 
 ![freq_heatmaps_diff](/assets/img/posts/aftermark/freq_heatmaps_diff.png)
 
@@ -1379,9 +1379,9 @@ Later we would:
 
 ## JSteg - DCT Embedding
 
-[dct_embed_single.py](https://github.com/kay-a11y/aftermark/blob/main/jpg/dct_embed_single.py)
+[dct_embed_single.py](https://github.com/kay-a11y/aftermark/blob/main/jpg/dct_embed_single.py){:target="_blank"}
 
-Here we want to embedd **1 bit** of our message ("uid:123456789") into **1 block**. This is very similar with [**LSB steganography** process](#lsb-embedding), but in **DCT frequency space**. This keeps visual quality much higher than LSB-in-pixels. We're slicing that UID (converted into binary) into individual bits:
+Here we want to embedd **1 bit** of our message ("uid:123456789") into **1 block**. This is very similar with [**LSB steganography** process](#lsb-embedding), but in **DCT frequency space**. Using DCT-space embedding keeps visual quality higher than doing LSB manipulation directly in the pixel values. We're slicing that UID (converted into binary) into individual bits:
 
 ```txt
 "uid:123456789" → '01110101 01101001 01100100...' (binary of ASCII)
@@ -1457,8 +1457,7 @@ This method is *robustly invisible* especially if embed **one bit per block** an
 
 ### Weak & attacks
 
-This method (LSB embedding in the Y channel in DCT domain) is still **very weak**.  
-There are plenty of attacks that can easily break or destroy the hidden data.
+This method (LSB embedding in the Y channel in DCT domain) is still **very weak**. There are plenty of attacks that can easily break or destroy the hidden data.
 
 1. **Lossy Compression (JPEG again)**
 
@@ -1466,7 +1465,7 @@ There are plenty of attacks that can easily break or destroy the hidden data.
 
         * Re-quantize
         * Kill subtle LSB tweaks
-        * Result: your secret bits → *gone*
+        * Result: your secret bits *gone*
 
 2. **Image Filtering / Noise / Blur**
 
@@ -1518,7 +1517,7 @@ convert cat_stego.jpg -resize 50% resized.jpg
 
 ```
 
-Then decode the result by [uncommenting `mass decoding` section in the script](https://github.com/kay-a11y/aftermark/blob/main/jpg/dct_decode_single.py). Here's the output (brief version):
+Then decode the result by [uncommenting `mass decoding` section in the script](https://github.com/kay-a11y/aftermark/blob/main/jpg/dct_decode_single.py){:target="_blank"}. Here's the output (brief version):
 
 ```yaml
 [cat_stego.jpg]:
@@ -1551,7 +1550,7 @@ decoded_text =B@@!`@à
 
 2. **Blurred - failed (blank)**
 
-    Blurring smooths out local contrast and edges, which **directly modifies the DCT coefficients** - especially mid-frequency ones like `[4][3]`. This "averaging" kills the details we were hiding bits in.
+    Blurring smooths out local contrast and edges, which **directly modifies the DCT coefficients**, especially mid-frequency ones like `[4][3]`. This "averaging" kills the details we were hiding bits in.
 
 3. **JPEG Compression (survived until quality 35)**
 
@@ -1597,7 +1596,7 @@ Chroma channel watermarking is **fragile** under most processing. Equalization e
 * ✗ Like before, **every attack** kills the payload.
 * **`equalized`** again gets weird: `hd:04$39`.
 
-Cr behaves like Cb - very stealthy, doesn't affect image visibly, but gets messed up easily by any processing that touches colors.
+Cr behaves like Cb, very stealthy, doesn't affect image visibly, but gets messed up easily by any processing that touches colors.
 
 ---
 
@@ -1607,7 +1606,7 @@ Cr behaves like Cb - very stealthy, doesn't affect image visibly, but gets messe
 
     **Embed the exact same UID** into **Y**, **Cb**, and **Cr** channel. **All using the *same coefficient position*, like `[4][3]`.** Hiding three backup copies, so if one vault gets blown up (say Cb gets EQ'd), you can still recover from Y or Cr.
 
-    Then on **decode**, check all three, and pick the one that gives a readable output. Or, do a [majority vote](https://github.com/kay-a11y/aftermark/blob/main/jpg/dct_decode_majority.py) per bit to reduce noise.
+    Then on **decode**, check all three, and pick the one that gives a readable output. Or, do a [majority vote](https://github.com/kay-a11y/aftermark/blob/main/jpg/dct_decode_majority.py){:target="_blank"} per bit to reduce noise.
 
 2. **Redundant Embedding Within One Channel (Spread Across Positions)**
 
@@ -1624,7 +1623,7 @@ Cr behaves like Cb - very stealthy, doesn't affect image visibly, but gets messe
 
 ### Majority vs Or
 
-Actually [the quick "majority" demo](https://github.com/kay-a11y/aftermark/blob/main/jpg/dct_decode_majority.py) felt *worse*:
+Actually [the quick "majority" demo](https://github.com/kay-a11y/aftermark/blob/main/jpg/dct_decode_majority.py){:target="_blank"} felt *worse*:
 
 * It reads the **same bit** from Y *and* Cb *and* Cr, then does `bit = 1 if sum≥2 else 0`.
 
@@ -1632,7 +1631,7 @@ Actually [the quick "majority" demo](https://github.com/kay-a11y/aftermark/blob/
 
 So if chroma copies are "all-zero", they actually out-vote the good Y copy.
 
-**[Bit-wise *OR*](https://github.com/kay-a11y/aftermark/blob/main/jpg/dct_decode_or.py) (any channel can rescue)**:
+**[Bit-wise *OR*](https://github.com/kay-a11y/aftermark/blob/main/jpg/dct_decode_or.py){:target="_blank"} (any channel can rescue)**:
 
 `bit = Y ∨ Cb ∨ Cr` (i.e., 1 if *any* copy is 1). If a channel is destroyed to zeros, it can't "over-rule" the good copy. 
 
@@ -1686,11 +1685,11 @@ Suppose each **ASCII byte** (8 bits) we embed is followed by **one parity bit**:
 
    *Re-count* 1-bits you extracted.
    *Compare* with the parity bit.
-   *Mismatch?* That byte got hit by at least one error → you can flag it or attempt a retry / ignore.
+   If *mismatch*, that byte got hit by at least one error. You can flag it or attempt a retry / ignore.
 
 **Parity detects**, but can't fix, a single-bit error. For *correction* we'd step up to **Hamming(12, 8)** or **BCH(15, 11)** - tiny ECCs that both *detect* and *repair* any 1-bit flub in each byte.
 
-Let's see [how parity applies to `"1234"` example](https://github.com/kay-a11y/aftermark/blob/main/jpg/parity.py):
+Let's see [how parity applies to `"1234"` example](https://github.com/kay-a11y/aftermark/blob/main/jpg/parity.py){:target="_blank"}:
 
 ```python
 UID = '1234'
@@ -1759,7 +1758,7 @@ print(bits)
 
 **Parity** lets you check for errors: If you decode a byte+parity and the total 1s is odd, you *know* a bit was changed.
 
-While decoding and Checking Parity**:
+While decoding and Checking Parity:
 
 1. Take every **9 bits**: first 8 bits = data, 9th = parity.
 2. **Count the 1s** in all 9 bits.
@@ -1909,22 +1908,22 @@ Recovery:  [ 7 3  9 c1 c2 ]
 
 ## Modern Watermarking
 
-1. **Legacy LSB (Like What We Did)**
+1. **Legacy LSB (tested)**
 
     Old school: Flip LSBs in pixel values or DCT coefficients. Easy to implement, easy to break with heavy edits.
 
-2. **DCT/Block-Based Stego (Your Recent Experiments)**
+2. **DCT/Block-Based Stego (tested)**
 
     Slightly more robust: Hide data in DCT blocks, usually in mid-frequency coefficients (not just `[4][3]` - can be scattered). Can survive mild compression, but fails under heavy attack.
 
 3. **Visible "Snow" Patterns**
 
-    Douban's "anti-leech"/"copy protection" overlays a *partially visible* pattern (the snow/lego effect you see when equalizing). This *isn't* pure LSB-it's an actual visible pattern, generated algorithmically, often tied to your UID/timestamp. The pattern is rendered **on top** of the image before you see/download it. It's *baked in* - no magic decoding can reveal the data, but it's easily *seen* with image enhancement.
+    Douban's "anti-leech"/"copy protection" overlays a *partially visible* pattern (the snow/lego effect we see when equalizing). This *isn't* pure LSB, it's an actual visible pattern, generated algorithmically, often tied to your UID/timestamp. The pattern is rendered **on top** of the image before you see/download it. It's *baked in*, no magic decoding can reveal the data, but it's easily *seen* with image enhancement.
 
 4. **Invisible Frequency/Watermark Techniques**
 
     * **DCT domain with secret key**: Data hidden in more complex patterns, possibly using pseudo-random positions, error correction, or even cryptographic keys.
-    * **Spread Spectrum**: Data is "spread" across many coefficients or pixels, not in a single place - very robust.
+    * **Spread Spectrum**: Data is "spread" across many coefficients or pixels, not in a single place, very robust.
     * **Deep Learning Watermarks (SOTA)**: Watermarks embedded using neural nets, almost impossible to visually detect or remove without destroying the image.
 
 5. **Metadata/XMP Watermarks**
@@ -1956,11 +1955,11 @@ C. **For Advanced (Spread/Frequency/Deep Learning):**
 * **Downscale/Upcale** (e.g. 100%→90%→100%).
 * **Image-to-image** with local AI (Denoising, Stable Diffusion outpainting).
 * **Paint over "signature" areas** (if you can spot them).
-* *But:* If it's really robust (deep learning watermark), you may need to just take a another shot(with nother camera) of your screen, but still not 100% robust.
+* But if it's really robust (deep learning watermark), you may need to just take a another shot(with nother camera) of your screen, but still not 100% robust.
 
 ## nuke
 
-(See [nuke.py](https://github.com/kay-a11y/aftermark/blob/main/aftermark/cli/nuke.py))
+(See [nuke.py](https://github.com/kay-a11y/aftermark/blob/main/aftermark/cli/nuke.py){:target="_blank"})
 
 a. *Optional*: Crop the top `N` pixels
 
@@ -2001,7 +2000,7 @@ img = img.transform(
   | 0  1  jit_y |
   ```
 
-This *moves every pixel* by a tiny amount: `+0.37 px` in x, `+0.19 px` in y (i.e., a subtle jitter). The transform "nudges" the whole image by a *fractional pixel*, not a full-pixel shift. The resampling (BICUBIC) blends/interpolates, so every pixel becomes a weighted sum of its neighbors. (I REALLY recommend [`OpenCV with Python By Example (Prateek Joshi)`](https://oceanofpdf.com/authors/prateek-joshi/pdf-epub-opencv-with-python-by-example-download/) for this part.)
+This *moves every pixel* by a tiny amount: `+0.37 px` in x, `+0.19 px` in y (i.e., a subtle jitter). The transform "nudges" the whole image by a *fractional pixel*, not a full-pixel shift. The resampling (BICUBIC) blends/interpolates, so every pixel becomes a weighted sum of its neighbors. (I REALLY recommend [`OpenCV with Python By Example (Prateek Joshi)`](https://oceanofpdf.com/authors/prateek-joshi/pdf-epub-opencv-with-python-by-example-download/){:target="_blank"} for this part.)
 
 **LSB-based overlays** (snow/watermark) are extremely fragile - they depend on *exact* pixel alignment. **Fractional-pixel jitter** is like "shaking" the pixels just enough so their LSBs get totally changed after resampling. It's NOT a round shift (which would leave the pattern), but a smooth blend. *Almost no snow pattern* can survive this, because the bits get mixed up, and the watermark "breaks apart." Histogram equalization after this will reveal no more pattern - just noise made dramatic by equalisation:
 
@@ -2016,7 +2015,7 @@ You can randomize `jit_x`/`jit_y` per image for even more chaos. This trick work
 
 Visual impact: **nearly invisible**.
 
-f. (Optional) global 3×3 median to smooth tje noise (optional)  
+f. (Optional) global 3×3 median to smooth the noise (optional)  
 `img = img.filter(ImageFilter.MedianFilter(3))`  
 **Light median on the *entire* image** after the jitter (radius = 1).  
 Visual impact: *Kills isolated pixels but keeps UI text crisp.*
@@ -2050,7 +2049,7 @@ exiftool -all= -overwrite_original img.jpg
 
 ## Nautilus Right-Click Magic (GNOME)
 
-If you are in Linux and using **GNOME**, I **really** recomend this right click trick - one click to nuke hidden watermark.
+If you are in Linux and using **GNOME**, I **highly** recomend this right click trick - one click to nuke hidden watermark.
 
 Install `xclip` and `aftermark` first:
 
@@ -2068,8 +2067,8 @@ mkdir -p ~/.local/share/nautilus/scripts
 Create the script:
 
 ```bash
-`mkdir -p ~/.local/share/nautilus/scripts`
-`nano ~/.local/share/nautilus/scripts/nuke`
+mkdir -p ~/.local/share/nautilus/scripts
+nano ~/.local/share/nautilus/scripts/nuke
 ```
 
 Paste:
