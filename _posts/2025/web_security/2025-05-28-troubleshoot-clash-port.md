@@ -11,8 +11,8 @@ comments: true
 image: /assets/img/posts/clash_troubleshooting.png
 ---
 
-> **⚠️ WARNING:** If you're using a non-jailbroken iPhone, you may need to use `Shadowrocket` make this Pi + Clash setup work properly.  
-> 📱 **Make sure your phone or router allows IPv6 to be disabled** *before* you commit to this setup.  
+> If you're using a non-jailbroken iPhone, you may need to use `Shadowrocket` make this Pi + Clash setup work properly.  
+> **Make sure your phone or router allows IPv6 to be disabled** *before* you commit to this setup.  
 
 ---
 
@@ -20,11 +20,10 @@ So let's say you've successfully set up Pi-hole for all your devices-your Phone,
 
 But then... the network gets way more complex than I ever expected.  
 Back when things were simpler, I could handle everything just fine.  
-But BOOM - packets started getting messed up, ports got phucked. ⛓️‍💥  
+But BOOM, packets started getting messed up, ports got phucked.
 
-Don't panic.  
 I finally managed to troubleshoot everything after several hours (and yeah, I'm still kinda confused about what's actually happening under the hood).  
-Hopefully, anyone reading this can solve similar issues too - *and faster than I did!!* 🐣
+Hopefully, anyone reading this can solve similar issues too, *and faster than I did!!*
 
 ---
 
@@ -174,18 +173,18 @@ Even Grandma prefers a GUI - and honestly? So do I.
 
 ---
 
-> ⚠️ **WARNING:** Make sure you've **backed up** your config file or your subscription link before you wipe anything!
+> **WARNING:** Make sure you've **backed up** your config file or your subscription link before you wipe anything!
 
-### 1. ❌ Uninstall the current one:
+### 1. Uninstall the current one
 
 ```bash
 sudo apt remove clash-verge
 sudo apt purge clash-verge
 ```
 
-💡 *"Purge" deletes config files stored in system paths (but not in `~/.config/`)*
+*"Purge" deletes config files stored in system paths (but not in `~/.config/`)*
 
-### 2. 🧹 Clean leftover user configs:
+### 2. Clean leftover user configs
 
 ```bash
 rm -rf ~/.config/clash-verge*
@@ -198,7 +197,7 @@ Optional:
 rm -rf ~/.config/clash/
 ```
 
-### 3. ✅ Reinstall the latest .deb:
+### 3. Reinstall the latest .deb
 
 ```bash
 wget https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v2.2.3/Clash.Verge_2.2.3_amd64.deb
@@ -266,7 +265,7 @@ nameserver:
 
 ```
 
-👉 **DO NOT** use any Pi IP for DNS inside Clash, or it will break when Pi is off.
+**DO NOT** use any Pi IP for DNS inside Clash, or it will break when Pi is off.
 
 ---
 
@@ -298,11 +297,11 @@ sudo sysctl -p
   * `Shadowrocket` can effectively block IPv6 traffic on iPhone.
   * IPv6 can leak **even without a DNS leak** - every device gets a unique, traceable IPv6 address.
 
-> ⚠️ **If you're using a non-jailbroken iPhone, enable `shadowrocket` in `DIRECT` with a proper config file, or this Pi + Clash setup could still result in an IPv6 leak.**
+> **If you're using a non-jailbroken iPhone, enable `shadowrocket` in `DIRECT` with a proper config file, or this Pi + Clash setup could still result in an IPv6 leak.**
 
 ---
 
-##### 🔍 How to Check If IPv6 Is Fully Disabled (CLI Style)
+##### 🔍 How to Check If IPv6 Is Fully Disabled
 
 ```bash
 ip a | grep inet6
@@ -319,8 +318,8 @@ Or this:
 cat /proc/sys/net/ipv6/conf/all/disable_ipv6
 ```
 
-* If it returns `1` → IPv6 is disabled ✅
-* If it returns `0` → still active ⚠️
+* If it returns `1` → IPv6 is disabled
+* If it returns `0` → still active
 
 Also check with [ip.sb](https://ip.sb/).
 
@@ -342,10 +341,10 @@ Also check with [ip.sb](https://ip.sb/).
 
     ![clash_verge_port_config_0](/assets/img/posts/clash_verge_port_config_0.png)
 
-4. **Click SAVE**. 🧿
+4. **Click SAVE**.
 5. Restart the core (or restart Clash Verge if needed).
 
-### 🖤 TL;DR Cheat Sheet
+### TL;DR Cheat Sheet
 
 | Feature       | Should Be...    | Why                               |
 | ------------- | --------------- | --------------------------------- |
@@ -359,7 +358,7 @@ Also check with [ip.sb](https://ip.sb/).
 
 ## 🧠 Final Troubleshoot!
 
-Make sure you can successfully select a node - no more "all timeout"!
+Make sure you can successfully select a node, no more "all timeout"!
 
 *You're doing so good right now!* 😼 Try:
 
@@ -426,7 +425,7 @@ in Git config.
 
 But in this case, the proxy **isn't** running on `127.0.0.1:7890`.
 
-(Yeah - even if you explicitly set the `Mixed Port` to `7890`, it might not apply immediately.)
+(Yeah, even if you explicitly set the `Mixed Port` to `7890`, it might not apply immediately.)
 
 Instead, it could be using **a different port** - like that `33331` I showed you earlier using `lsof`.
 
@@ -459,13 +458,11 @@ http://127.0.0.1:33331
 http://127.0.0.1:33331
 ```
 
-Sure, that works for Git - mostly.
+Sure, that works for Git mostly.
 
-But `pip`? Yeah… it still probably won't work.
+But `pip` still probably won't work.
 
 And just in case the weird port changes again for some unknown reason...
-
-Don't worry - I've got a **better way** right here. 👇🏻
 
 ---
 
@@ -490,6 +487,9 @@ nano ~/bashrc
 Add the following lines at the end of the file:
 
 ```bash
+# 🚫 Always skip proxy for local/private addresses
+export NO_PROXY="localhost,127.0.0.1,::1,192.168.0.0/16,10.0.0.0/8,172.16.0.0/12"
+
 # 🌩️ Clash Proxy for tools like curl/pip
 export http_proxy="http://127.0.0.1:7892"
 export https_proxy="http://127.0.0.1:7892"
@@ -506,7 +506,10 @@ alias proxy-on-clash='export http_proxy="http://127.0.0.1:7892"; export https_pr
 alias proxy-off='unset http_proxy https_proxy all_proxy'
 
 # 💡 Check current status
-alias proxy-status='echo "🌐 http_proxy: $http_proxy"; echo "🧊 https_proxy: $https_proxy"; echo "🕳️ all_proxy: $all_proxy"'
+alias proxy-status='echo "🌐 http_proxy: $http_proxy"; \
+                    echo "🧊 https_proxy: $https_proxy"; \
+                    echo "🕳️ all_proxy: $all_proxy"; \
+                    echo "🚫 no_proxy: $NO_PROXY"'
 ```
 
 Now try `pip` again, and HELL YEA! That's what we are talking about! 😾
@@ -515,7 +518,7 @@ Now try `pip` again, and HELL YEA! That's what we are talking about! 😾
 
 ##### 1️⃣ The **`git config`** ones (e.g. `git-proxy-clash`)
 
-👉 They **only affect Git**, and they **persist globally** (across reboots/shells) because they directly modify your Git config:
+They **only affect Git**, and they **persist globally** (across reboots/shells) because they directly modify your Git config:
 
 ```bash
 git config --global http.proxy ...
@@ -523,7 +526,7 @@ git config --global http.proxy ...
 
 They are **stored in `~/.gitconfig`**, so even if you reboot or close your terminal, Git will still use the proxy until you `unset`.
 
-💡 **Use this when:**
+**Use this when:**
 
 * You're having trouble pushing/pulling from GitHub or GitLab behind internet restrictions
 * You want Git to always use a specific proxy no matter the shell or script
@@ -532,15 +535,15 @@ They are **stored in `~/.gitconfig`**, so even if you reboot or close your termi
 
 ##### 2️⃣ The **`export http_proxy`** ones (e.g. `proxy-on`)
 
-👉 These affect **the whole shell environment**, and work with any CLI tool that respects `http_proxy`, `https_proxy`, and `all_proxy`, like:
+These affect **the whole shell environment**, and work with any CLI tool that respects `http_proxy`, `https_proxy`, and `all_proxy`, like:
 
 * `pip`
 * `wget`, `curl`
 * `npm`
 * `apt`, etc.
-  ⚠️ But they **only last for the current terminal session**, unless added to `~/.zshrc`.
+  But they **only last for the current terminal session**, unless added to `~/.zshrc`.
 
-💡 **Use this when:**
+**Use this when:**
 
 * You want tools like `pip`, `curl`, `npm` to go through your proxy
 * You're temporarily testing something in a shell session
@@ -555,7 +558,7 @@ export all_proxy="socks5://127.0.0.1:7892"
 
 This means:
 
-➡️ "**Any program that understands `all_proxy`** (like `curl`, `apt`, or some Python scripts) should send *all* network traffic through a **SOCKS5 proxy** at `127.0.0.1:7892`."
+"**Any program that understands `all_proxy`** (like `curl`, `apt`, or some Python scripts) should send *all* network traffic through a **SOCKS5 proxy** at `127.0.0.1:7892`."
 
 ###### 🔧 Tools That Expect SOCKS?
 
@@ -565,13 +568,9 @@ These are apps or environments that read `all_proxy` and route **all protocols**
 * `apt` (if explicitly configured to use SOCKS)
 * `python requests` if you set `all_proxy`
 * `conda`, `npm`, and even **some Electron-based apps**
-* 🧙‍♀️ **Git** (in some cases) - mostly prefers `http_proxy`, but fallback is possible
+* **Git** (in some cases) - mostly prefers `http_proxy`, but fallback is possible
 
 ---
-
-### 🤔 Should you keep this block?
-
-#### 🧩 What's happening now:
 
 * ✅ `Mixed Port` (7890): **for GUI, internal core, or apps like Clash Dashboard**
 * ✅ `HTTP(S) Port` (7892): **for pip, curl, git**
@@ -583,26 +582,15 @@ Once you found:
 verge-mih 17100 root ... TCP localhost:7890 (LISTEN)
 ```
 
-That means Clash Verge's **core is alive and well**. Your whole kingdom is back online 🏰.
+That means Clash Verge's **core is alive and well**. Your whole kingdom is back online.
 
----
-
-#### 💡 Then should you still keep this?
-
-```bash
-# 🌩  Clash Proxy for tools like curl/pip
-export http_proxy="http://127.0.0.1:7892"
-export https_proxy="http://127.0.0.1:7892"
-export all_proxy="socks5://127.0.0.1:7891"
-```
-
-**YES!** This is *golden* if:
+This is *golden* if:
 
 * You wanna install packages (`pip`, `npm`, `curl`, etc.) over internet restrictions
-* You have `SOCKS` toggle on ✅
+* You have `SOCKS` toggle on
 * You're switching tools and protocols without confusion
 
-🔧 *Extra note:* if the SOCKS toggle is off, the `all_proxy=socks5://127.0.0.1:7891` would silently fail for tools that try SOCKS only (like some weird `apt` or IRC clients). So **yes**, keep both 7891 + 7892 toggled **on** if you're setting all three proxy envs.
+*Extra note:* if the SOCKS toggle is off, the `all_proxy=socks5://127.0.0.1:7891` would silently fail for tools that try SOCKS only (like some weird `apt` or IRC clients). So keep both 7891 + 7892 toggled **on** if you're setting all three proxy envs.
 
 ## 🐈 Final Thoughts for Pi + Clash
 
@@ -612,10 +600,10 @@ Pi does work great with Clash CLI - no doubt. But if you:
 * like to frequently tinker with proxy clients on your PC  
 * prefer more control and flexibility in your network setup  
 
-Then maybe just leave your Pi's *phree* internet for your other devices - like your phone, iPad, etc.
+Then maybe just leave your Pi's *phree* internet for your other devices like your phone, iPad, etc.
 
-And seriously - **don't use the Pi's DNS on your PC**.  
-Just activate your proxy directly on the PC, and go wild with your own rules and configs. ⚡
+And seriously, **don't use the Pi's DNS on your PC**.  
+Just activate your proxy directly on the PC, and go wild with your own rules and configs.
 
 <div style="display: flex; justify-content: center; align-items: center; margin: 1em 0;">
   <div style="position: relative; display: inline-block; width: 150px; height: auto;">

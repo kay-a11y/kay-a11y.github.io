@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Building a Pi-Hole DNS Firewall with Clash VPN Routing - Wireless, Leak-Free, No-Cable Setup"
+title: "Building a Pi-Hole DNS Firewall with Clash VPN Routing"
 description: 
 date: 2025-05-27 18:40:00 +0800
 categories: [🤖 tech, 🔒 Web Security]
@@ -11,14 +11,14 @@ comments: true
 image: /assets/img/posts/pi_hole.png
 ---
 
-> **⚠️ WARNING:** If you're using a non-jailbroken iPhone, you need to use `Shadowrocket` to fit this Pi + Clash setup.  
-> 📱 **Make sure your phone or router allows IPv6 to be disabled** *before* you commit to this setup.  
-> **🪛 <a href="https://kay-a11y.github.io/posts/troubleshoot-clash-port/" target="_blank" rel="noopener noreferrer">check this post</a> for more troubleshooting.**
+> If you're using a non-jailbroken iPhone, you need to use `Shadowrocket` to fit this Pi + Clash setup.  
+> **Make sure your phone or router allows IPv6 to be disabled** *before* you commit to this setup.  
+> **<a href="https://kay-a11y.github.io/posts/troubleshoot-clash-port/" target="_blank" rel="noopener noreferrer">check this post</a> for more troubleshooting.**
 
 ---
 
 So here's the deal.  
-I'm still pretty fresh to Raspberry Pi and all that terminal kung fu, but I made the damn thing **my personal digital sniper**-silently blocking ads, hijacking DNS, and routing all my traffic through encrypted tunnels like a stealthy lil fox in black hoodie mode.
+I'm still pretty fresh to Raspberry Pi and all that terminal kung fu, but I made the damn thing **my personal digital sniper**, silently blocking ads, hijacking DNS, and routing all my traffic through encrypted tunnels like a stealthy lil fox in black hoodie mode.
 
 > No more phucking ISP tracking.  
 > No more random DNS leaks.  
@@ -36,9 +36,9 @@ This blog is for my fellow rebels who wanna:
 * 🚫 Keep ad-blocking strong on **DIRECT traffic**, even when things get tangled with proxies
 * 🔌 SSH into the Pi **wirelessly**, like a damn boss-no HDMI, no cables, no mess
 * 🧠 Build a setup that **routes traffic smart**, not blindly through your PHREAKIN' ISP
-* 🔒 **Avoid DNS leaks** like the plague and keep your data where it belongs - **with you**
+* 🔒 **Avoid DNS leaks** like the plague and keep your data where it belongs **with you**
 
-Trust me - once you taste this kind of setup freedom, you'll never wanna go back to vanilla internet.
+Once you taste this kind of setup freedom, you'll never wanna go back to vanilla internet.
 
 ---
 
@@ -147,9 +147,7 @@ This will launch a guided terminal installer that will ask you:
    ❌ Make sure `eth0` is unselected (just one should be checked)
 
 3. **DNS provider**  
-   🕘 Start with Quad9 (filtered, DNSSEC) since we don't have a VPN set up yet.
-
-   ☁️ Once the VPN's ready, switch to Cloudflare (DoH or DoT) for better privacy.
+   🕘 Start with Quad9 (filtered, DNSSEC).
 
 4. **Blocklists**  
    ✔️ Use the default ones - you can add more later.
@@ -185,7 +183,7 @@ to change it.
 
 ---
 
-### 🔥 Now access it
+### Now access it
 
 Open a browser and go to:
 
@@ -195,11 +193,11 @@ http://<PI_IP>/admin
 
 Login, poke around!
 
-#### 😽 Recommend Blocklist
+#### Recommend Blocklist
 
-In `Lists` ➡️ `Address:` ➡️ `Add blocklist`
+In `Lists` -> `Address:` -> `Add blocklist`
 
-You can add these URL **one by one**. ⬇️
+You can add these URL **one by one**.
 
 ```txt
 https://adaway.org/hosts.txt
@@ -217,7 +215,7 @@ then
 sudo pihole -g
 ```
 
-or `Tools` ➡️ `Update Gravity` ➡️ `Update`
+or `Tools` -> `Update Gravity` -> `Update`
 
 ---
 
@@ -238,10 +236,10 @@ Go to your phone's **Wi-Fi > Network details > IP settings** → switch to **Sta
 
 ### 💬 TL;DR first
 
-> You can run a **VPN (like Clash / V2RayN)** on your Pi while still using **Pi-hole as DNS** for all your devices, so:
+> You can run a **VPN (like Clash / V2Ray)** on your Pi while still using **Pi-hole as DNS** for all your devices, so:
 
-* You block ads + trackers 🎯
-* You **don't need to run VPN on every device** 🧘‍♀️
+* You block ads + trackers
+* You **don't need to run VPN on every device**
 
 ---
 
@@ -263,28 +261,22 @@ When you **run VPN** on your device, one of two things happens:
 
 | Situation                                           | Result                                      |
 | --------------------------------------------------- | ------------------------------------------- |
-| VPN forces DNS over its own server                  | ❌ Pi-hole is bypassed entirely              |
-| VPN sends all traffic (incl DNS) through its tunnel | 😢 Local ISP is bypassed, but ad blocking is gone |
+| VPN forces DNS over its own server                  | Pi-hole is bypassed entirely              |
+| VPN sends all traffic (incl DNS) through its tunnel | Local ISP is bypassed, but ad blocking is gone |
 
 So you're either *free* but *unprotected*, or *blocked* but *adless*.
 That sucks. We want **BOTH**.
 
 ---
 
-### 🔥 Part 3: THE MASTERPLAN 💻🌍
+### 🔥 Part 3: THE MASTERPLAN
 
-What you really want is this:
-
-> 💡 **Use the Pi as a centralized VPN router** that:
+> **Use the Pi as a centralized VPN router** that:
 
 * Runs **Clash**
 * Routes all *international* traffic through the VPN
 * Keeps **DNS local** so Pi-hole still blocks stuff
-* Protects *all* devices in your network - **without installing VPN apps on them**
-
----
-
-#### 🍓 Dream Setup Diagram
+* Protects *all* devices in your network **without installing VPN apps on them**
 
 ```
 [All Devices]
@@ -300,7 +292,7 @@ What you really want is this:
 
 ---
 
-#### 🛠 How to Set It Up
+#### 🛠 Set It Up
 
 #### ✅ Install Clash on the Pi
 
@@ -347,8 +339,6 @@ sudo nano /root/.config/mihomo/config.yaml
 
 Paste in your config or YAML from your GUI-exported setup.  
 
----
-
 Or copy the config into your Pi from your PC:
 
 On PC:
@@ -366,7 +356,7 @@ sudo mv ~/config-temp.yaml /root/.config/mihomo/config.yaml
 
 ---
 
-#### change dns config
+#### DNS Config
 
 ```yaml
 mixed-port: 7890
@@ -383,16 +373,19 @@ secret: "<your_password>"
 dns:
   enable: true
   ipv6: false
-  listen: ':1053'
+  listen: '127.0.0.1:7875'
   default-nameserver:
-    - <PI_IP>
-  enhanced-mode: fake-ip
+    - 1.1.1.1
+    - 8.8.8.8
+  enhanced-mode: redir-host
+  use-hosts: true
+  respect-rules: true
   nameserver:
-    - <PI_IP>
+    - 127.0.0.1:53
   proxy-server-nameserver:
-    - <PI_IP>
+    - https://1.1.1.1/dns-query
   fallback:
-    - <PI_IP>
+    - https://cloudflare-dns.com/dns-query
   fallback-filter:
     geoip: true
     geoip-code: "<your_country_code>"
@@ -400,10 +393,9 @@ dns:
       - "<your_region_blocklist_or_category>"
 ```
 
-> * Applying `<PI_IP>` in `proxy-server-nameserver` and `fallback` only work IF Pi-hole resolves external domains reliably.  
-> * Use these ONLY if your Pi-hole's upstream DNS isn't trapped behind a firewall or failing requests.
-
 > Feel free to change `<your_password>`.
+
+> Restart to reload after editing the config file: `sudo systemctl restart mihomo`, then `SSH` to Pi again.
 
 ### Run clash and select your node
 
@@ -491,9 +483,9 @@ Let's make Mihomo auto-start on boot like a real daemon
    sudo systemctl status mihomo
    ```
 
-### 🔥 IP forwarding & iptables Setup
+### IP forwarding & iptables Setup
 
-#### Step 1: Enable IP forwarding on your Pi
+#### 1. Enable IP forwarding on your Pi
 
   ```bash
   echo 1 | sudo tee /proc/sys/net/ipv4/ip_forward
@@ -514,29 +506,99 @@ Let's make Mihomo auto-start on boot like a real daemon
 
 ---
 
-### Step 2: Setup iptables rules
+### 2. Setup iptables rules
 
-You're gonna redirect traffic from other devices to Clash.
+Redirect traffic from other devices to Clash. Transparent proxy for LAN (redir+TPROXY).
 
-**Example iptables setup:**
+Assume your Pi's LAN NIC is `eth0` and LAN = `192.168.100.0/24`. This:
+
+* Captures **TCP** to `redir-port 7892`
+* Captures **UDP (QUIC/DNS/… )** to `tproxy-port 7893`
+* Excludes local/LAN/broadcast/SSH
 
 ```bash
-sudo iptables -t nat -N CLASH
-sudo iptables -t nat -A CLASH -p tcp -j REDIRECT --to-ports 7892
-sudo iptables -t nat -A PREROUTING -s 192.168.1.0/24 -p tcp -j CLASH
+LAN_IF=wlan # edit this
+LAN_CIDR=192.168.100.0/24 # edit this
+CLASH_TCP=7892
+CLASH_TP=7893
+
+# ----- TCP (REDIR) -----
+sudo iptables -t nat -N CLASH || true
+sudo iptables -t nat -F CLASH
+
+# bypass LAN, router, and the Pi itself
+sudo iptables -t nat -A CLASH -d 192.168.0.0/16 -j RETURN
+sudo iptables -t nat -A CLASH -d 10.0.0.0/8     -j RETURN
+sudo iptables -t nat -A CLASH -d 172.16.0.0/12  -j RETURN
+sudo iptables -t nat -A CLASH -d 224.0.0.0/4    -j RETURN
+sudo iptables -t nat -A CLASH -d 255.255.255.255 -j RETURN
+sudo iptables -t nat -A CLASH -d 127.0.0.0/8    -j RETURN
+sudo iptables -t nat -A CLASH -d $(hostname -I | awk '{print $1}') -j RETURN
+
+# redirect TCP to Clash redir
+sudo iptables -t nat -A CLASH -p tcp -j REDIRECT --to-ports $CLASH_TCP
+
+# hook PREROUTING for LAN ingress
+sudo iptables -t nat -D PREROUTING -i $LAN_IF -j CLASH 2>/dev/null || true
+sudo iptables -t nat -A PREROUTING -i $LAN_IF -j CLASH
+
+# ----- UDP (TPROXY) -----
+sudo ip rule add fwmark 1 lookup 100 2>/dev/null || true
+sudo ip route add local 0.0.0.0/0 dev lo table 100 2>/dev/null || true
+
+sudo iptables -t mangle -N CLASH_UDP || true
+sudo iptables -t mangle -F CLASH_UDP
+
+# bypass LAN, router, multicast, loopback
+sudo iptables -t mangle -A CLASH_UDP -d 192.168.0.0/16 -j RETURN
+sudo iptables -t mangle -A CLASH_UDP -d 10.0.0.0/8     -j RETURN
+sudo iptables -t mangle -A CLASH_UDP -d 172.16.0.0/12  -j RETURN
+sudo iptables -t mangle -A CLASH_UDP -d 224.0.0.0/4    -j RETURN
+sudo iptables -t mangle -A CLASH_UDP -d 255.255.255.255 -j RETURN
+sudo iptables -t mangle -A CLASH_UDP -d 127.0.0.0/8    -j RETURN
+
+# send UDP into Clash TPROXY
+sudo iptables -t mangle -A CLASH_UDP -p udp -j TPROXY --on-port $CLASH_TP --tproxy-mark 0x1/0x1
+
+# mark packets so the ip rule picks them up
+sudo iptables -t mangle -D PREROUTING -i $LAN_IF -p udp -j CLASH_UDP 2>/dev/null || true
+sudo iptables -t mangle -A PREROUTING -i $LAN_IF -p udp -j CLASH_UDP
 ```
 
-> Replace `192.168.1.0/24` with your LAN subnet
+Exclude port 22 from redirection, keep SSH and LAN safe:
 
-💡 This redirects **all TCP traffic** from LAN devices through Clash's redir port.
+```bash
+sudo iptables -t nat -I CLASH -p tcp --dport 22 -j RETURN
+```
+
+### 3. Make It Stick (Persistence Setup)
+
+Install persistent rules:
+
+```bash
+sudo apt update
+sudo apt install iptables-persistent
+```
+
+Say **yes** when it asks to save your current rules.
+
+### 4. Save your working rules to disk
+
+```bash
+sudo iptables-save | sudo tee /etc/iptables/rules.v4
+```
+
+Check them again with:
+
+```bash
+sudo cat /etc/iptables/rules.v4
+```
 
 ---
 
-### 😼 Final Step: Set your Raspberry Pi as **default gateway** for your phone
+### Final: Set Raspberry Pi as **default gateway** for phone
 
-#### 🧪 Manual Gateway Setup on your Phone
-
-On your phone's Wi-Fi settings:
+On phone's Wi-Fi settings:
 
 1. Choose your current network
 2. Edit **IP Settings** → set to **Static**
@@ -552,69 +614,65 @@ On your phone's Wi-Fi settings:
 
 ---
 
-#### 🔁 Now test
+#### test
 
 ```bash
 curl https://api.myip.com
 ```
 
-From your phone (or go to [ipinfo.io](https://ipinfo.io)), and…
-
-> 🥁 You should see your **proxy IP**, NOT your local ISP.
+From your phone (or go to [ipinfo.io](https://ipinfo.io)), should see your **proxy IP**, NOT your local ISP.
 
 ---
 
-#### ☑️ Switch to Cloudflare
+#### Switch Pihole upstream
 
-Now the VPN's ready, switch your Pi-hole DNS setting to Cloudflare (DNSSEC) for better privacy.
+Now the node's ready, we can change Pi-hole DNS upstream to Clash.
 
-In `Settings` ➡️ `DNS` ➡️ Check these two boxes
+Make `/etc/resolv.conf` always point to Pi-hole.
 
-![Cloudflare_DNSSEC](/assets/img/posts/Cloudflare_DNSSEC.png)
+```bash
+sudo rm /etc/resolv.conf
+echo "nameserver 127.0.0.1" | sudo tee /etc/resolv.conf
+sudo chattr +i /etc/resolv.conf # unchangable
+# use `sudo chattr -i /etc/resolv.conf` to make it changable
+```
+
+In `Settings` -> `DNS` -> `Custom DNS servers`, type this only:
+
+```txt
+127.0.0.1#7875
+```
+
+Then reload Pi-hole DNS:
+
+```bash
+sudo pihole reloaddns
+```
+
+Now Pi-hole upstream always point to `127.0.0.1#7875` (mihomo)
 
 ---
 
-#### 🌷 What just happened?
-
-Before:
-
-```
-Phone → Router → internet
-```
-
-After:
-
-```
-Phone → Pi (iptables trap!) → Mihomo → Proxy node → Free internet
-```
-
----
-
-## 🔍 What DNS Really Does
+## What DNS Really Does
 
 DNS = Domain Name System
 It's like the **phonebook of the internet**-turning names like `spotify.com` into IP addresses like `35.186.224.25` so your device knows where to connect.
 
----
-
-### 💡 So When You Use Pi-hole as DNS
-
-* **Pi-hole becomes the phonebook** 📖
-* Anyone using your Pi-hole to resolve DNS (like your Phone) is asking **your Pi-hole**:
+So When You Use Pi-hole as DNS, **Pi-hole becomes the phonebook**. Anyone using your Pi-hole to resolve DNS (like your Phone) is asking **your Pi-hole**:
 
   > "Yo, what's the IP of `doubleclick.net`?"
 
 And your Pi-hole can:
 
-* 🧱 Block domains you blacklist
-* 🕵️ Log every domain someone asks
-* 🔄 Forward to upstream DNS if needed
+* Block domains you blacklist
+* Log every domain someone asks
+* Forward to upstream DNS if needed
 
 ---
 
-### 🔓 What's a DNS Leak Then?
+### What's a DNS Leak
 
-> You can check [BrowserLeaks](https://browserleaks.com/dns) or [DnsLeakTest](https://www.dnsleaktest.com/) to see if you're experiencing a DNS leak.
+> Check [BrowserLeaks](https://browserleaks.com/dns) or [DnsLeakTest](https://www.dnsleaktest.com/) to see if you're experiencing a DNS leak.
 
 A **DNS leak** happens when:
 
@@ -629,29 +687,23 @@ This **leaks your browsing activity**, even if you're on a VPN or using a filter
 
 ---
 
-## 🧱 OSI Model Breakdown
+## OSI Model Breakdown
 
-### 📡 **Layer 3 - Network Layer**
+### **Layer 3 - Network Layer**
 
 * This is where **IP routing** lives.
 * When you **change the gateway** to your Pi, you're **redirecting packets** to go through your VPN tunnel on the Pi.
 * That means: You're redirecting traffic away from your ISP before it ever reaches them.
 
-> 💬 **Result**: Your traffic doesn't even touch the phucking local ISP. Pi hijacks it, puts it into the VPN, and tunnels it safely like a boss.
+> **Result**: Your traffic doesn't even touch the phucking local ISP. Pi hijacks it, puts it into the VPN, and tunnels it safely.
 
----
-
-### ✨ **Layer 7 - Application Layer**
+### **Layer 7 - Application Layer**
 
 * DNS lives up here (yes, even though it *feels* low-level).
 * Your Pi-hole acts here: **intercepts DNS queries** and either resolves or blocks them.
 * Ads blocked? Domains rewritten? That's Layer 7 magic.
 
-> Combined with Layer 7 control (DNS, ad-block, tracking protection), it's like you built your own damn **freedom stack** 🗽
-
----
-
-### 🛠️ So What You've Done Is
+> Combined with Layer 7 control (DNS, ad-block, tracking protection), it's like you built your own damn **freedom stack**
 
 | Layer | Action                                                             |
 | ----- | ------------------------------------------------------------------ |
@@ -660,142 +712,54 @@ This **leaks your browsing activity**, even if you're on a VPN or using a filter
 
 ---
 
-## Troubleshoot
+Now they'll load on **every reboot**, even if you're sleepy and forget.
 
-If you've ever used `sudo pkill clash` `sudo systemctl stop mihomo`, then you probably got booted from SSH like *a phreakin' hot potato*. 🥔 (Don't worry, we've all been that potato. )
-
-like:
-
-```bash
-ssh raspberrypi@<PI_IP>
-ssh: connect to host <PI_IP> port 22: Connection refused
-```
-
----
-
-### 🛠️ How to fix `Connection refused`
-
-#### Option 1: Unplug and replug Pi, if you already set Mihomo to auto-start as shown above.
-
-#### Option 2: HDMI Cable
-
-✅ Step 1: **Physically access the Pi**
-
-Plug it into a monitor + keyboard, or connect via serial console if you have UART cables.
-
-Log in locally.
-
----
-
-✅ Step 2: **Re-enable networking**
-
-Run this to see if networking still exists:
-
-```bash
-ip a
-```
-
-If `wlan0` or `eth0` doesn't have an IP like `192.168.1.184`, you can restart DHCP:
-
-```bash
-sudo dhclient wlan0
-# Or for ethernet:
-sudo dhclient eth0
-```
-
-If you have a static IP configured in `/etc/dhcpcd.conf`, check that it's not misconfigured or being ignored.
-
----
-
-### ✅ Step 3: Restart SSH
-
-```bash
-sudo systemctl restart ssh
-```
-
-Then try to connect again from your PC:
-
-```bash
-ssh raspberrypi@<PI_IP>
-```
-
----
-
-### ✅ Step 4: Restart Clash safely
-
-```bash
-sudo systemctl start mihomo
-```
-
-And test with:
-
-```bash
-curl --proxy http://127.0.0.1:7890 https://api.myip.com
-```
-
----
-
-### ✅ Step 5: **reapply your iptables rules** after killing Clash
-
-When you run:
-
-```bash
-sudo pkill clash
-```
-
-your iptables rules (especially custom NAT chains) may **not persistent**:
-
-So reapply this:
-
-```bash
-# 💣 Flush existing NAT rules to avoid duplicates
-sudo iptables -t nat -F
-sudo iptables -t nat -X
-
-# 🔁 Recreate CLASH chain
-sudo iptables -t nat -N CLASH
-sudo iptables -t nat -A CLASH -p tcp -j REDIRECT --to-ports 7892
-sudo iptables -t nat -A PREROUTING -s 192.168.100.0/24 -p tcp -j CLASH
-```
-
-Then traffic from **all LAN devices** will be transparently routed through your **Clash TProxy setup** again.
-
----
-
-### ✅ Step 5:  Make It Stick (Persistence Setup)
-
-1. Install persistent rules
-
-```bash
-sudo apt update
-sudo apt install iptables-persistent
-```
-
-Say **yes** when it asks to save your current rules.
-
----
-
-### 🔥 Step 2: Save your working rules to disk
-
-```bash
-sudo iptables-save | sudo tee /etc/iptables/rules.v4
-```
-
-Wanna check them again?
-
-```bash
-sudo cat /etc/iptables/rules.v4
-```
-
-Now they'll load on **every reboot**, even if you're sleepy and forget 😪
-
-> **👻 If DNS breaks, ads return, or VPN feels flaky:**
+> **If DNS breaks, ads return, or VPN feels flaky:**
 >
 > * Restart `mihomo` & Pi-hole
 > * Check `/etc/resolv.conf`
 > * Clear device DNS cache
 > * Or just... turn it off and back on
-> * Maybe you'd like to check this [Troubleshooting](https://kay-a11y.github.io/posts/troubleshoot-clash-port/) out? 😿
+> * Maybe you'd like to check this [Troubleshooting](https://kay-a11y.github.io/posts/troubleshoot-clash-port/) out?
+
+## Command Cheatsheet
+
+* mihomo & Pi-hole
+
+   ```bash
+   sudo systemctl start mihomo
+   sudo systemctl status mihomo
+   sudo systemctl stop mihomo
+   sudo pkill -9 clash 2>/dev/null || true
+
+   # port checking  
+   sudo ss -ltnup | egrep '(:53|:7875|:7890|:9090)'
+
+   # Pi-hole
+   sudo pihole reloaddns
+
+   # if on node
+   curl -s https://ipinfo.io
+   curl -x 127.0.0.1:7890 https://ipinfo.io
+   ```
+
+* Reload Clash config:
+
+   ```bash
+   sudo curl -X PATCH \
+   -H "Authorization: Bearer <your_password>" \
+   -H "Content-Type: application/json" \
+   --data '{"path":"/root/.config/mihomo/config.yaml","force":true}' \
+   http://127.0.0.1:9090/configs
+   ```
+
+* Grammar Check:
+
+   ```bash
+   cd /tmp
+   cp /root/.config/mihomo/config.yaml .
+   /usr/local/bin/clash -f ./config.yaml -t
+   ```
 
 <div style="display: flex; justify-content: center; align-items: center; margin: 1em 0;">
   <div style="position: relative; display: inline-block; width: 150px; height: auto;">
