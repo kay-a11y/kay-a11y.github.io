@@ -7,8 +7,9 @@ categories: [🤖 tech, 🔒 Web Security]
 tags: [🐧 Linux, 📷 Steganography, 🐍 Python, 🖥️ CLI, 🧩 DCT, ➕ LSB, 📊 Entropy, 🔒 Privacy, 🔒 Web Security, 🔖 Watermark, 🎭 Forensics, 💥 Nuke, 🎛️ Quantization, 🧬 Bit-Planes, 🎭 OSINT, 🖼️ JPEG, 🖼️ PNG]
 img_path: /assets/img/posts/
 math: true
-toc: true 
-comments: true 
+pin: true
+toc: true
+comments: true
 image: 
 ---
 

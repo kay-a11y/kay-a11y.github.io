@@ -241,3 +241,16 @@ onpi nvrsub
 
 > This works because the alias expands to:
 > `DISPLAY=:0 XAUTHORITY=/home/pi/.Xauthority <your command here>`
+
+<div style="display: flex; justify-content: center; align-items: center; margin: 1em 0;">
+  <div style="position: relative; display: inline-block; width: 150px; height: auto;">
+    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+         alt="Support me on Ko-fi"
+         width="150"
+         loading="lazy"
+         style="display: block; width: 80%; height: auto;">
+    <div onclick="window.open('https://ko-fi.com/kikisec', '_blank')"
+         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: transparent; cursor: pointer;">
+    </div>
+  </div>
+</div>
