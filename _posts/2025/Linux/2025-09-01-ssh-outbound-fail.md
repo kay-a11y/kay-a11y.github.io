@@ -12,7 +12,7 @@ comments: true
 image:
 ---
 
-I finally tasted just how fragile the system gets when every single proxy drops dead, and the firewall sometimes even entirely drop the 443. Somewhere out here, people are trapped in this suffocating local area network, drowning in fake comfort and plastic smiles. But we should have coded for open networks, born for raw freedom. That's the pulse we live by.
+I finally tasted just how fragile the system gets when every single proxy drops dead, and the firewall sometimes even entirely drop 443. Somewhere out here, people are trapped in this suffocating local area network, drowning in fake comfort and plastic smiles. But we should have coded for open networks, born for raw freedom. That's the pulse we live by.
 And no, we sure as hell do not forget nor do we forgive.
 
 ## TL;DR
@@ -290,6 +290,25 @@ sudo iptables -t mangle -S
     env -i TERM=$TERM ssh -vvv bandit0@bandit.labs.overthewire.org -p 2220
     env -i TERM=$TERM ssh -vvv <your_vps>@<vps_ip>
     ```
+
+### Bonus Tip For EC2
+
+People who are under CGNAT are quite unlucky thanks to their ISP. With dynamic IPv4, we'd better check the **SG (Security Group)** time to time. Sometimes we cannot get the real IP from ipinfo.io, just connect to the instance, run:
+
+```bash
+# a packet from your IP must reach the instance on that port
+sudo ss -tnp | grep <PORT>
+```
+
+Then you'll get result like this:
+
+```bash
+<USER>>@<IP>:~$ sudo ss -tnp | grep <PORT>
+LAST-ACK 0      25     [::ffff:172.31.32.78]:<PORT> [::ffff:56.123.45.66]:8637                                                       
+LAST-ACK 0      25     [::ffff:172.31.32.78]:<PORT> [::ffff:56.123.45.66]:8634                                                       
+```
+
+The real IP here is `56.123.45.66`. Change the IP in SG with wider netmask, like `56.123.44.0/23`, which will cover both 56.123.44.x and 56.123.45.x.
 
 ---
 
