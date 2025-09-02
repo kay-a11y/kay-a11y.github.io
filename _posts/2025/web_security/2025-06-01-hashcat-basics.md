@@ -11,10 +11,6 @@ comments: true
 image: 
 ---
 
-> **Disclaimer:**  
-> This post is shared **strictly for educational and ethical purposes**.  
-> if you're gonna crack, do it with consent and curiosity.
-
 My curiosity was sparked by this awesome video - and guys, you *gotta* check it out:
 
 Yup, Kevin walks us through how to use **Hashcat** in this demo.

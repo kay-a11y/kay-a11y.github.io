@@ -11,11 +11,7 @@ comments: true
 image: 
 ---
 
-> **Disclaimer:**  
-> This post is shared **strictly for educational and ethical purposes**.  
-
-> 🧪 Missed Part 1?  
-> 👉🏻 Dive into [Hashcat Basics](https://kay-a11y.github.io/posts/hashcat-basics/) first - that's where the magic begins. 
+> Part 1 -> [Hashcat Basics](https://kay-a11y.github.io/posts/hashcat-basics/)
 
 ---
 
@@ -216,7 +212,7 @@ Bring in the masks.
 * `?l?l?d?d?l?l` - creative combos (`co88de`, `py33rs`)
 * `?a?a?a?a` - full wildcard madness when you've lost all hope
 
-💡 Use `--increment` to let Hashcat automatically test shorter → longer combos.  
+Use `--increment` to let Hashcat automatically test shorter → longer combos.  
 Save your fingers, save your time:
 
 * `'?a?a?a?a?a?a?' --increment --increment-min 4 --increment-max 6`

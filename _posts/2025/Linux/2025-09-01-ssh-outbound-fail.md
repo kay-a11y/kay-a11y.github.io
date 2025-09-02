@@ -25,17 +25,39 @@ This post is for troubleshooting a broken SSH session, where outbound just suffo
 
 A few days ago I updated my Pop!_OS. Right after it finished, something I'd almost forgotten about, `Cloudflare Zero Trust` suddenly decided to boot itself up. I barely ever used it, so I just ignored it, and went for a full reboot to apply the update.  
 
-Then came the disaster:  
+**Then came the disaster:**
 
 1. Every single node on Clash started timing out. v2ray nodes dropped dead, except the one hiding on 443, but even that one turned unstable after reboot. Plus if the firewall just drop down the port, that node would immediately die too.  
 2. When I tried SSH into my VPS, commands would just hang like forever, only to end in `time out` or `Could not resolve hostname... Name or service not known`.  
 
 Tbh, I kinda started to afraid of doing `sudo apt upgrade` again.  
 
-What still works:
+**Related bugs that showed up along the way:**
+
+1. Tor meltdown after failing with bridges
+
+    ```txt
+    Tor unexpectedly exited. This might be due to a bug in Tor itself, another program on your system, or faulty hardware. Until you restart Tor, Tor Browser will not be able to reach any websites. If the problem persists, please send a copy of your Tor Log to the support team.
+
+    Restarting Tor will not close your browser tabs.
+    ```
+
+    I have tried:
+    * restart
+    * update
+    * add fresh bridges
+    * use system Tor with bridges, then make Tor Browser skip its bundled Tor
+
+    None of them worked. Tor just kept choking until I [fixed the outbound issue](#safest-fix-remove-warp-completely). Then Tor'd just worked well.  
+
+2. Node on Port 443 being unstable
+
+    Likely tied to the dynamic IPv4 in the security group being stale. The cure was simple: just [update the SG with the new IP](#bonus-update-sg-with-new-ip).
+
+**What still works:**
 
 1. SSH to my EC2 via browser Instance Connect
-2. **Inbound SSH works**. (Pop listens on port 22 and another computer connects fine. Try SSH to pi: `ssh pi@192.168.1.200`)
+2. SSH works fine inside LAN (both in and out).
 3. DNS and routing are functional
     > Check if DNS and routing are functional:
     >
@@ -291,7 +313,7 @@ sudo iptables -t mangle -S
     env -i TERM=$TERM ssh -vvv <your_vps>@<vps_ip>
     ```
 
-### Bonus Tip For EC2
+### Bonus: Update SG with new IP
 
 People who are under CGNAT are quite unlucky thanks to their ISP. With dynamic IPv4, we'd better check the **SG (Security Group)** time to time. Sometimes we cannot get the real IP from ipinfo.io, just connect to the instance, run:
 
